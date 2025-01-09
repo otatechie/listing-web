@@ -33,6 +33,12 @@ class User extends Authenticatable implements Auditable
         'password' => 'hashed',
     ];
 
+    public function mobileDevices()
+    {
+        return $this->hasMany(MobileDevice::class);
+    }
+
+
     public function profile()
     {
         return $this->hasOne(UserProfile::class);

@@ -14,7 +14,7 @@ input:focus {
 }
 
 .container-border {
-    @apply bg-white border border-gray-300 rounded shadow-md;
+    @apply bg-white border border-gray-300 rounded shadow-sm;
 }
 
 .main-heading {

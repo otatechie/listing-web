@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MobileDevice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Inertia\Inertia;
 
 class MobileDeviceController extends Controller
 {
@@ -11,7 +14,7 @@ class MobileDeviceController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('MobileDevice/IndexPage');
     }
 
     /**
@@ -19,7 +22,7 @@ class MobileDeviceController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('MobileDevice/CreatePage');
     }
 
     /**
@@ -27,7 +30,46 @@ class MobileDeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validatedData = $request->validate([
+            'listing_title' => [
+                'required',
+                'string',
+            ],
+            'listing_description' => [
+                'required',
+                'string',
+            ],
+            'damage_wear_description' => [
+                'nullable',
+                'string',
+            ],
+
+            'price' => [
+                'required',
+                'numeric',
+            ],
+
+            'storage_capacity' => [
+                'required',
+                'string',
+            ],
+            'condition' => [
+                'required',
+                'string',
+            ],
+
+            'images' => [
+                'nullable',
+                'array',
+            ],
+        ]);
+
+        $mobileDevice = MobileDevice::create($validatedData);
+
+        $mobileDevice->addFromMediaLibraryRequest($request->images)
+        ->toMediaCollection('images');
+
+        session()->flash('success', 'Mobile device added successfully');
     }
 
     /**
@@ -60,5 +102,35 @@ class MobileDeviceController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+      public function validateStep(Request $request, $step)
+    {
+        $rules = [
+            '1' => [
+                'storage_capacity' => ['required', 'string'],
+                'condition' => ['required', 'string'],
+            ],
+            '2' => [
+                'listing_title' => ['required', 'string'],
+                'listing_description' => ['required', 'string'],
+                'damage_wear_description' => ['nullable', 'string'],
+            ],
+            '3' => [
+                'exchange_possible' => ['required', 'boolean'],
+                'carrier' => ['nullable', 'string'],
+                'color' => ['required', 'string'],
+                'price' => ['required', 'numeric'],
+            ],
+        ];
+
+        $validator = Validator::make($request->all(), $rules[$step] ?? []);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        return back();
     }
 }

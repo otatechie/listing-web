@@ -20,69 +20,74 @@ class PermissionRoleSeeder extends Seeder
                 'description' => 'Platform administrator with full access'
             ],
             [
-                'name' => 'producer',
-                'description' => 'Beat producer who can sell and manage their beats'
-            ],
-            [
-                'name' => 'listener',
-                'description' => 'Music enthusiast who can purchase and license beats'
+                'name' => 'seller',
+                'description' => 'A verified user who can list and sell second-hand gadgets on the platform.'
             ],
             [
                 'name' => 'moderator',
-                'description' => 'Can moderate content and handle support requests'
+                'description' => 'Platform guardian who ensures quality, safety, and trust in the marketplace.'
             ]
         ];
 
         $permissions = [
-            // Beat Management
+            // Listing Management
             [
-                'name' => 'upload-beats',
-                'description' => 'Upload new beats to the platform'
+                'name' => 'create-listing',
+                'description' => 'Create new product listings'
             ],
             [
-                'name' => 'edit-own-beats',
-                'description' => 'Edit own beat details and pricing'
+                'name' => 'edit-own-listing',
+                'description' => 'Edit own product listings'
             ],
             [
-                'name' => 'delete-beats',
-                'description' => 'Remove beats from the platform'
+                'name' => 'delete-listing',
+                'description' => 'Remove listings from platform'
             ],
             [
-                'name' => 'download-purchased-beats',
-                'description' => 'Download beats after purchase'
+                'name' => 'manage-all-listings',
+                'description' => 'Manage all product listings'
             ],
 
+            // User Management
             [
                 'name' => 'manage-users',
-                'description' => 'Manage user accounts and access'
+                'description' => 'Manage user accounts'
             ],
             [
                 'name' => 'edit-profile',
-                'description' => 'Edit own profile information'
+                'description' => 'Edit own profile'
+            ],
+            [
+                'name' => 'ban-users',
+                'description' => 'Ban/suspend user accounts'
             ],
 
-            // Financial
+            // Moderation
             [
-                'name' => 'view-own-earnings',
-                'description' => 'View personal sales and earnings'
+                'name' => 'review-listings',
+                'description' => 'Review and verify listings'
             ],
             [
-                'name' => 'view-all-transactions',
-                'description' => 'View all platform transactions'
+                'name' => 'handle-reports',
+                'description' => 'Handle user reports'
             ],
             [
-                'name' => 'process-refunds',
-                'description' => 'Handle refund requests'
+                'name' => 'flag-content',
+                'description' => 'Flag suspicious content'
+            ],
+            [
+                'name' => 'verify-sellers',
+                'description' => 'Verify seller accounts'
             ],
 
-            // Support & Moderation
+            // System
             [
-                'name' => 'moderate-content',
-                'description' => 'Moderate beats and user content'
+                'name' => 'access-dashboard',
+                'description' => 'Access admin dashboard'
             ],
             [
-                'name' => 'manage-support-tickets',
-                'description' => 'Handle customer support tickets'
+                'name' => 'manage-settings',
+                'description' => 'Manage system settings'
             ]
         ];
 
