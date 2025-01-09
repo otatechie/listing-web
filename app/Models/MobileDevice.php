@@ -20,11 +20,17 @@ class MobileDevice extends Model implements HasMedia
 
     protected $guarded = ['id'];
 
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+
     public function registerMediaCollections(): void
     {
         $this
             ->addMediaCollection('images')
-            ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->registerMediaConversions(function (Media $media) {
                 $this
@@ -32,6 +38,7 @@ class MobileDevice extends Model implements HasMedia
                     ->nonQueued();
             });
     }
+
 
     protected static function boot()
     {

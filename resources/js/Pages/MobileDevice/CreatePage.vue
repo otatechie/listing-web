@@ -1,6 +1,6 @@
 <template>
 
-    <Head title="Categories" />
+    <Head title="Add Mobile Device" />
 
     <slot>
         <div class="px-5">
@@ -22,27 +22,27 @@
                                                     <div>
                                                         <FloatLabel variant="on">
                                                             <Select
-                                                                v-model="createPhoneMobileDeviceForm.storage_capacity"
+                                                                v-model="createMobileDeviceForm.storage_capacity"
                                                                 :options="storage" showClear class="w-full"
                                                                 optionLabel="label" optionValue="value"
-                                                                :invalid="!!createPhoneMobileDeviceForm.errors.storage_capacity" />
+                                                                :invalid="!!createMobileDeviceForm.errors.storage_capacity" />
                                                             <label for="storage_capacity">Storage</label>
                                                         </FloatLabel>
-                                                        <p v-if="createPhoneMobileDeviceForm.errors.storage_capacity"
+                                                        <p v-if="createMobileDeviceForm.errors.storage_capacity"
                                                             class="mt-2 text-xs text-red-600">{{
-                                                                createPhoneMobileDeviceForm.errors.storage_capacity }}</p>
+                                                                createMobileDeviceForm.errors.storage_capacity }}</p>
                                                     </div>
                                                     <div>
                                                         <FloatLabel variant="on">
-                                                            <Select v-model="createPhoneMobileDeviceForm.condition"
+                                                            <Select v-model="createMobileDeviceForm.condition"
                                                                 :options="conditions" showClear class="w-full"
                                                                 optionLabel="label" optionValue="value"
-                                                                :invalid="!!createPhoneMobileDeviceForm.errors.condition" />
+                                                                :invalid="!!createMobileDeviceForm.errors.condition" />
                                                             <label for="condition">Condition</label>
                                                         </FloatLabel>
-                                                        <p v-if="createPhoneMobileDeviceForm.errors.condition"
+                                                        <p v-if="createMobileDeviceForm.errors.condition"
                                                             class="mt-2 text-xs text-red-600">{{
-                                                                createPhoneMobileDeviceForm.errors.condition }}</p>
+                                                                createMobileDeviceForm.errors.condition }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,67 +66,66 @@
                                                     <div>
                                                         <FloatLabel variant="on">
                                                             <InputText
-                                                                v-model="createPhoneMobileDeviceForm.listing_title"
+                                                                v-model="createMobileDeviceForm.listing_title"
                                                                 class="w-full"
-                                                                :invalid="!!createPhoneMobileDeviceForm.errors.listing_title" />
+                                                                :invalid="!!createMobileDeviceForm.errors.listing_title" />
                                                             <label>Listing Title</label>
                                                         </FloatLabel>
                                                         <p class="text-xs text-gray-500">Short, unique title for your
                                                             product listing. (max 100 characters)</p>
-                                                        <p v-if="createPhoneMobileDeviceForm.errors.listing_title"
+                                                        <p v-if="createMobileDeviceForm.errors.listing_title"
                                                             class="mt-2 text-xs text-red-600">
-                                                            {{ createPhoneMobileDeviceForm.errors.listing_title }}
+                                                            {{ createMobileDeviceForm.errors.listing_title }}
                                                         </p>
                                                     </div>
 
                                                     <div>
                                                         <FloatLabel variant="on">
-                                                            <InputText
-                                                                v-model="createPhoneMobileDeviceForm.price"
+                                                            <InputText v-model="createMobileDeviceForm.price"
                                                                 class="w-full"
-                                                                :invalid="!!createPhoneMobileDeviceForm.errors.price" />
+                                                                :invalid="!!createMobileDeviceForm.errors.price" />
                                                             <label>Price</label>
                                                         </FloatLabel>
                                                         <p class="text-xs text-gray-500">Price of the product</p>
-                                                        <p v-if="createPhoneMobileDeviceForm.errors.price"
+                                                        <p v-if="createMobileDeviceForm.errors.price"
                                                             class="mt-2 text-xs text-red-600">
-                                                            {{ createPhoneMobileDeviceForm.errors.price }}
+                                                            {{ createMobileDeviceForm.errors.price }}
                                                         </p>
                                                     </div>
 
                                                     <div>
                                                         <FloatLabel variant="on">
                                                             <Textarea
-                                                                v-model="createPhoneMobileDeviceForm.listing_description"
+                                                                v-model="createMobileDeviceForm.listing_description"
                                                                 rows="4" class="w-full"
-                                                                :invalid="!!createPhoneMobileDeviceForm.errors.listing_description" />
+                                                                :invalid="!!createMobileDeviceForm.errors.listing_description" />
                                                             <label>Listing Description</label>
                                                         </FloatLabel>
                                                         <p class="text-xs text-gray-500">Describe in detail your listing
                                                             and
                                                             what is included for the buyer. (max 1000 characters)</p>
-                                                        <p v-if="createPhoneMobileDeviceForm.errors.listing_description"
+                                                        <p v-if="createMobileDeviceForm.errors.listing_description"
                                                             class="mt-2 text-xs text-red-600">
-                                                            {{ createPhoneMobileDeviceForm.errors.listing_description }}
+                                                            {{ createMobileDeviceForm.errors.listing_description }}
                                                         </p>
                                                     </div>
 
                                                     <div>
                                                         <FloatLabel variant="on">
                                                             <Textarea
-                                                                v-model="createPhoneMobileDeviceForm.damage_wear_description"
+                                                                v-model="createMobileDeviceForm.damage_wear_description"
                                                                 rows="4" class="w-full"
-                                                                :invalid="!!createPhoneMobileDeviceForm.errors.damage_wear_description" />
+                                                                        :invalid="!!createMobileDeviceForm.errors.damage_wear_description" />
                                                             <label>Damage/Wear Description</label>
                                                         </FloatLabel>
                                                         <p class="text-xs text-gray-500">Describe any imperfections,
                                                             damage
                                                             the product has sustained, and/or repairs made. (max 1000
                                                             characters)</p>
-                                                        <p v-if="createPhoneMobileDeviceForm.errors.damage_wear_description"
+                                                            <p v-if="createMobileDeviceForm.errors.damage_wear_description"
                                                             class="mt-2 text-xs text-red-600">
                                                             {{
-                                                                createPhoneMobileDeviceForm.errors.damage_wear_description
+                                                                createMobileDeviceForm.errors.damage_wear_description
                                                             }}
                                                         </p>
                                                     </div>
@@ -151,12 +150,15 @@
                                                 art</label>
                                             <div class="mt-3">
                                                 <media-library-collection name="images"
-                                                    :initial-value="createPhoneMobileDeviceForm.images"
+                                                    :initial-value="createMobileDeviceForm.images"
                                                     :validation-rules="{
                                                         accept: ['image/jpeg', 'image/png', 'image/jpg'],
                                                         maxSizeInKB: 5048
-                                                    }" @change="handleCoverArtChange"
-                                                    :validation-errors="validationErrorsCoverArt" />
+                                                    }"
+                                                    :max-items="5"
+                                                    multiple
+                                                    @change="handleImagesChange"
+                                                    :validation-errors="validationErrorsImages" />
                                             </div>
                                         </div>
                                         <div
@@ -164,7 +166,7 @@
                                             <Button label="Back" severity="secondary" icon="pi pi-arrow-left"
                                                 @click="activateCallback('2')" />
                                             <Button label="Next" icon="pi pi-arrow-right" iconPos="right"
-                                                @click="submitPhoneMobileDeviceForm" />
+                                                @click="submitMobileDeviceForm" />
                                         </div>
                                     </StepPanel>
                                 </StepItem>
@@ -180,17 +182,15 @@
 
 <script setup>
 import Default from '../../Layouts/Default.vue';
+import {computed, ref} from 'vue';
+import { usePage } from '@inertiajs/vue3';
 import Stepper from 'primevue/stepper';
-import StepList from 'primevue/steplist';
-import StepPanels from 'primevue/steppanels';
 import StepItem from 'primevue/stepitem';
 import Step from 'primevue/step';
 import StepPanel from 'primevue/steppanel';
 import Button from 'primevue/button';
-import Dropdown from 'primevue/dropdown';
 import FloatLabel from 'primevue/floatlabel';
 import Select from 'primevue/select';
-import { ref, onMounted, watch } from 'vue';
 import Breadcrumb from 'primevue/breadcrumb';
 import { Head, useForm } from '@inertiajs/vue3';
 import Textarea from 'primevue/textarea';
@@ -200,7 +200,9 @@ defineOptions({
     layout: Default,
 })
 
-const createPhoneMobileDeviceForm = useForm({
+const page = usePage();
+
+const createMobileDeviceForm = useForm({
     brand_id: null,
     model_id: null,
     category_id: null,
@@ -214,34 +216,23 @@ const createPhoneMobileDeviceForm = useForm({
     images: [],
 });
 
-const submitPhoneMobileDeviceForm = () => {
-    console.log('Submitting form with data:', createPhoneMobileDeviceForm.data());
+const validationErrorsImages = computed(() => ({
+    images: page.props.errors.images ? [page.props.errors.images] : []
+}));
 
-    createPhoneMobileDeviceForm.post(route("mobile-device.store"), {
+const handleImagesChange = (media) => {
+    createMobileDeviceForm.images = media;
+};
+
+const submitMobileDeviceForm = () => {
+    createMobileDeviceForm.post(route("mobile-device.store"), {
         preserveScroll: true,
-        onSuccess: (response) => {
-            console.log('Form submission successful:', response);
-            toast.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'Device added successfully',
-                life: 3000
-            });
-            router.visit(route('phone-mobile-device.index'));
+        onSuccess: () => {
+            // Add success notification/redirect logic here
         },
         onError: (errors) => {
             console.error('Form submission failed:', errors);
-            toast.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'There was an error saving your device. Please check the form and try again.',
-                life: 3000
-            });
-
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // Add error notification logic here
         }
     });
 };
@@ -268,42 +259,34 @@ const conditions = ref([
 ]);
 
 const validateAndProceed = async (activateCallback, fromStep) => {
-    // Send only the fields relevant to the current step
+    const stepValidationMap = {
+        '1': ['storage_capacity', 'condition'],
+        '2': ['listing_title', 'listing_description', 'damage_wear_description'],
+        '3': ['images']
+    };
+
     const stepData = {};
-    switch (fromStep) {
-        case '1':
-            stepData.storage_capacity = createPhoneMobileDeviceForm.storage_capacity;
-            stepData.condition = createPhoneMobileDeviceForm.condition;
-            break;
-        case '2':
-            stepData.listing_title = createPhoneMobileDeviceForm.listing_title;
-            stepData.listing_description = createPhoneMobileDeviceForm.listing_description;
-            stepData.damage_wear_description = createPhoneMobileDeviceForm.damage_wear_description;
-            break;
-        case '3':
-            stepData.images = createPhoneMobileDeviceForm.images;
-            break;
-    }
+    stepValidationMap[fromStep]?.forEach(field => {
+        stepData[field] = createMobileDeviceForm[field];
+    });
 
     const validationForm = useForm(stepData);
     await validationForm.post(route('mobile-device.validate-step', fromStep), {
         preserveScroll: true,
         onSuccess: () => {
-            createPhoneMobileDeviceForm.clearErrors();
+            createMobileDeviceForm.clearErrors();
             activateCallback(String(Number(fromStep) + 1));
         },
         onError: (errors) => {
-            // The validation errors will be automatically set on the form
-            Object.keys(errors).forEach(key => {
-                createPhoneMobileDeviceForm.setError(key, errors[key]);
+            Object.entries(errors).forEach(([key, value]) => {
+                createMobileDeviceForm.setError(key, value);
             });
         }
     });
 };
 
 const handleCoverArtChange = (media) => {
-    createPhoneMobileDeviceForm.images = media;
+    createMobileDeviceForm.images = media;
 };
-
 
 </script>

@@ -63,7 +63,7 @@ class MobileDeviceController extends Controller
                 'array',
             ],
             'user_id' => [
-                'required',
+                'nullable',
                 'exists:users,id',
             ],
         ]);
