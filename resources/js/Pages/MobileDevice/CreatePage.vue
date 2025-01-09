@@ -217,7 +217,7 @@ const createPhoneMobileDeviceForm = useForm({
 const submitPhoneMobileDeviceForm = () => {
     console.log('Submitting form with data:', createPhoneMobileDeviceForm.data());
 
-    createPhoneMobileDeviceForm.post(route("phone-mobile-device.store"), {
+    createPhoneMobileDeviceForm.post(route("mobile-device.store"), {
         preserveScroll: true,
         onSuccess: (response) => {
             console.log('Form submission successful:', response);
@@ -286,7 +286,7 @@ const validateAndProceed = async (activateCallback, fromStep) => {
     }
 
     const validationForm = useForm(stepData);
-    await validationForm.post(route('phone-mobile-device.validate-step', fromStep), {
+    await validationForm.post(route('mobile-device.validate-step', fromStep), {
         preserveScroll: true,
         onSuccess: () => {
             createPhoneMobileDeviceForm.clearErrors();

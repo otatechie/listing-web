@@ -23,34 +23,33 @@
         <div v-show="menuOpen"
             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <p class="m-2.5 text-xs text-gray-400">You are in {{ currentRole }} mode</p>
             <div class="m-2.5">
                 <Link :href="route('user.switch.role')" method="post" as="button" @click="closeMenu">
-                <Button type="button" severity="contrast" size="small" class="text-xs" :label="switchRoleLabel"
+                <Button type="button" severity="contrast" size="small" class="text-xs" label="Sell items"
                     outlined />
                 </Link>
             </div>
             <Link :href="route('user.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
             </svg>
-            Your account
+            Your Account
             </Link>
             <Link :href="route('profile.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Your profile
+            Your Profile
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('user.two.factor')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -60,36 +59,36 @@
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('user.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                    d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
             </svg>
-            Your saved beats
+            Your Purchases
             </Link>
             <Link :href="route('beats.followers')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            Your favorites
+            Your Favorites
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('profile.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
-            Earnings & Payouts
+            Your Listings
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('admin.setting.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-amber-600" role="menuitem" tabindex="-1"
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-1">
 
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +101,7 @@
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('logout')" method="post" as="button" @click="closeMenu"
-                class="w-full text-left font-medium px-4 py-1.5 text-sm text-red-500 flex items-center"
+                class="w-full text-left font-medium px-4 py-1.5 text-sm text-red-400 flex items-center hover:text-red-600 hover:underline"
                 role="menuitem" tabindex="-1" id="user-menu-item-2">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -129,15 +128,6 @@ const avatarUrl = computed(() => {
     return `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(user.value.name)}&backgroundType=gradientLinear&scale=100&fontSize=50`;
 });
 
-const currentRole = computed(() => {
-    if (!user.value?.roles) return 'loading...';
-    return user.value.roles.includes('listener') ? 'listener' : 'producer';
-});
-
-const switchRoleLabel = computed(() => {
-    if (!user.value?.roles) return 'Loading...';
-    return `Switch to ${currentRole.value === 'listener' ? 'producer' : 'listener'}`;
-});
 
 const menuOpen = ref(false);
 

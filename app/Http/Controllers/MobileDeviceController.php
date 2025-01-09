@@ -62,12 +62,17 @@ class MobileDeviceController extends Controller
                 'nullable',
                 'array',
             ],
+            'user_id' => [
+                'required',
+                'exists:users,id',
+            ],
         ]);
 
+        $validatedData['user_id'] = auth()->user()->id;
         $mobileDevice = MobileDevice::create($validatedData);
 
         $mobileDevice->addFromMediaLibraryRequest($request->images)
-        ->toMediaCollection('images');
+            ->toMediaCollection('images');
 
         session()->flash('success', 'Mobile device added successfully');
     }
@@ -77,7 +82,8 @@ class MobileDeviceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $mobileDevice = MobileDevice::findOrFail($id);
+        return Inertia::render('MobileDevice/ShowPage', compact('mobileDevice'));
     }
 
     /**

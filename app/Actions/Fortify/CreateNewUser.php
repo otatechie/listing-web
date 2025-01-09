@@ -41,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
-        $user->assignRole('listener');
+        $user->assignRole('seller');
 
         session()->flash('success', 'Great! Account created successfully.');
 
