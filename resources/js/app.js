@@ -8,7 +8,7 @@ import Nav from "./Layouts/Nav.vue";
 import BaseLayout from "./Layouts/BaseLayout.vue";
 import Auth from "./Layouts/Auth.vue";
 import PrimeVue from "primevue/config";
-import Aura from "@primevue/themes/aura";
+import Lara  from "@primevue/themes/lara";
 import "primeicons/primeicons.css";
 import ToastService from "primevue/toastservice";
 import { definePreset } from "@primevue/themes";
@@ -41,7 +41,7 @@ createInertiaApp({
     },
 
     setup({ el, App, props, plugin }) {
-        const MyPreset = definePreset(Aura, {
+        const MyPreset = definePreset(Lara, {
             semantic: {
                 primary: {
                     50: "{cyan.50}",

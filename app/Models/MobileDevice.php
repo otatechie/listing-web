@@ -26,6 +26,10 @@ class MobileDevice extends Model implements HasMedia
         return 'slug';
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function registerMediaCollections(): void
     {
