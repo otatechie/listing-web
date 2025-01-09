@@ -1,0 +1,66 @@
+<template>
+
+    <Head title="Permission & Roles" />
+
+    <slot>
+        <div class="px-5">
+            <div class="container-border">
+                <Tabs value="0">
+                    <TabList>
+                        <Tab value="0" class="font-bold text-lg">Users</Tab>
+                        <Tab value="1" class="font-bold text-lg">Roles</Tab>
+                        <Tab value="2" class="font-bold text-lg">Permissions</Tab>
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel value="0">
+                            <IndexUserTab :users="props.users"></IndexUserTab>
+                        </TabPanel>
+
+                        <TabPanel value="1">
+                            <Role :roles="props.roles"></Role>
+                        </TabPanel>
+
+                        <TabPanel value="2">
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
+            </div>
+        </div>
+    </slot>
+</template>
+
+<script setup>
+import { ref, watch } from 'vue';
+import { Head } from '@inertiajs/vue3';
+import Default from '../../../Layouts/Default.vue';
+import { FilterMatchMode } from '@primevue/core/api';
+import Tabs from 'primevue/tabs';
+import TabList from 'primevue/tablist';
+import Tab from 'primevue/tab';
+import TabPanels from 'primevue/tabpanels';
+import TabPanel from 'primevue/tabpanel';
+import Dialog from 'primevue/dialog';
+import Role from './IndexRoleTab.vue';
+import IndexUserTab from './IndexUserTab.vue';
+import Button from 'primevue/button';
+
+defineOptions({
+    layout: Default,
+});
+
+const props = defineProps({
+    roles: {
+        type: Object,
+        required: true
+    },
+    permissions: {
+        type: Object,
+        required: true
+    },
+    users: {
+        type: Object,
+        required: true
+    }
+});
+
+</script>

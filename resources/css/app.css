@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+textarea:focus,
+input:focus {
+    outline: none !important;
+}
+
+.p-breadcrumb {
+    background-color: rgb(249 250 251) !important;
+}
+
+.container-border {
+    @apply bg-white border border-gray-300 rounded shadow-md;
+}
+
+.main-heading {
+    @apply text-center text-2xl font-bold font-heading leading-9 tracking-wide text-gray-800;
+}
+
+.sub-heading {
+    @apply text-xl font-semibold font-heading leading-7 text-gray-800;
+}
