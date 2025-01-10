@@ -12,8 +12,8 @@ export default {
     theme: {
         extend: {},
         fontFamily: {
-            sans: ["Plus Jakarta Sans", "sans-serif"],
-            heading: ["Libre Baskerville", "serif"],
+            sans: ["Gantari", "sans-serif"],
+            heading: ["Gantari", "sans-serif"],
         },
     },
     plugins: [forms],

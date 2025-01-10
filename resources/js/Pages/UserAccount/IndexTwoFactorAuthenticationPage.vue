@@ -27,7 +27,7 @@
                         <div class="my-6">
                             <div class="flex items-center mb-2">
                                 <span
-                                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-amber-100 text-gray-700 font-medium mr-4">1</span>
+                                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-gray-700 font-medium mr-4">1</span>
                                 <h3 class="font-medium text-md text-gray-700">Download an Authenticator App</h3>
                             </div>
                             <div class="ml-12 space-y-1 text-sm">
@@ -51,7 +51,7 @@
                         <div class="mb-6">
                             <div class="flex items-center mb-2">
                                 <span
-                                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-amber-100 text-gray-700 font-medium mr-4">2</span>
+                                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-gray-700 font-medium mr-4">2</span>
                                 <h3 class="font-medium text-md text-gray-700">Open the App</h3>
                             </div>
                             <div class="ml-12 space-y-1 text-sm">
@@ -64,7 +64,7 @@
                         <div class="mb-6">
                             <div class="flex items-center mb-2">
                                 <span
-                                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-amber-100 text-gray-700 font-medium mr-4">3</span>
+                                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-gray-700 font-medium mr-4">3</span>
                                 <h3 class="font-medium text-md text-gray-700">Scan QR Code</h3>
                             </div>
                             <div class="ml-12 text-sm">
@@ -72,14 +72,14 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 p-4 bg-amber-100 rounded-lg">
+                        <div class="mt-6 p-4 bg-stone-200 rounded-lg">
                             <p class="text-sm text-gray-700 font-medium">
                                 Need help? Contact our support team for assistance with setup.
                             </p>
                         </div>
                     </div>
 
-                    <div class="bg-white border border-gray-800 rounded-none shadow-[2px_2px_0px_0px_rgba(31,41,55,1)]">
+                    <div class="container-border">
                         <div class="px-4 py-6 sm:p-8">
                             <div v-html="qrCodeSvg"></div>
                             <p class="mt-4 text-sm uppercase text-gray-800 font-medium">Point your camera here</p>
@@ -104,7 +104,7 @@
                                 <li>Uninstall your authenticator app</li>
                                 <li>Switch to a new phone</li>
                             </ul>
-                            <div class="mt-6 p-4 bg-amber-100 rounded-lg">
+                            <div class="mt-6 p-4 bg-stone-200 rounded-lg">
                                 <p class="text-sm text-gray-700 font-medium">
                                     Each code can only be used once. Keep them private and separate from your
                                     authentication device.
@@ -113,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white border border-gray-800 rounded-none shadow-[2px_2px_0px_0px_rgba(31,41,55,1)]">
+                    <div class="container-border">
                         <div class="px-4 py-6 sm:p-8">
                             <ul>
                                 <li v-for="code in recoveryCodes" :key="code" class="text-gray-800">
@@ -121,9 +121,8 @@
                                 </li>
                             </ul>
                             <form @submit.prevent="regenerateCodes" class="mt-4">
-                                <Button @click="regenerateCodes" label="Regenerate codes" severity="primary"
-                                    size="small" class="mt-2 font-mono bg-red-800 hover:bg-red-700 border-2 border-amber-950
-                    shadow-[2px_2px_0px_0px_rgba(120,53,15,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]" />
+                                <Button @click="regenerateCodes" label="Regenerate codes" severity="contrast"
+                                    size="small" />
                             </form>
                         </div>
                     </div>
@@ -133,8 +132,7 @@
 
                 <div class="text-right">
                     <form @submit.prevent="disableTwoFactor">
-                        <Button @click="disableTwoFactor" label="Disable 2FA" size="small" severity="danger" class="font-mono bg-red-800 hover:bg-red-700 border-2 border-amber-950
-                    shadow-[2px_2px_0px_0px_rgba(120,53,15,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]" />
+                        <Button @click="disableTwoFactor" label="Disable 2FA" size="small" severity="danger" />
                     </form>
                 </div>
             </div>

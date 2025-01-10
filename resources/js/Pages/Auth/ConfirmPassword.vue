@@ -2,7 +2,7 @@
 
     <Head title="Confirm password" />
 
-    <div class="bg-amber-50 h-screen">
+    <div class="bg-stone-100 h-screen">
         <div>
             <div class="sm:mx-auto sm:w-full sm:max-w-md">
                 <Logo />

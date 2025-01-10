@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('carrier')->nullable();
             $table->string('color')->nullable();
             $table->string('storage_capacity')->nullable();
-            $table->string('location')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
             $table->string('battery_health')->nullable();
             $table->enum('condition', ['new', 'mint', 'good', 'fair'])->default('new');
             $table->decimal('price', 10, 2);

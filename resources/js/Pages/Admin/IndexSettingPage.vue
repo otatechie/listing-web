@@ -13,7 +13,7 @@
                             These settings affect the entire platform. Only accessible to super administrators.
                         </p>
                     </div>
-                    <div class="bg-white border border-gray-400 rounded-none shadow-[2px_2px_0px_0px_rgba(156,163,175,1)] md:col-span-2">
+                    <div class="container-border md:col-span-2">
                         <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 p-8">
                             <div>
                                 <Link :href="route('admin.audit')">

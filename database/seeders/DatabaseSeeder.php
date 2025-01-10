@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LicenseSeeder::class,
             PermissionRoleSeeder::class,
+            PhoneBrandSeeder::class,
+            PhoneVariantSeeder::class,
+            PhoneModelSeeder::class,
         ]);
     }
 }
