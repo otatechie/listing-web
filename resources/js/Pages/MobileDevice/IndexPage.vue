@@ -70,7 +70,7 @@
                     </button>
                     <button class="flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all hover:scale-105 hover:shadow-md">
                         <span>💰</span>
-                        <span class="font-medium">Sell Phone</span>
+                        <span class="font-medium"><Link :href="route('mobile-device.create')">Sell Phone</Link></span>
                     </button>
                 </div>
             </div>
@@ -115,27 +115,25 @@
 
                 <!-- iPhones Section -->
                 <section>
-                    <h2 class="text-2xl font-bold text-center mb-6">iPhones</h2>
+                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.iphone.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div class="bg-white border rounded-lg p-4 text-center">
-                            <img src="/iphone13.png" alt="iPhone 13" class="mx-auto mb-2 h-32">
-                            <h3 class="font-medium">Apple iPhone 13</h3>
-                            <div class="flex justify-center my-1">
-                                <span class="text-yellow-400">★★★★★</span>
-                            </div>
-                            <p class="text-green-600 font-bold">$269</p>
-                            <img src="/apple-icon.png" alt="Apple" class="h-4 mx-auto mt-1">
+                        <div v-for="(device, index) in iphoneDevices"
+                             :key="device.id"
+                             class="bg-white border rounded p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                            <img :src="getIphoneImage(device, index)"
+                                 :alt="device.name"
+                                 @error="(e) => e.target.src = deviceConfig.iphone.defaultImage"
+                                 class="mx-auto mb-2 h-32 object-contain">
+                            <h3 class="font-medium text-sm py-2">
+                                {{ device.phone_brand.name }}
+                                {{ device.name }}
+                            </h3>
+                            <Link :href="route('mobile-device.show', device.id)">
+                                <Button size="small" class="mt-3" outlined>
+                                    View listing
+                                </Button>
+                            </Link>
                         </div>
-                        <div class="bg-white border rounded-lg p-4 text-center">
-                            <img src="/iphone12.png" alt="iPhone 12" class="mx-auto mb-2 h-32">
-                            <h3 class="font-medium">Apple iPhone 12</h3>
-                            <div class="flex justify-center my-1">
-                                <span class="text-yellow-400">★★★★★</span>
-                            </div>
-                            <p class="text-green-600 font-bold">$159</p>
-                            <img src="/apple-icon.png" alt="Apple" class="h-4 mx-auto mt-1">
-                        </div>
-                        <!-- Add more iPhone cards -->
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
                         <a href="#" class="text-blue-600 hover:underline">iPhone Guide</a>
@@ -145,82 +143,84 @@
                 </section>
 
                 <!-- Samsung Phones Section -->
-                <section class="mt-12">
-                    <h2 class="text-2xl font-bold text-center mb-6">Samsung Phones</h2>
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.samsung.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div class="bg-white border rounded-lg p-4 text-center">
-                            <img src="/s24-ultra.png" alt="Samsung Galaxy S24 Ultra" class="mx-auto mb-2 h-32">
-                            <h3 class="font-medium">Samsung Galaxy S24 Ultra</h3>
-                            <div class="flex justify-center my-1">
-                                <span class="text-yellow-400">★★★★★</span>
-                            </div>
-                            <p class="text-green-600 font-bold">$618</p>
-                            <img src="/samsung-icon.png" alt="Samsung" class="h-4 mx-auto mt-1">
+                        <div v-for="device in samsungDevices"
+                             :key="device.id"
+                             class="bg-white border rounded-lg p-4 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <img :src="getDeviceImage(device, 'samsung')"
+                                 :alt="device.name"
+                                 @error="(e) => e.target.src = deviceConfig.samsung.defaultImage"
+                                 class="mx-auto mb-2 h-32 object-contain">
+                            <h3 class="font-medium text-sm py-2">
+                                {{ device.phone_brand.name }}
+                                {{ device.name }}
+                            </h3>
+                            <Link :href="route('mobile-device.show', device.id)">
+                                <Button size="small" class="mt-3" outlined>
+                                    View listing
+                                </Button>
+                            </Link>
                         </div>
-                        <!-- Add more Samsung phone cards -->
-                    </div>
-                    <div class="flex justify-center gap-4 mt-4">
-                        <a href="#" class="text-green-600 hover:underline">Unlocked</a>
-                        <a href="#" class="text-green-600 hover:underline">Shop Samsung Phones →</a>
                     </div>
                 </section>
 
                 <!-- Google Pixels Section -->
-                <section class="mt-12">
-                    <h2 class="text-2xl font-bold text-center mb-6">Google Pixels</h2>
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.pixel.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div class="bg-white border rounded-lg p-4 text-center">
-                            <img src="/pixel-6.png" alt="Google Pixel 6" class="mx-auto mb-2 h-32">
-                            <h3 class="font-medium">Google Pixel 6</h3>
-                            <div class="flex justify-center my-1">
-                                <span class="text-yellow-400">★★★★★</span>
-                            </div>
-                            <p class="text-green-600 font-bold">$121</p>
-                            <img src="/google-icon.png" alt="Google" class="h-4 mx-auto mt-1">
+                        <div v-for="device in pixelDevices"
+                             :key="device.id"
+                             class="bg-white border rounded-lg p-4 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <img :src="getDeviceImage(device, 'pixel')"
+                                 :alt="device.name"
+                                 @error="(e) => e.target.src = deviceConfig.pixel.defaultImage"
+                                 class="mx-auto mb-2 h-32 object-contain">
+                            <h3 class="font-medium text-sm py-2">
+                                {{ device.phone_brand.name }}
+                                {{ device.name }}
+                            </h3>
+                            <Link :href="route('mobile-device.show', device.id)">
+                                <Button size="small" class="mt-3" outlined>
+                                    View listing
+                                </Button>
+                            </Link>
                         </div>
-                        <!-- Add more Pixel phone cards -->
-                    </div>
-                    <div class="flex justify-center gap-4 mt-4">
-                        <a href="#" class="text-blue-600 hover:underline">Pixel Guide</a>
-                        <a href="#" class="text-green-600 hover:underline">Unlocked</a>
-                        <a href="#" class="text-green-600 hover:underline">Shop Pixel Phones →</a>
                     </div>
                 </section>
 
                 <!-- OnePlus Phones Section -->
-                <section class="mt-12">
-                    <h2 class="text-2xl font-bold text-center mb-6">OnePlus Phones</h2>
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.oneplus.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div class="bg-white border rounded-lg p-4 text-center">
-                            <img src="/oneplus-8.png" alt="OnePlus 8" class="mx-auto mb-2 h-32">
-                            <h3 class="font-medium">OnePlus 8</h3>
-                            <div class="flex justify-center my-1">
-                                <span class="text-yellow-400">★★★★★</span>
-                            </div>
-                            <p class="text-green-600 font-bold">$125</p>
-                            <img src="/oneplus-icon.png" alt="OnePlus" class="h-4 mx-auto mt-1">
+                        <div v-for="device in oneplusDevices"
+                             :key="device.id"
+                             class="bg-white border rounded-lg p-4 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <img :src="getDeviceImage(device, 'oneplus')"
+                                 :alt="device.name"
+                                 @error="(e) => e.target.src = deviceConfig.oneplus.defaultImage"
+                                 class="mx-auto mb-2 h-32 object-contain">
+                            <h3 class="font-medium text-sm py-2">
+                                {{ device.phone_brand.name }}
+                                {{ device.name }}
+                            </h3>
+                            <Link :href="route('mobile-device.show', device.id)">
+                                <Button size="small" class="mt-3" outlined>
+                                    View listing
+                                </Button>
+                            </Link>
                         </div>
-                        <!-- Add more OnePlus phone cards -->
-                    </div>
-                    <div class="flex justify-center gap-4 mt-4">
-                        <a href="#" class="text-green-600 hover:underline">Unlocked</a>
-                        <a href="#" class="text-green-600 hover:underline">Shop OnePlus →</a>
                     </div>
                 </section>
 
                 <!-- Quick Links -->
                 <div class="flex justify-center gap-4">
-                    <a href="#" class="text-green-600 hover:underline flex items-center gap-1">
-                        <span>🍎</span> Apple Phones
-                    </a>
-                    <a href="#" class="text-green-600 hover:underline flex items-center gap-1">
-                        <span>📱</span> Samsung Phones
-                    </a>
-                    <a href="#" class="text-green-600 hover:underline flex items-center gap-1">
-                        <span>🔍</span> Google Pixels
-                    </a>
-                    <a href="#" class="text-green-600 hover:underline flex items-center gap-1">
-                        <span>📱</span> OnePlus Phones
+                    <a v-for="brand in phoneBrands"
+                       :key="brand.id"
+                       :href="route('mobile.brand', brand.slug)"
+                       class="text-green-600 hover:underline flex items-center gap-1">
+                        <span>{{ brand.emoji }}</span> {{ brand.name }} Phones
                     </a>
                 </div>
 
@@ -239,10 +239,141 @@
 
 <script setup>
 import Default from '../../Layouts/Default.vue';
+import Button from 'primevue/button';
+
+// Add a mapping object for all device types and their properties
+const deviceConfig = {
+    iphone: {
+        defaultImage: '/images/phones/iphone13.png',
+        brandIcon: '/images/brands/apple-icon.png',
+        title: 'iPhones'
+    },
+    samsung: {
+        defaultImage: '/images/phones/s24-ultra.png',
+        brandIcon: '/images/brands/samsung-icon.png',
+        title: 'Samsung Phones'
+    },
+    pixel: {
+        defaultImage: '/images/phones/pixel-6.png',
+        brandIcon: '/images/brands/google-icon.png',
+        title: 'Google Pixels'
+    },
+    oneplus: {
+        defaultImage: '/images/phones/oneplus-8.png',
+        brandIcon: '/images/brands/oneplus-icon.png',
+        title: 'OnePlus Phones'
+    }
+};
+
+// Samsung phone image mapping
+const samsungImages = {
+    'Galaxy S24 Ultra': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g.jpg',
+    'Galaxy S24+': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-plus-5g.jpg',
+    'Galaxy S24': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g.jpg',
+    'Galaxy S23': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-5g.jpg',
+    'Galaxy A54': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a54-5g.jpg',
+    'Galaxy Z Fold5': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-z-fold5-5g.jpg'
+};
+
+// Google Pixel image mapping
+const pixelImages = {
+    'Pixel 8 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-8-pro.jpg',
+    'Pixel 8': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-8.jpg',
+    'Pixel 7a': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-7a.jpg',
+    'Pixel 7': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-7.jpg',
+    'Pixel 6a': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-6a.jpg',
+    'Pixel 6': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-6.jpg'
+};
+
+// OnePlus image mapping
+const oneplusImages = {
+    'OnePlus 12': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-12.jpg',
+    'OnePlus 11': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-11.jpg',
+    'OnePlus Nord 3': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-3.jpg',
+    'OnePlus 10 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-10-pro.jpg',
+    'OnePlus 10T': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-10t-5g.jpg',
+    'OnePlus Nord N30': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n30-5g.jpg'
+};
+
+// Updated getDeviceImage function to handle all brands
+const getDeviceImage = (device, brand) => {
+    let brandImages;
+    switch(brand) {
+        case 'samsung':
+            brandImages = samsungImages;
+            break;
+        case 'pixel':
+            brandImages = pixelImages;
+            break;
+        case 'oneplus':
+            brandImages = oneplusImages;
+            break;
+        default:
+            return deviceConfig[brand].defaultImage;
+    }
+
+    // Try to get image by exact device name
+    if (brandImages[device.name]) {
+        return brandImages[device.name];
+    }
+
+    // If device has its own image_url
+    if (device.image_url) {
+        return device.image_url;
+    }
+
+    // Fallback to default image for the brand
+    return deviceConfig[brand].defaultImage;
+};
+
+// Add iPhone image mapping
+const iphoneImages = {
+    'iPhone 15 Pro Max': 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg',
+    'iPhone 15 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg',
+    'iPhone 15 Plus': 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus-.jpg',
+    'iPhone 15': 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg',
+    'iPhone 14 Pro Max': 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg',
+    'iPhone 14 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg',
+};
+
+// Updated image getter function
+const getIphoneImage = (device, index) => {
+    // Try to get image by exact device name
+    if (iphoneImages[device.name]) {
+        return iphoneImages[device.name];
+    }
+
+    // If device has its own image_url
+    if (device.image_url) {
+        return device.image_url;
+    }
+
+    // Fallback to default iPhone image
+    return deviceConfig.iphone.defaultImage;
+};
 
 defineOptions({
     layout: Default,
-})
+});
+
+defineProps({
+    iphoneDevices: {
+        type: Array,
+        required: true
+    },
+    samsungDevices: {
+        type: Array,
+        required: true
+    },
+    pixelDevices: {
+        type: Array,
+        required: true
+    },
+    oneplusDevices: {
+        type: Array,
+        required: true
+    }
+});
 </script>
 
 <style scoped>

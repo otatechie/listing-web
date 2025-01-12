@@ -18,7 +18,27 @@ class MobileDeviceController extends Controller
      */
     public function index()
     {
-        return Inertia::render('MobileDevice/IndexPage');
+        $appleId = PhoneBrand::where('slug', 'apple')->value('id');
+        $samsungId = PhoneBrand::where('slug', 'samsung')->value('id');
+        $pixelId = PhoneBrand::where('slug', 'google')->value('id');
+        $oneplusId = PhoneBrand::where('slug', 'oneplus')->value('id');
+
+        $brandIds = [
+            'iphone' => $appleId,
+            'samsung' => $samsungId,
+            'pixel' => $pixelId,
+            'oneplus' => $oneplusId,
+        ];
+
+        $devices = [];
+        foreach ($brandIds as $key => $brandId) {
+            $devices["{$key}Devices"] = PhoneVariant::with('phoneBrand')
+                ->where('phone_brand_id', $brandId)
+                ->limit(6)
+                ->get();
+        }
+
+        return Inertia::render('MobileDevice/IndexPage', $devices);
     }
 
     /**
@@ -55,7 +75,7 @@ class MobileDeviceController extends Controller
             'ram' => [
                 'required_if:is_apple,false',
                 function ($attribute, $value, $fail) use ($request) {
-                    if ($value && !$request->is_apple && !in_array($value, [64,128,256,512,1024])) {
+                    if ($value && !$request->is_apple && !in_array($value, [64, 128, 256, 512, 1024])) {
                         $fail('The RAM must be one of the following values: 64, 128, 256, 512, or 1024.');
                     }
                 }
@@ -103,29 +123,29 @@ class MobileDeviceController extends Controller
             'phoneVariant:id,name',
             'media'
         ])
-        ->select([
-            'id',
-            'slug',
-            'listing_title',
-            'listing_description',
-            'damage_wear_description',
-            'price',
-            'storage_capacity',
-            'condition',
-            'carrier',
-            'color',
-            'exchange_possible',
-            'user_id',
-            'battery_health',
-            'ram',
-            'region',
-            'town',
-            'phone_brand_id',
-            'phone_model_id',
-            'phone_variant_id',
-            'created_at',
-            'updated_at',
-        ])->findOrFail($id);
+            ->select([
+                'id',
+                'slug',
+                'listing_title',
+                'listing_description',
+                'damage_wear_description',
+                'price',
+                'storage_capacity',
+                'condition',
+                'carrier',
+                'color',
+                'exchange_possible',
+                'user_id',
+                'battery_health',
+                'ram',
+                'region',
+                'town',
+                'phone_brand_id',
+                'phone_model_id',
+                'phone_variant_id',
+                'created_at',
+                'updated_at',
+            ])->findOrFail($id);
 
         $created_at_human = $mobileDevice->created_at ? $mobileDevice->created_at->diffForHumans() : null;
         $updated_at_human = $mobileDevice->updated_at ? $mobileDevice->updated_at->format('M d, Y') : null;
@@ -195,7 +215,7 @@ class MobileDeviceController extends Controller
                 'ram' => [
                     'required_if:is_apple,false',
                     function ($attribute, $value, $fail) use ($request) {
-                        if ($value && !$request->is_apple && !in_array($value, [64,128,256,512,1024])) {
+                        if ($value && !$request->is_apple && !in_array($value, [64, 128, 256, 512, 1024])) {
                             $fail('The RAM must be one of the following values: 64, 128, 256, 512, or 1024.');
                         }
                     }

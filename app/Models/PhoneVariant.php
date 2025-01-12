@@ -20,4 +20,9 @@ class PhoneVariant extends Model
         return $this->hasMany(PhoneModel::class);
     }
 
+    public function phoneBrand()
+    {
+        return $this->belongsTo(PhoneBrand::class);
+    }
+
 }
