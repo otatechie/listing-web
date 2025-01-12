@@ -31,6 +31,21 @@ class MobileDevice extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
+    public function phoneBrand()
+    {
+        return $this->belongsTo(PhoneBrand::class);
+    }
+
+    public function phoneModel()
+    {
+        return $this->belongsTo(PhoneModel::class);
+    }
+
+    public function phoneVariant()
+    {
+        return $this->belongsTo(PhoneVariant::class);
+    }
+
     public function registerMediaCollections(): void
     {
         $this

@@ -122,7 +122,7 @@ return [
         'symbols' => 'This field must contain at least one symbol.',
         'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
     ],
-    'present' => 'This field must be present.',
+    'present' => 'This field is required.',
     'present_if' => 'This field must be present when :other is :value.',
     'present_unless' => 'This field must be present unless :other is :value.',
     'present_with' => 'This field must be present when :values is present.',

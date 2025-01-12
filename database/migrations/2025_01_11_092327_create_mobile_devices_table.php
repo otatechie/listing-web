@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,9 +17,9 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
 
-            // $table->foreignUlid('brand_id')->constrained('brands')->onDelete('cascade');
-            // $table->foreignUlid('model_number')->constrained('models')->onDelete('cascade');
-            // $table->foreignUlid('category_id')->constrained('categories')->onDelete('cascade');
+            $table->foreignUlid('phone_brand_id')->nullable()->constrained('phone_brands')->onDelete('cascade');
+            $table->foreignUlid('phone_model_id')->nullable()->constrained('phone_models')->onDelete('cascade');
+            $table->foreignUlid('phone_variant_id')->nullable()->constrained('phone_variants')->onDelete('cascade');
 
             $table->string('listing_title');
             $table->text('listing_description');
@@ -27,14 +28,22 @@ return new class extends Migration
             $table->string('carrier')->nullable();
             $table->string('color')->nullable();
             $table->string('storage_capacity')->nullable();
-            $table->string('city')->nullable();
-            $table->string('address')->nullable();
-            $table->string('battery_health')->nullable();
+            $table->string('ram')->nullable();
+            $table->string('region')->nullable();
+            $table->string('town')->nullable();
+            $table->unsignedTinyInteger('battery_health')->nullable();
+            $table->string('imei_number', 15)->nullable()->unique();
+            $table->boolean('imei_verified')->default(false);
             $table->enum('condition', ['new', 'mint', 'good', 'fair'])->default('new');
             $table->decimal('price', 10, 2);
             $table->foreignUlid('user_id')->constrained('users')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index('price');
+            $table->index('condition');
+            $table->index('town');
+            $table->index(['is_active', 'deleted_at']);
         });
     }
 

@@ -45,6 +45,9 @@ class PhoneBrandSeeder extends Seeder
             ['id' => Str::lower((string) Str::ulid()), 'name' => 'vivo', 'slug' => 'vivo'],
             ['id' => Str::lower((string) Str::ulid()), 'name' => 'Xiaomi', 'slug' => 'xiaomi'],
             ['id' => Str::lower((string) Str::ulid()), 'name' => 'ZTE', 'slug' => 'zte'],
+
+            // Other
+            ['id' => Str::lower((string) Str::ulid()), 'name' => 'Other', 'slug' => 'other'],
         ];
 
         collect($brands)

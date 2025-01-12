@@ -10,12 +10,16 @@
             <div class="mb-8">
                 <div ref="headerRef" class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">{{ mobileDevice.listing_title }}</h1>
-                        <!-- Simple elegant location tag -->
-                        <div
-                            class="mt-3 inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full">
+                        <h1 class="text-3xl font-bold text-gray-900">
+                            {{ mobileDevice.phone_brand?.name }} {{ mobileDevice.phone_variant?.name }}
+                        </h1>
+                        <h2 class="text-lg text-gray-600 mt-1">
+                            {{ mobileDevice.listing_title }}
+                        </h2>
+                        <!-- Location tag -->
+                        <div class="mt-3 inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full">
                             <i class="pi pi-map-marker"></i>
-                            <span class="font-medium">Mission District, San Francisco</span>
+                            <span class="font-medium">{{ mobileDevice.location }}</span>
                         </div>
                     </div>
                     <div class="text-3xl font-bold text-green-600 flex items-center gap-2">
@@ -26,16 +30,16 @@
 
                 <!-- Combined specifications and badges in one row -->
                 <div class="flex flex-wrap items-center gap-2 mb-6">
-                    <span class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
+                    <span v-if="mobileDevice.condition" class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
                         mobileDevice.condition }}</span>
-                    <span class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
-                        mobileDevice.storage_capacity }}</span>
-                    <span class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
+                    <span v-if="mobileDevice.storage_capacity" class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
+                        formattedStorage }}</span>
+                    <span v-if="mobileDevice.color" class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
                         mobileDevice.color }}</span>
-                    <span class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
-                        mobileDevice.carrier }}</span>
-                    <span class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
-                        mobileDevice.battery_health }}</span>
+                    <span v-if="mobileDevice.ram && !isAppleDevice" class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
+                        mobileDevice.ram }}GB</span>
+                    <span v-if="mobileDevice.phone_model?.name" class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{ mobileDevice.phone_model?.name }}</span>
+                    <span v-if="mobileDevice.phone_model?.model_number" class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700">{{ mobileDevice.phone_model?.model_number }}</span>
                     <!-- Featured and Approved badges -->
                     <span class="flex items-center px-2 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">
                         <i class="pi pi-star-fill mr-1 text-[10px]"></i>
@@ -54,7 +58,7 @@
 
             <!-- Product Images Grid with improved layout -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                <div v-for="(image, index) in device.images" :key="index"
+                <div v-for="(image, index) in mobileDevice.images" :key="index"
                     class="aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
                     <img :src="image"
                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
@@ -68,12 +72,14 @@
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
                             <span class="text-xl font-bold text-gray-900">Condition</span>
-                            <span
-                                class="px-3 py-1 bg-white border-2 border-gray-200 rounded-full text-gray-800">Mint</span>
-                            <div
+                            <span v-if="mobileDevice.condition"
+                                class="px-3 py-1 bg-white border-2 border-gray-200 rounded-full text-gray-800 capitalize">
+                                {{ mobileDevice.condition }}
+                            </span>
+                            <div v-if="mobileDevice.battery_health && !isAppleDevice"
                                 class="flex items-center px-3 py-1 bg-white border border-blue-500 rounded-full text-blue-600 text-xs font-medium">
                                 <i class="pi pi-bolt mr-1"></i>
-                                Battery Health 100%
+                                Battery Health {{ mobileDevice.battery_health }}%
                             </div>
                         </div>
                     </div>
@@ -90,13 +96,13 @@
                 <div class="border rounded-lg p-6 shadow-sm bg-white">
                     <!-- Title with subtle underline -->
                     <h1 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-100">
-                        iPhone 16 Unlocked 2 Months Old
+                        {{ mobileDevice.listing_title }}
                     </h1>
 
                     <!-- Condition Line with improved visual -->
                     <div class="flex items-center mb-8 bg-gray-50 p-4 rounded-lg">
                         <div class="w-1 h-8 bg-green-500 rounded-full mr-4"></div>
-                        <p class="text-gray-700 font-medium">Like New, no scratches. Cycle count 56.</p>
+                        <p class="text-gray-700 font-medium">{{ mobileDevice.damage_wear_description || 'No damage or wear reported' }}</p>
                     </div>
 
                     <!-- Need More Info Section with improved styling -->
@@ -191,7 +197,7 @@
 import Default from '../../Layouts/Default.vue';
 import Button from 'primevue/button';
 import Breadcrumb from 'primevue/breadcrumb';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
 const props = defineProps({
     mobileDevice: {
@@ -212,27 +218,11 @@ const items = ref([
 ]);
 
 const device = ref({
-    name: 'iPhone 16 Unlocked 2 Months Old',
-    price: 938,
-    condition: 'Like New',
-    carrier_info: 'AT&T • T-Mobile • Unlocked • Verizon • US Cellular • Consumer Cellular • Cricket • Google Fi',
-    condition_details: [
-        'Like New, no scratches',
-        'Cycle count 56',
-        'Power cord/charger not included',
-        'Retail packaging and materials not included'
-    ],
     images: [
         '/path/to/image1.jpg',
         '/path/to/image2.jpg',
         '/path/to/image3.jpg',
     ],
-    design: {
-        dimensions: '162.3 x 79 x 8.6 mm',
-        weight: '233 g',
-        build: 'Glass front & back, titanium frame',
-        protection: 'IP68 dust/water resistant'
-    }
 });
 
 const headerRef = ref(null);
@@ -253,5 +243,15 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.removeEventListener('scroll', checkScroll);
+});
+
+const formattedStorage = computed(() => {
+    if (!props.mobileDevice.storage_capacity) return null;
+
+    const storage = Number(props.mobileDevice.storage_capacity);
+    if (storage >= 1024) {
+        return `${storage / 1024}TB`;
+    }
+    return `${storage}GB`;
 });
 </script>

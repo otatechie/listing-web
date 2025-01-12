@@ -54,14 +54,14 @@ Route::get('/beat/{beat}/', [BeatController::class, 'index'])->name('beat.public
 
 
 // Authenticated Routes
-Route::middleware(['web','auth', 'profile.setup'])->group(function () {
+Route::middleware(['web','auth'])->group(function () {
     // Home Route
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // User Account Routes
     Route::name('user.')->group(function () {
         Route::get('user/account', [UserAccountController::class, 'index'])
-            ->name('index')->withoutMiddleware('profile.setup');
+            ->name('index');
         Route::get('user/two-factor-authentication', [UserAccountController::class, 'twoFactorAuthentication'])
             ->name('two.factor');
         Route::post('switch-role', [UserAccountController::class, 'switchRole'])

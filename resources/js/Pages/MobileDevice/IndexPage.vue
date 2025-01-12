@@ -3,7 +3,7 @@
         <!-- Top Banner -->
         <div class="bg-white border-b">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-4 divide-x divide-gray-100">
+                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
                     <div class="flex items-center justify-center py-4 px-4 hover:bg-gradient-to-b hover:from-gray-50 hover:to-white transition-all duration-300 group cursor-pointer">
                         <div class="flex items-center gap-3">
                             <span class="text-xl bg-green-50 p-2 rounded-lg group-hover:scale-110 group-hover:bg-green-100 transition-all duration-300">👥</span>
@@ -236,6 +236,14 @@
         </div>
     </div>
 </template>
+
+<script setup>
+import Default from '../../Layouts/Default.vue';
+
+defineOptions({
+    layout: Default,
+})
+</script>
 
 <style scoped>
 .phone-card {
