@@ -15,14 +15,20 @@ class PhoneVariant extends Model
     protected $guarded = ['id'];
 
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+
     public function phoneModels()
     {
         return $this->hasMany(PhoneModel::class);
     }
 
+
     public function phoneBrand()
     {
         return $this->belongsTo(PhoneBrand::class);
     }
-
 }

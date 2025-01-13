@@ -67,6 +67,9 @@ class MobileDevice extends Model implements HasMedia
             if (! $device->slug) {
                 $device->slug = Str::slug($device->listing_title);
             }
+            if (! $device->listing_code) {
+                $device->listing_code = self::generateListingCode();
+            }
         });
 
         static::updating(function ($device) {
@@ -74,5 +77,19 @@ class MobileDevice extends Model implements HasMedia
                 $device->slug = Str::slug($device->listing_title);
             }
         });
+    }
+
+
+    protected static function generateListingCode()
+    {
+        do {
+            $prefix = 'LST';                                    // LST
+            $numbers = str_pad(random_int(0, 9999999), 7, '0', STR_PAD_LEFT);  // 0000000
+
+            $code = $prefix . $numbers;
+
+        } while (static::where('listing_code', $code)->exists());
+
+        return $code;
     }
 }

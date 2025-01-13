@@ -12,8 +12,7 @@ export default {
     theme: {
         extend: {},
         fontFamily: {
-            sans: ["Gantari", "sans-serif"],
-            heading: ["Gantari", "sans-serif"],
+            heading: ["Inter", "sans-serif"],
         },
     },
     plugins: [forms],

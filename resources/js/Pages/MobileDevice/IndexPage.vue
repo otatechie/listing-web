@@ -1,12 +1,11 @@
 <template>
     <div class="max-w-7xl mx-auto px-4">
-        <!-- Top Banner -->
         <div class="bg-white border-b">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
                     <div class="flex items-center justify-center py-4 px-4 hover:bg-gradient-to-b hover:from-gray-50 hover:to-white transition-all duration-300 group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <span class="text-xl bg-green-50 p-2 rounded-lg group-hover:scale-110 group-hover:bg-green-100 transition-all duration-300">👥</span>
+                            <span class="text-xl bg-green-50 p-2 rounded group-hover:scale-110 group-hover:bg-green-100 transition-all duration-300">👥</span>
                             <div class="flex flex-col">
                                 <span class="font-semibold text-gray-900">People Powered</span>
                                 <span class="text-xs text-gray-500">By the community</span>
@@ -15,7 +14,7 @@
                     </div>
                     <div class="flex items-center justify-center py-4 px-4 hover:bg-gradient-to-b hover:from-gray-50 hover:to-white transition-all duration-300 group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <span class="text-xl bg-blue-50 p-2 rounded-lg group-hover:scale-110 group-hover:bg-blue-100 transition-all duration-300">💳</span>
+                            <span class="text-xl bg-blue-50 p-2 rounded group-hover:scale-110 group-hover:bg-blue-100 transition-all duration-300">💳</span>
                             <div class="flex flex-col">
                                 <span class="font-semibold text-gray-900">PayPal Protection</span>
                                 <span class="text-xs text-gray-500">Safe & secure</span>
@@ -24,7 +23,7 @@
                     </div>
                     <div class="flex items-center justify-center py-4 px-4 hover:bg-gradient-to-b hover:from-gray-50 hover:to-white transition-all duration-300 group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <span class="text-xl bg-indigo-50 p-2 rounded-lg group-hover:scale-110 group-hover:bg-indigo-100 transition-all duration-300">🚚</span>
+                            <span class="text-xl bg-indigo-50 p-2 rounded group-hover:scale-110 group-hover:bg-indigo-100 transition-all duration-300">🚚</span>
                             <div class="flex flex-col">
                                 <span class="font-semibold text-gray-900">Free Shipping</span>
                                 <span class="text-xs text-gray-500">On all orders</span>
@@ -33,7 +32,7 @@
                     </div>
                     <div class="flex items-center justify-center py-4 px-4 hover:bg-gradient-to-b hover:from-gray-50 hover:to-white transition-all duration-300 group cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <span class="text-xl bg-purple-50 p-2 rounded-lg group-hover:scale-110 group-hover:bg-purple-100 transition-all duration-300">🚫</span>
+                            <span class="text-xl bg-purple-50 p-2 rounded group-hover:scale-110 group-hover:bg-purple-100 transition-all duration-300">🚫</span>
                             <div class="flex flex-col">
                                 <span class="font-semibold text-gray-900">No Junk, No Jerks</span>
                                 <span class="text-xs text-gray-500">Quality guaranteed</span>
@@ -44,7 +43,6 @@
             </div>
         </div>
 
-        <!-- Breadcrumb -->
         <div class="py-4 text-sm">
             <span class="text-green-600 hover:text-green-700 transition-colors">Swappa</span>
             <span class="text-gray-400 mx-2">/</span>
@@ -53,9 +51,7 @@
             <span class="text-gray-600">Phones</span>
         </div>
 
-        <!-- Main Content -->
         <div class="space-y-12">
-            <!-- Header -->
             <div class="text-center py-12 bg-gradient-to-b from-white to-gray-50">
                 <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 inline-block text-transparent bg-clip-text">Phones For Sale</h1>
                 <p class="text-gray-600 mb-8 text-lg">Best deals on cheap phones and used phones.</p>
@@ -75,9 +71,7 @@
                 </div>
             </div>
 
-            <!-- Phone Categories -->
             <div class="space-y-20">
-                <!-- Cheap Phones Section -->
                 <section>
                     <div class="text-center space-y-2 mb-8">
                         <h2 class="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 inline-block text-transparent bg-clip-text">Cheap Phones</h2>
@@ -106,31 +100,29 @@
                     </div>
                 </section>
 
-                <!-- Section links updated style -->
                 <div class="flex justify-center gap-6 mt-4">
-                    <a href="#" class="px-4 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700 transition-colors">iPhone Guide</a>
-                    <a href="#" class="px-4 py-2 rounded-lg bg-green-50 hover:bg-green-100 text-green-700 transition-colors">Unlocked</a>
-                    <a href="#" class="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors">Shop iPhones →</a>
+                    <a href="#" class="px-4 py-2 rounded bg-gray-50 hover:bg-gray-100 text-gray-700 transition-colors">iPhone Guide</a>
+                    <a href="#" class="px-4 py-2 rounded bg-green-50 hover:bg-green-100 text-green-700 transition-colors">Unlocked</a>
+                    <a href="#" class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700 transition-colors">Shop iPhones →</a>
                 </div>
 
-                <!-- iPhones Section -->
                 <section>
                     <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.iphone.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="(device, index) in iphoneDevices"
                              :key="device.id"
-                             class="bg-white border rounded p-4 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
                             <img :src="getIphoneImage(device, index)"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.iphone.defaultImage"
                                  class="mx-auto mb-2 h-32 object-contain">
-                            <h3 class="font-medium text-sm py-2">
+                            <h3 class="font-medium  text-gray-500 text-sm py-2">
                                 {{ device.phone_brand.name }}
                                 {{ device.name }}
                             </h3>
-                            <Link :href="route('mobile-device.show', device.id)">
-                                <Button size="small" class="mt-3" outlined>
-                                    View listing
+                            <Link :href="route('phone.variant.index', device.slug)">
+                                <Button size="small" class="mt-3 text-xs" outlined>
+                                    View listings
                                 </Button>
                             </Link>
                         </div>
@@ -142,23 +134,22 @@
                     </div>
                 </section>
 
-                <!-- Samsung Phones Section -->
                 <section>
                     <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.samsung.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="device in samsungDevices"
                              :key="device.id"
-                             class="bg-white border rounded-lg p-4 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
                             <img :src="getDeviceImage(device, 'samsung')"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.samsung.defaultImage"
                                  class="mx-auto mb-2 h-32 object-contain">
-                            <h3 class="font-medium text-sm py-2">
+                            <h3 class="font-medium text-gray-500 text-sm py-2">
                                 {{ device.phone_brand.name }}
                                 {{ device.name }}
                             </h3>
-                            <Link :href="route('mobile-device.show', device.id)">
-                                <Button size="small" class="mt-3" outlined>
+                            <Link :href="route('phone.variant.index', device.slug)">
+                                <Button size="small" class="mt-3 text-xs" outlined>
                                     View listing
                                 </Button>
                             </Link>
@@ -166,23 +157,22 @@
                     </div>
                 </section>
 
-                <!-- Google Pixels Section -->
                 <section>
                     <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.pixel.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="device in pixelDevices"
                              :key="device.id"
-                             class="bg-white border rounded-lg p-4 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
                             <img :src="getDeviceImage(device, 'pixel')"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.pixel.defaultImage"
                                  class="mx-auto mb-2 h-32 object-contain">
-                            <h3 class="font-medium text-sm py-2">
+                            <h3 class="font-medium text-gray-500 text-sm py-2">
                                 {{ device.phone_brand.name }}
                                 {{ device.name }}
                             </h3>
-                            <Link :href="route('mobile-device.show', device.id)">
-                                <Button size="small" class="mt-3" outlined>
+                            <Link :href="route('phone.variant.index', device.slug)">
+                                <Button size="small" class="mt-3 text-xs" outlined>
                                     View listing
                                 </Button>
                             </Link>
@@ -190,23 +180,22 @@
                     </div>
                 </section>
 
-                <!-- OnePlus Phones Section -->
                 <section>
                     <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.oneplus.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="device in oneplusDevices"
                              :key="device.id"
-                             class="bg-white border rounded-lg p-4 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
                             <img :src="getDeviceImage(device, 'oneplus')"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.oneplus.defaultImage"
                                  class="mx-auto mb-2 h-32 object-contain">
-                            <h3 class="font-medium text-sm py-2">
+                            <h3 class="font-medium text-gray-500 text-sm py-2">
                                 {{ device.phone_brand.name }}
                                 {{ device.name }}
                             </h3>
-                            <Link :href="route('mobile-device.show', device.id)">
-                                <Button size="small" class="mt-3" outlined>
+                            <Link :href="route('phone.variant.index', device.slug)">
+                                <Button size="small" class="mt-3 text-xs" outlined>
                                     View listing
                                 </Button>
                             </Link>
@@ -214,7 +203,6 @@
                     </div>
                 </section>
 
-                <!-- Quick Links -->
                 <div class="flex justify-center gap-4">
                     <a v-for="brand in phoneBrands"
                        :key="brand.id"
@@ -223,11 +211,8 @@
                         <span>{{ brand.emoji }}</span> {{ brand.name }} Phones
                     </a>
                 </div>
-
-                <!-- Similar sections for iPhones, Samsung, Google Pixels, OnePlus... -->
             </div>
 
-            <!-- Final Shop All Phones Button -->
             <div class="text-center py-12">
                 <button class="bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-4 rounded-xl text-lg font-medium hover:shadow-lg hover:scale-105 transition-all">
                     Shop All Phones →
@@ -241,7 +226,7 @@
 import Default from '../../Layouts/Default.vue';
 import Button from 'primevue/button';
 
-// Add a mapping object for all device types and their properties
+
 const deviceConfig = {
     iphone: {
         defaultImage: '/images/phones/iphone13.png',
@@ -267,22 +252,22 @@ const deviceConfig = {
 
 // Samsung phone image mapping
 const samsungImages = {
-    'Galaxy S24 Ultra': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g.jpg',
-    'Galaxy S24+': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-plus-5g.jpg',
-    'Galaxy S24': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g.jpg',
+    'Galaxy S24 Ultra': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-ultra-5g-sm-s928-stylus.jpg',
+    'Galaxy S24+': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-plus-5g-sm-s926.jpg',
+    'Galaxy S24': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g-sm-s921.jpg',
+    'Galaxy S23+': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-plus-5g.jpg',
     'Galaxy S23': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-5g.jpg',
-    'Galaxy A54': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a54-5g.jpg',
-    'Galaxy Z Fold5': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-z-fold5-5g.jpg'
+    'Galaxy S23 Ultra': 'https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-ultra-5g.jpg'
 };
 
 // Google Pixel image mapping
 const pixelImages = {
+    'Pixel 9 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-9-pro-.jpg',
+    'Pixel 9': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-9-.jpg',
     'Pixel 8 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-8-pro.jpg',
     'Pixel 8': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-8.jpg',
     'Pixel 7a': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-7a.jpg',
-    'Pixel 7': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-7.jpg',
-    'Pixel 6a': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-6a.jpg',
-    'Pixel 6': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-6.jpg'
+    'Pixel 7 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel7-pro-new.jpg'
 };
 
 // OnePlus image mapping

@@ -89,7 +89,7 @@ class MobileDeviceController extends Controller
             'phone_model_id' => ['nullable', 'exists:phone_models,id'],
             'color' => ['required', 'in:black,white,gold,pacific_blue,deep_purple,sierra_blue,midnight,starlight,space_gray,silver,rose_gold,purple,pink,mint,lavender,green,gray,graphite,cream,coral,burgundy,blue,alpine_green,titanium,yellow'],
             'carrier' => ['nullable', 'string'],
-            'town' => ['nullable', 'string', 'max:100'],
+            'location' => ['nullable', 'string', 'max:100'],
             'is_active' => ['boolean'],
             'battery_health' => [
                 'required_if:is_apple,true',

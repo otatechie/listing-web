@@ -16,6 +16,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobileDeviceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneMobileDeviceController;
+use App\Http\Controllers\PhoneVariantController;
 use App\Http\Controllers\ProducerProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReactionController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\UserBeatController;
 use App\Http\Controllers\UserBeatFileController;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -116,6 +118,7 @@ Route::resource('admin/category', AdminCategoryController::class);
 Route::resource('mobile-device', MobileDeviceController::class);
 Route::post('mobile-device/validate-step/{step}', [MobileDeviceController::class, 'validateStep'])
     ->name('mobile-device.validate-step');
+Route::get('phone-variant/{slug}', [PhoneVariantController::class, 'index'])->name('phone.variant.index');
 
 Route::get('producer/{id}', [ProducerProfileController::class, 'show'])->name('producer.show');
 Route::post('beats/{beat}/record-play', [BeatStatsController::class, 'recordPlay'])->name('beats.record.play');

@@ -25,6 +25,7 @@
         "@vitejs/plugin-vue": "^5.1.2",
         "chart.js": "^4.4.6",
         "dotenv": "^16.4.5",
+        "gsmarena-api": "^2.0.5",
         "nprogress": "^0.2.0",
         "path": "^0.12.7",
         "pinia": "^2.3.0",

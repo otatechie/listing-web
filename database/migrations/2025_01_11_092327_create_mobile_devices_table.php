@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('ram')->nullable();
             $table->string('region')->nullable();
             $table->string('town')->nullable();
+            $table->string('listing_code')->nullable();
             $table->unsignedTinyInteger('battery_health')->nullable();
             $table->string('imei_number', 15)->nullable()->unique();
             $table->boolean('imei_verified')->default(false);
