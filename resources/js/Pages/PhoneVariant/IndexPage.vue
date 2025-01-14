@@ -7,7 +7,9 @@
                     <i class="fas fa-mobile-alt text-3xl text-gray-400"></i>
                 </div>
                 <div class="flex-1">
-                    <h1 class="text-3xl font-bold text-gray-800">{{ mobileDevices[0].phone_brand.name }} {{ mobileDevices[0].phone_variant.name }}</h1>
+                    <h1 class="text-3xl font-bold text-gray-800">
+                        {{ `${phone_variant?.phone_brand?.name} ${phone_variant?.name}` }}
+                    </h1>
                     <div class="flex items-center gap-4 mt-3">
                         <span class="text-2xl font-bold text-green-600">$259</span>
                         <span class="text-sm text-gray-500">Starting price</span>
@@ -41,86 +43,74 @@
         <!-- Simplified Filters -->
         <div class="bg-white rounded-lg p-4 shadow-sm">
             <div class="flex gap-4">
-                <select v-model="selectedStorage"
-                        @change="applyFilters"
-                        class="flex-1 px-4 py-2 border rounded-lg text-sm">
+                <select v-model="selectedStorage" @change="applyFilters"
+                    class="flex-1 px-4 py-2 border rounded-lg text-sm">
                     <option value="">Storage</option>
-                    <option v-for="storage in storageOptions"
-                            :key="storage"
-                            :value="storage">
-                        {{ storage >= 1000 ? `${storage/1000}TB` : `${storage}GB` }}
+                    <option v-for="storage in storageOptions" :key="storage" :value="storage">
+                        {{ storage >= 1000 ? `${storage / 1000}TB` : `${storage}GB` }}
                     </option>
                 </select>
-                <select v-model="selectedColor"
-                        @change="applyFilters"
-                        class="flex-1 px-4 py-2 border rounded-lg text-sm">
+                <select v-model="selectedColor" @change="applyFilters"
+                    class="flex-1 px-4 py-2 border rounded-lg text-sm">
                     <option value="">Color</option>
-                    <option v-for="color in colorOptions"
-                            :key="color"
-                            :value="color"
-                            class="flex items-center">
-                        <span class="capitalize">{{ color }}</span>
+                    <option v-for="color in colorOptions" :key="color" :value="color" class="capitalize">
+                        {{ color }}
                     </option>
                 </select>
-                <select v-model="selectedCondition"
-                        @change="applyFilters"
-                        class="flex-1 px-4 py-2 border rounded-lg text-sm">
+                <select v-model="selectedCondition" @change="applyFilters"
+                    class="flex-1 px-4 py-2 border rounded-lg text-sm">
                     <option value="">Condition</option>
-                    <option v-for="condition in conditionOptions"
-                            :key="condition"
-                            :value="condition">
+                    <option v-for="condition in conditionOptions" :key="condition" :value="condition">
                         {{ condition.charAt(0).toUpperCase() + condition.slice(1) }}
                     </option>
                 </select>
             </div>
         </div>
 
-        <!-- Simplified Table -->
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-            <DataTable :value="mobileDevices" stripedRows
-                       v-model:filters="filters"
-                       :paginator="true"
-                       :rows="10"
-                       :loading="isLoading"
-                       striped
-                       class="p-datatable-sm hover:cursor-pointer [&_tr:hover]:bg-gray-50"
-                       scrollable
-                       scrollHeight="600px"
-                       sortMode="multiple"
-                       removableSort
-                       :rowsPerPageOptions="[10, 20, 30, 50]"
-                       dataKey="id"
-                       @row-click="handleRowClick">
+            <DataTable :value="mobileDevices" stripedRows v-model:filters="filters" :paginator="true" :rows="10"
+                :loading="isLoading" striped class="p-datatable-sm hover:cursor-pointer [&_tr:hover]:bg-gray-50"
+                scrollable scrollHeight="600px" sortMode="multiple" removableSort :rowsPerPageOptions="[10, 20, 30, 50]"
+                dataKey="id" @row-click="handleRowClick">
+
+                <!-- Add empty message template -->
+                <template #empty>
+                    <div class="flex flex-col items-center justify-center py-4">
+                        <i class="fas fa-search text-gray-300 text-5xl"></i>
+                        <p class="text-gray-500 text-lg">Sorry, no devices found.</p>
+                    </div>
+                </template>
+
+                <!-- Image (New column for device image) -->
+                <Column field="image" header="Image">
+                    <template #body="{ data }">
+                        <img :src="data.image" :alt="`${data.phone_brand?.name} ${data.phone_variant?.name}`"
+                            class="w-12 h-12 object-cover rounded">
+                    </template>
+                </Column>
 
                 <!-- Price (Most important info first) -->
-                <Column field="price"
-                        header="Price"
-                        sortable>
+                <Column field="price" header="Price" sortable>
                     <template #body="{ data }">
                         <span class="font-bold text-gray-900 hover:cursor-pointer">${{ data.price }}</span>
                     </template>
                 </Column>
 
                 <!-- Condition (Important quality indicator) -->
-                <Column field="condition"
-                        header="Condition"
-                        sortable>
+                <Column field="condition" header="Condition" sortable>
                     <template #body="{ data }">
-                        <span class="px-3 py-1.5 rounded-full text-sm font-medium capitalize"
-                              :class="{
-                                  'bg-green-50 text-green-700': data.condition === 'Mint',
-                                  'bg-blue-50 text-blue-700': data.condition === 'Good',
-                                  'bg-yellow-50 text-yellow-700': data.condition === 'Fair'
-                              }">
+                        <span class="rounded-full text-sm font-medium capitalize" :class="{
+                            'bg-green-50 text-green-700': data.condition === 'Mint',
+                            'bg-blue-50 text-blue-700': data.condition === 'Good',
+                            'bg-yellow-50 text-yellow-700': data.condition === 'Fair'
+                        }">
                             {{ data.condition }}
                         </span>
                     </template>
                 </Column>
 
                 <!-- Storage (Key spec) -->
-                <Column field="storage_capacity"
-                        header="Storage"
-                        sortable>
+                <Column field="storage_capacity" header="Storage" sortable>
                     <template #body="{ data }">
                         <span class="text-gray-700">
                             {{ data.storage_capacity }}{{ data.storage_capacity >= 1000 ? 'TB' : 'GB' }}
@@ -129,13 +119,10 @@
                 </Column>
 
                 <!-- Color (Visual spec) -->
-                <Column field="color"
-                        header="Color"
-                        sortable>
+                <Column field="color" header="Color" sortable>
                     <template #body="{ data }">
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded-full"
-                                 :style="{ backgroundColor: data.color.toLowerCase() }">
+                            <div class="w-3 h-3 rounded-full" :style="{ backgroundColor: data.color.toLowerCase() }">
                             </div>
                             <span class="text-gray-700 capitalize">{{ data.color }}</span>
                         </div>
@@ -143,42 +130,64 @@
                 </Column>
 
                 <!-- Carrier (Network info) -->
-                <Column field="carrier"
-                        header="Carrier"
-                        sortable>
+                <Column field="carrier" header="Carrier" sortable>
                     <template #body="{ data }">
                         <span class="text-gray-700 font-medium">{{ data.carrier }}</span>
                     </template>
                 </Column>
 
                 <!-- Model (Technical info) -->
-                <Column field="phone_model.model_number"
-                        header="Model"
-                        sortable>
+                <Column field="phone_model.model_number" header="Model" sortable>
                     <template #body="{ data }">
                         <span class="text-gray-700 font-medium">{{ data.phone_model?.model_number || 'N/A' }}</span>
                     </template>
                 </Column>
 
                 <!-- Seller (Secondary info) -->
-                <Column field="user.username"
-                        header="Seller"
-                        sortable>
+                <Column field="user.username" header="Seller" sortable>
                     <template #body="{ data }">
                         <div class="flex items-center hover:cursor-pointer">
-                            <i class="fas fa-user text-gray-400"></i>
                             <span class="text-gray-700">{{ data.user?.name || 'Anonymous' }}</span>
                         </div>
                     </template>
                 </Column>
 
                 <!-- Location (Secondary info) -->
-                <Column field="location"
-                        header="Location">
+                <Column field="location" header="Location">
                     <template #body="{ data }">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-map-marker-alt text-gray-400"></i>
+                        <div class="flex items-center">
                             <span class="text-sm text-gray-600">{{ data.location }}</span>
+                        </div>
+                    </template>
+                </Column>
+
+                <!-- Location (Secondary info) -->
+                <Column field="listing_code" header="Reference code">
+                    <template #body="{ data }">
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-600">{{ data.listing_code }}</span>
+                        </div>
+                    </template>
+                </Column>
+
+                <!-- Battery Health or RAM -->
+                <Column :header="healthOrRamHeader" sortable>
+                    <template #body="{ data }">
+                        <div v-if="data.phone_brand?.name?.toLowerCase() === 'apple'" class="flex items-center gap-2">
+                            <i class="pi pi-battery text-gray-400"></i>
+                            <span class="text-sm font-medium" :class="{
+                                'text-green-600': data.battery_health >= 90,
+                                'text-yellow-600': data.battery_health >= 80 && data.battery_health < 90,
+                                'text-red-600': data.battery_health < 80
+                            }">
+                                {{ data.battery_health }}%
+                            </span>
+                        </div>
+                        <div v-else class="flex items-center gap-2">
+                            <i class="pi pi-memory text-gray-400"></i>
+                            <span class="text-sm font-medium text-gray-700">
+                                {{ data.ram }}GB
+                            </span>
                         </div>
                     </template>
                 </Column>
@@ -211,11 +220,13 @@ const props = defineProps({
     mobileDevices: {
         type: Array,
         required: true,
-        default: () => []
+
     },
-    selectedmobileDevice: {
-        type: String,
-        default: ''
+    phone_brand: {
+        type: Object,
+    },
+    phone_variant: {
+        type: Object,
     }
 });
 
@@ -271,6 +282,11 @@ const handleRowClick = (event) => {
     const deviceId = event.data.id;
     window.location.href = `/mobile-device/${deviceId}`;
 };
+
+// Computed property to determine the header text
+const healthOrRamHeader = computed(() => {
+    return props.mobileDevices.some(device => device.phone_brand?.name?.toLowerCase() === 'apple') ? 'Health' : 'RAM';
+});
 </script>
 
 <style scoped>

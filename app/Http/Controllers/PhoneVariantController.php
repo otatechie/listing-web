@@ -11,15 +11,23 @@ class PhoneVariantController extends Controller
 {
     public function index($slug)
     {
+        $phoneVariant = PhoneVariant::with('phoneBrand')
+            ->where('slug', $slug)
+            ->firstOrFail();
+
         $mobileDevices = MobileDevice::with(['phoneBrand', 'phoneModel', 'phoneVariant', 'user'])
             ->whereHas('phoneVariant', function ($query) use ($slug) {
                 $query->where('slug', $slug);
             })
-            ->get();
+            ->get()
+            ->map(function ($device) {
+                $device->image = $device->getFirstMediaUrl('images');
+                return $device;
+            });
 
         return Inertia::render('PhoneVariant/IndexPage', [
             'mobileDevices' => $mobileDevices,
-            'selectedVariant' => $slug,
+            'phone_variant' => $phoneVariant
         ]);
     }
 }

@@ -16,6 +16,12 @@
         window.logoUrl = "{{ asset('images/afropulse-logo.svg') }}";
     </script>
 
+    <style>
+        .p-datatable-column-title {
+            font-weight: 600 !important;
+            color: #000 !important;
+        }
+    </style>
 </head>
 
 <body>

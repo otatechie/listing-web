@@ -96,7 +96,6 @@
                             </div>
                             <img src="/apple-icon.png" alt="Apple" class="h-5 mx-auto mt-4 opacity-70">
                         </div>
-                        <!-- More phone cards... -->
                     </div>
                 </section>
 
@@ -179,38 +178,6 @@
                         </div>
                     </div>
                 </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.oneplus.title }}</h2>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div v-for="device in oneplusDevices"
-                             :key="device.id"
-                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
-                            <img :src="getDeviceImage(device, 'oneplus')"
-                                 :alt="device.name"
-                                 @error="(e) => e.target.src = deviceConfig.oneplus.defaultImage"
-                                 class="mx-auto mb-2 h-32 object-contain">
-                            <h3 class="font-medium text-gray-500 text-sm py-2">
-                                {{ device.phone_brand.name }}
-                                {{ device.name }}
-                            </h3>
-                            <Link :href="route('phone.variant.index', device.slug)">
-                                <Button size="small" class="mt-3 text-xs" outlined>
-                                    View listing
-                                </Button>
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="flex justify-center gap-4">
-                    <a v-for="brand in phoneBrands"
-                       :key="brand.id"
-                       :href="route('mobile.brand', brand.slug)"
-                       class="text-green-600 hover:underline flex items-center gap-1">
-                        <span>{{ brand.emoji }}</span> {{ brand.name }} Phones
-                    </a>
-                </div>
             </div>
 
             <div class="text-center py-12">
@@ -268,16 +235,6 @@ const pixelImages = {
     'Pixel 8': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-8.jpg',
     'Pixel 7a': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel-7a.jpg',
     'Pixel 7 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/google-pixel7-pro-new.jpg'
-};
-
-// OnePlus image mapping
-const oneplusImages = {
-    'OnePlus 12': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-12.jpg',
-    'OnePlus 11': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-11.jpg',
-    'OnePlus Nord 3': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-3.jpg',
-    'OnePlus 10 Pro': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-10-pro.jpg',
-    'OnePlus 10T': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-10t-5g.jpg',
-    'OnePlus Nord N30': 'https://fdn2.gsmarena.com/vv/bigpic/oneplus-nord-n30-5g.jpg'
 };
 
 // Updated getDeviceImage function to handle all brands
