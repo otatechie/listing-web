@@ -83,8 +83,8 @@ class MobileDevice extends Model implements HasMedia
     protected static function generateListingCode()
     {
         do {
-            $prefix = 'LST';                                    // LST
-            $numbers = str_pad(random_int(0, 9999999), 7, '0', STR_PAD_LEFT);  // 0000000
+            $prefix = 'LST';
+            $numbers = str_pad(random_int(0, 9999999), 7, '0', STR_PAD_LEFT);
 
             $code = $prefix . $numbers;
 

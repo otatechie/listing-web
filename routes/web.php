@@ -9,19 +9,15 @@ use App\Http\Controllers\AdminRoleController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\BeatController;
 use App\Http\Controllers\BeatStatsController;
-use App\Http\Controllers\BookmarkFollowController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobileDeviceController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PhoneMobileDeviceController;
 use App\Http\Controllers\PhoneVariantController;
 use App\Http\Controllers\ProducerProfileController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\UserAccountController;
-use App\Http\Controllers\UserBeatController;
 use App\Http\Controllers\UserBeatFileController;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
@@ -49,11 +45,7 @@ Route::controller(PageController::class)
     ->name('public.')
     ->group(function () {
         Route::get('welcome', 'welcome')->name('welcome');
-        Route::get('beats/new', 'newBeat')->name('new.beat');
     });
-Route::post('/user/{userId}/follow', [BookmarkFollowController::class, 'follow'])->name('user.follow');
-Route::get('/beat/{beat}/', [BeatController::class, 'index'])->name('beat.public.index');
-
 
 // Authenticated Routes
 Route::middleware(['web','auth'])->group(function () {
@@ -66,8 +58,6 @@ Route::middleware(['web','auth'])->group(function () {
             ->name('index');
         Route::get('user/two-factor-authentication', [UserAccountController::class, 'twoFactorAuthentication'])
             ->name('two.factor');
-        Route::post('switch-role', [UserAccountController::class, 'switchRole'])
-            ->name('switch.role');
     });
 
     Route::post('add-reaction', [ReactionController::class, 'addOrUpdateReaction'])->name('reaction.add');
@@ -80,7 +70,6 @@ Route::middleware(['web','auth'])->group(function () {
     });
 
     // Beat Management Routes
-    Route::resource('user/beat', UserBeatController::class);
     Route::resource('upload-beat', UserBeatFileController::class)->except(['create']);
 
     // Admin Routes
@@ -119,9 +108,4 @@ Route::resource('mobile-device', MobileDeviceController::class);
 Route::post('mobile-device/validate-step/{step}', [MobileDeviceController::class, 'validateStep'])
     ->name('mobile-device.validate-step');
 Route::get('phone-variant/{slug}', [PhoneVariantController::class, 'index'])->name('phone.variant.index');
-
-Route::get('producer/{id}', [ProducerProfileController::class, 'show'])->name('producer.show');
-Route::post('beats/{beat}/record-play', [BeatStatsController::class, 'recordPlay'])->name('beats.record.play');
-Route::post('beats/{beat}/record-recent-play', [BeatStatsController::class, 'recordRecentPlay'])->name('beats.record.recent.play');
-Route::get('user/followers', [BeatStatsController::class, 'getFollowers'])->name('beats.followers');
 

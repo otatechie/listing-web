@@ -43,17 +43,4 @@ class UserAccountController extends Controller
 
         return Inertia::render('UserAccount/IndexTwoFactorAuthenticationPage', $data);
     }
-
-
-    public function switchRole()
-    {
-        $user = auth()->user();
-        $newRole = $user->hasRole('producer') ? 'listener' : 'producer';
-
-        $user->syncRoles([$newRole]);
-
-        session()->flash('success', "Your profile has been switched to {$newRole} mode");
-
-        return redirect()->route('home');
-    }
 }

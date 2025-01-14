@@ -38,50 +38,6 @@ class User extends Authenticatable implements Auditable
         return $this->hasMany(MobileDevice::class);
     }
 
-
-    public function profile()
-    {
-        return $this->hasOne(UserProfile::class);
-    }
-
-    public function beats()
-    {
-        return $this->hasMany(related: Beat::class);
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
-
-    public function likedBeats()
-    {
-        return $this->belongsToMany(Beat::class, 'likes', 'user_id', 'beat_id')
-            ->withTimestamps();
-    }
-
-    public function followers()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'following_id', 'follower_id')
-            ->withTimestamps();
-    }
-
-    public function following()
-    {
-        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id')
-            ->withTimestamps();
-    }
-
-    public function isFollowing(User $user): bool
-    {
-        return $this?->following()->where('following_id', $user->id)->exists() ?? false;
-    }
-
-    public function recentPlays()
-    {
-        return $this->hasMany(RecentPlay::class);
-    }
-
     protected static function boot()
     {
         parent::boot();

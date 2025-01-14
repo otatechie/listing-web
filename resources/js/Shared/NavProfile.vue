@@ -23,12 +23,6 @@
         <div v-show="menuOpen"
             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <div class="m-2.5">
-                <Link :href="route('user.switch.role')" method="post" as="button" @click="closeMenu">
-                <Button type="button" severity="contrast" size="small" class="text-xs" label="Sell items"
-                    outlined />
-                </Link>
-            </div>
             <Link :href="route('user.index')" @click="closeMenu"
                 class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
@@ -67,7 +61,7 @@
             </svg>
             Your Purchases
             </Link>
-            <Link :href="route('beats.followers')" @click="closeMenu"
+            <Link :href="route('mobile-device.index')" @click="closeMenu"
                 class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +71,7 @@
             Your Favorites
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
-            <Link :href="route('profile.index')" @click="closeMenu"
+            <Link :href="route('mobile-device.index')" @click="closeMenu"
                 class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-gray-800 hover:underline" role="menuitem" tabindex="-1"
                 id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

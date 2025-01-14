@@ -26,6 +26,7 @@
                     <NavSearch></NavSearch>
                 </div>
 
+
                 <!-- Right side icons -->
                 <div class="flex items-center gap-4">
                     <button type="button" class="text-white hover:text-gray-200">
@@ -42,8 +43,139 @@
             </div>
         </div>
 
+
         <!-- Main content -->
         <div class="pt-16">
+            <div class="bg-red-600 text-white py-2">
+                <div class="container mx-auto flex justify-center space-x-6">
+                    <!-- iPhones Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>iPhones</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Phones Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>Phones</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Watches Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>Watches</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Tablets Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>Tablets</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Laptops Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>Laptops</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Audio Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>Audio</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 1</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Option 2</a>
+                        </div>
+                    </div>
+
+                    <!-- Sell Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1">
+                            <span>Sell</span>
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.27a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-2 w-40 bg-white text-black rounded shadow-lg hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">iPhone</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Phones</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Laptop</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">MacBook</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Watch</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Sneakers</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Audio</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Video Gaming</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Trade-In</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-200">Sell Used Tech</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <main class="py-5 min-h-screen bg-stone-100">
                 <FlashMessage></FlashMessage>
                 <slot></slot>
