@@ -6,9 +6,9 @@
 
         <div class="lg:mx-auto lg:max-w-7xl">
             <!-- Main Container -->
-            <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="max-w-7xl mx-auto px-4">
                 <!-- Hero Section -->
-                <div class="text-center mb-20 py-16 bg-gradient-to-b from-indigo-50 to-white rounded-3xl">
+                <div class="text-center mb-16 py-16 bg-gradient-to-b from-indigo-50 to-white rounded-2xl">
                     <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-8">
                         Buy + Sell + <span class="text-indigo-600 relative">
                             Save
@@ -55,9 +55,8 @@
                                     <p class="text-white/80 text-sm mb-4">
                                         Find amazing deals on quality items from trusted sellers across Ghana
                                     </p>
-                                    <button class="mt-6 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors">
-                                        Get help now →
-                                    </button>
+                                    <Button severity="secondary" class="text-white" label="Get help now →" size="small">
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -84,9 +83,8 @@
                                     <p class="text-white/80 text-sm mb-4">
                                         List your items in minutes and connect with buyers instantly
                                     </p>
-                                    <button class="mt-6 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors">
-                                        Get help now →
-                                    </button>
+                                    <Button severity="secondary" label="Get help now →" size="small">
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -113,9 +111,8 @@
                                     <p class="text-white/80 text-sm mb-4">
                                         Every transaction is protected with our secure trading system
                                     </p>
-                                    <button class="mt-6 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm transition-colors">
-                                        Get help now →
-                                    </button>
+                                    <Button severity="secondary" label="Get help now →" size="small">
+                                    </Button>
                                 </div>
                             </div>
                         </div>
@@ -126,28 +123,28 @@
                 <div class="mb-12">
                     <h2 class="text-3xl font-bold text-center mb-12">Popular Categories</h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition">
                             <div class="bg-indigo-50 rounded p-6 mb-6">
                                 <img src="/icons/phones.svg" alt="Phones" class="w-16 h-16 mx-auto"/>
                             </div>
                             <h3 class="text-center font-semibold">Phones</h3>
                             <p class="text-center text-gray-600 text-sm">1,234+ ads</p>
                         </div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition">
                             <div class="bg-indigo-50 rounded p-6 mb-6">
                                 <img src="/icons/laptops.svg" alt="Laptops" class="w-16 h-16 mx-auto"/>
                             </div>
                             <h3 class="text-center font-semibold">Laptops</h3>
                             <p class="text-center text-gray-600 text-sm">890+ ads</p>
                         </div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition">
                             <div class="bg-indigo-50 rounded p-6 mb-6">
                                 <img src="/icons/tablets.svg" alt="Tablets" class="w-16 h-16 mx-auto"/>
                             </div>
                             <h3 class="text-center font-semibold">Tablets</h3>
                             <p class="text-center text-gray-600 text-sm">567+ ads</p>
                         </div>
-                        <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition">
                             <div class="bg-indigo-50 rounded p-6 mb-6">
                                 <img src="/icons/accessories.svg" alt="Accessories" class="w-16 h-16 mx-auto"/>
                             </div>
@@ -334,7 +331,7 @@
                 </div>
 
                 <!-- Community Section -->
-                <div class="bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-3xl p-12 mb-20 text-white">
+                <div class="bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-2xl p-12 mb-20 text-white">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div>
                             <h2 class="text-3xl font-bold mb-4">Join Our Growing Community</h2>

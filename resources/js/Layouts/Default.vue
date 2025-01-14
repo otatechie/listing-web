@@ -46,11 +46,11 @@
 
         <!-- Main content -->
         <div class="bg-gray-50 pb-8 mt-16">
-            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2">
+            <div class="bg-gray-100 text-gray-800 py-3 border-b border-gray-200">
                 <div class="container mx-auto flex justify-center space-x-6">
                     <!-- iPhones Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>iPhones</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -67,7 +67,7 @@
 
                     <!-- Phones Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>Phones</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -84,7 +84,7 @@
 
                     <!-- Watches Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>Watches</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -101,7 +101,7 @@
 
                     <!-- Tablets Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>Tablets</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -118,7 +118,7 @@
 
                     <!-- Laptops Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>Laptops</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -135,7 +135,7 @@
 
                     <!-- Audio Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>Audio</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -152,7 +152,7 @@
 
                     <!-- Sell Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1">
+                        <button class="flex items-center space-x-1 text-sm font-semibold">
                             <span>Sell</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"

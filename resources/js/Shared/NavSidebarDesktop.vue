@@ -1,40 +1,44 @@
 <template>
     <div class="sidebar-selector h-full flex flex-col bg-white shadow-xl">
         <!-- Close button header -->
-        <div class="p-4 border-b flex justify-between items-center">
-            <h2 class="text-lg font-semibold">Menu</h2>
-            <button @click="$emit('close')" class="text-gray-500 hover:text-gray-700">
+        <div class="p-4 border-b flex justify-between items-center bg-gray-50">
+            <h2 class="text-lg font-medium text-gray-700">Menu</h2>
+            <button @click="$emit('close')" class="p-2 rounded-full hover:bg-indigo-100 text-indigo-600 transition-colors">
                 <span class="sr-only">Close sidebar</span>
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
 
         <!-- Navigation items -->
-        <nav class="flex-1 overflow-y-auto">
-            <div class="px-4 py-2 space-y-1">
+        <nav class="flex-1 overflow-y-auto py-2">
+            <div class="px-2 space-y-2">
                 <!-- Main navigation links -->
-                <Link v-for="(item, index) in mainNavItems"
-                      :key="index"
-                      :href="item.href"
-                      class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-                      @click="$emit('close')">
-                    {{ item.name }}
-                </Link>
-
-                <!-- Categories section -->
-                <div class="pt-4">
-                    <h3 class="px-3 text-sm font-semibold text-gray-500 uppercase">Categories</h3>
-                    <div class="mt-2 space-y-1">
-                        <Link v-for="(category, index) in categories"
-                              :key="index"
-                              :href="category.href"
-                              class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
+                <div class="space-y-1">
+                    <template v-for="(item, index) in mainNavItems" :key="index">
+                        <div v-if="item.type === 'divider'" class="h-px my-4 px-2">
+                            <div class="h-full w-full bg-gray-300"></div>
+                        </div>
+                        <Link v-else
+                              :href="item.href"
+                              :class="[
+                                  'flex items-center px-1.5 py-1.5 rounded-md group transition-all',
+                                  item.name === 'Logout'
+                                      ? 'text-red-600 hover:text-red-700'
+                                      : 'text-gray-700 hover:text-indigo-600'
+                              ]"
                               @click="$emit('close')">
-                            {{ category.name }}
+                            <i :class="[
+                                item.icon,
+                                'text-xl mr-3 transition-colors',
+                                item.name === 'Logout'
+                                    ? 'text-red-400 group-hover:text-red-600'
+                                    : 'text-gray-400 group-hover:text-indigo-600'
+                            ]"></i>
+                            {{ item.name }}
                         </Link>
-                    </div>
+                    </template>
                 </div>
             </div>
         </nav>
@@ -46,20 +50,29 @@ import { Link } from '@inertiajs/vue3';
 
 // Main navigation items
 const mainNavItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Buy', href: '/buy' },
-    { name: 'Sell', href: '/sell' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    // User Actions Group
+    { name: 'Search', href: '/search', icon: 'pi pi-search' },
+    { name: 'Help', href: '/help', icon: 'pi pi-question-circle' },
+    { type: 'divider' },
+
+    // Commerce Group
+    { name: 'Sell', href: '/sell', icon: 'pi pi-dollar' },
+    { name: 'Trade-In', href: '/trade-in', icon: 'pi pi-sync' },
+    { type: 'divider' },
+
+    // Community Group
+    { name: 'Forums', href: '/forums', icon: 'pi pi-comments' },
+    { type: 'divider' },
+
+    // Product Categories
+    { name: 'iPhones', href: '/iphones', icon: 'pi pi-apple' },
+    { name: 'Mobile Phones', href: '/phones', icon: 'pi pi-mobile' },
+    { name: 'Watches', href: '/watches', icon: 'pi pi-clock' },
+    { name: 'Audio', href: '/audio', icon: 'pi pi-volume-up' },
+    { type: 'divider' },
+
+    // Logout
+    { name: 'Logout', href: '/logout', icon: 'pi pi-sign-out' },
 ];
 
-// Categories
-const categories = [
-    { name: 'Phones', href: '/category/phones' },
-    { name: 'Tablets', href: '/category/tablets' },
-    { name: 'Laptops', href: '/category/laptops' },
-    { name: 'Watches', href: '/category/watches' },
-    { name: 'Accessories', href: '/category/accessories' },
-    // Add more categories as needed
-];
 </script>
