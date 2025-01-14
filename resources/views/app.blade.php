@@ -18,8 +18,8 @@
 
     <style>
         .p-datatable-column-title {
-            font-weight: 600 !important;
-            color: #000 !important;
+            font-weight: 550 !important;
+            color: #292929 !important;
         }
     </style>
 </head>

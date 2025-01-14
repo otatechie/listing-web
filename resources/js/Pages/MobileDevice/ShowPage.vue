@@ -13,16 +13,13 @@
                         <h1 class="text-3xl font-bold text-gray-900">
                             {{ mobileDevice.phone_brand?.name }} {{ mobileDevice.phone_variant?.name }}
                         </h1>
-                        <h2 class="text-lg text-gray-600 mt-1">
-                            {{ mobileDevice.listing_title }}
-                        </h2>
                         <!-- Location tag -->
                         <div class="mt-3 inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full">
                             <i class="pi pi-map-marker"></i>
                             <span class="font-medium">{{ mobileDevice.location }}</span>
                         </div>
                     </div>
-                    <div class="text-3xl font-bold text-green-600 flex items-center gap-2">
+                    <div class="text-3xl font-bold text-indigo-600 flefimx items-center gap-2">
                         <span class="text-sm text-gray-500">Selling for</span>
                         ${{ mobileDevice.price }}
                     </div>
@@ -53,13 +50,13 @@
 
                 <!-- Buy Button with hover effect -->
                 <Button label="Buy now"
-                    class="p-button-success w-full h-12 text-lg font-semibold shadow-md hover:shadow-lg transition-all" />
+                    class="p-button-primary w-full h-12 text-lg font-semibold shadow-md hover:shadow-lg transition-all" />
             </div>
 
             <!-- Product Images Grid with improved layout -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <div v-for="(image, index) in mobileDevice.images" :key="index"
-                    class="aspect-square rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
+                    class="aspect-square rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
                     <img :src="image"
                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
                 </div>
@@ -71,13 +68,13 @@
                 <div class="border rounded-lg p-6 bg-gray-50 hover:bg-white transition-colors duration-200">
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
-                            <span class="text-xl font-bold text-gray-900">Condition</span>
+                            <span class="text-xl font-semibold text-gray-900">Condition</span>
                             <span v-if="mobileDevice.condition"
                                 class="px-3 py-1 bg-white border-2 border-gray-200 rounded-full text-gray-800 capitalize">
                                 {{ mobileDevice.condition }}
                             </span>
                             <div v-if="mobileDevice.battery_health && !isAppleDevice"
-                                class="flex items-center px-3 py-1 bg-white border border-blue-500 rounded-full text-blue-600 text-xs font-medium">
+                                class="flex items-center px-3 py-1 bg-white border border-orange-500 rounded-full text-orange-600 text-xs font-medium">
                                 <i class="pi pi-bolt mr-1"></i>
                                 Battery Health {{ mobileDevice.battery_health }}%
                             </div>
@@ -95,7 +92,7 @@
                 <!-- Design Details -->
                 <div class="border rounded-lg p-6 shadow-sm bg-white">
                     <!-- Title with subtle underline -->
-                    <h1 class="text-2xl font-bold mb-6 pb-2 border-b border-gray-100">
+                    <h1 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-100">
                         {{ mobileDevice.listing_title }}
                     </h1>
 
@@ -107,8 +104,8 @@
 
                     <!-- Need More Info Section with improved styling -->
                     <div class="flex items-center justify-between mb-8 border-y border-gray-100 py-6">
-                        <span class="text-lg font-semibold text-gray-800">Need more information?</span>
-                        <Button label="Message seller" severity="success" variant="outlined" size="small" />
+                        <span class="text-lg font-semibold text-gray-700">Need more information?</span>
+                        <Button label="Message seller" severity="primary" variant="outlined" size="small" />
                     </div>
 
                     <!-- Seller Information Section -->
@@ -138,21 +135,21 @@
                     <!-- Dates Section with improved layout -->
                     <div class="grid grid-cols-3 gap-4 mb-8 bg-gray-50 p-4 rounded-lg">
                         <div class="flex items-center">
-                            <i class="pi pi-calendar mr-2 text-green-600"></i>
+                            <i class="pi pi-calendar mr-2 text-indigo-600"></i>
                             <div>
                                 <p class="text-xs text-gray-500">Created</p>
                                 <p class="text-sm font-medium">{{ mobileDevice.created_at_human }}</p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <i class="pi pi-calendar mr-2 text-green-600"></i>
+                            <i class="pi pi-refresh mr-2 text-indigo-600"></i>
                             <div>
                                 <p class="text-xs text-gray-500">Updated</p>
                                 <p class="text-sm font-medium">{{ mobileDevice.updated_at_human }}</p>
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <i class="pi pi-calendar mr-2 text-green-600"></i>
+                            <i class="pi pi-clock mr-2 text-indigo-600"></i>
                             <div>
                                 <p class="text-xs text-gray-500">Expires</p>
                                 <p class="text-sm font-medium">Jan 12, 2025</p>

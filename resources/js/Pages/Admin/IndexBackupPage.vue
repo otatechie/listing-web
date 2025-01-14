@@ -2,77 +2,71 @@
 
     <Head title="Backups" />
 
-    <div class="px-5">
-        <div class="container-border">
-            <div class="m-4">
-                <div v-for="info in backupInfo" :key="info.name" class="mb-8">
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="text-xl font-heading font-semibold leading-7 text-gray-800">Backups</h2>
-                            <Button @click="runBackup" :disabled="isBackupRunning" class="btn-primary"
-                                :label="isBackupRunning ? 'Hang tight, creating backup...' : 'Create backup'"
-                                severity="primary" size="small" />
-                        </div>
+    <h2 class="text-xl font-heading font-semibold leading-7 text-gray-800 ml-5 mb-5">Backups</h2>
 
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                            <div class="bg-gray-100 p-4 rounded">
-                                <div class="text-sm text-gray-600">Disk</div>
-                                <div class="text-gray-600 font-medium">{{ info.disk }}</div>
-                            </div>
-                            <div class="bg-gray-100 p-4 rounded">
-                                <div class="text-sm text-gray-600">Storage type</div>
-                                <div class="text-gray-600 font-medium">{{ info.storageType }}</div>
-                            </div>
-                            <div class="bg-gray-100 p-4 rounded">
-                                <div class="text-sm text-gray-600">Used space</div>
-                                <div class="text-gray-600 font-medium">{{ info.storageSpace }}</div>
-                            </div>
-                            <div class="bg-gray-100 p-4 rounded">
-                                <div class="text-sm text-gray-600">Status</div>
-                                <div :class="info.healthy ? 'text-green-500 font-medium' : 'text-red-500'">
-                                    {{ info.healthy ? 'Healthy' : 'Unhealthy' }}
-                                </div>
-                            </div>
-                        </div>
+    <div class="container-border mx-5">
+        <div v-for="info in backupInfo" :key="info.name" class="m-4">
+            <div class="flex justify-end items-center mb-4">
+                <Button @click="runBackup" :disabled="isBackupRunning"
+                    :label="isBackupRunning ? 'Hang tight, creating backup...' : 'Create backup'" severity="primary"
+                    size="small" />
+            </div>
 
-                        <div v-if="info.backups.length > 0" class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead>
-                                    <tr>
-                                        <th
-                                            class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
-                                            Date</th>
-                                        <th
-                                            class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
-                                            Size</th>
-                                        <th
-                                            class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
-                                            File name</th>
-                                        <th
-                                            class="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
-                                            Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                                    <tr v-for="backup in info.backups" :key="backup.path">
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ backup.date }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ backup.size }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ backup.path }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right">
-                                            <Button @click="downloadBackup(backup.path)" icon="pi pi-arrow-down"
-                                                severity="secondary" rounded aria-label="Cancel" class="mr-2"
-                                                size="small" />
-                                            <Button @click="deleteBackup(backup.path)" icon="pi pi-times"
-                                                severity="danger" rounded aria-label="Cancel" size="small" />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div v-else class="text-center text-gray-500 pt-5">No backups available</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-gray-100 p-4 rounded">
+                    <div class="text-sm text-gray-600">Disk</div>
+                    <div class="text-gray-600 font-medium">{{ info.disk }}</div>
+                </div>
+                <div class="bg-gray-100 p-4 rounded">
+                    <div class="text-sm text-gray-600">Storage type</div>
+                    <div class="text-gray-600 font-medium">{{ info.storageType }}</div>
+                </div>
+                <div class="bg-gray-100 p-4 rounded">
+                    <div class="text-sm text-gray-600">Used space</div>
+                    <div class="text-gray-600 font-medium">{{ info.storageSpace }}</div>
+                </div>
+                <div class="bg-gray-100 p-4 rounded">
+                    <div class="text-sm text-gray-600">Status</div>
+                    <div :class="info.healthy ? 'text-green-500 font-medium' : 'text-red-500'">
+                        {{ info.healthy ? 'Healthy' : 'Unhealthy' }}
                     </div>
                 </div>
             </div>
+
+            <div v-if="info.backups.length > 0" class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                                Date</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                                Size</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                                File name</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
+                                Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                        <tr v-for="backup in info.backups" :key="backup.path">
+                            <td class="px-6 py-4 whitespace-nowrap">{{ backup.date }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ backup.size }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ backup.path }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right">
+                                <Button @click="downloadBackup(backup.path)" icon="pi pi-arrow-down"
+                                    severity="secondary" rounded aria-label="Cancel" class="mr-2" size="small" />
+                                <Button @click="deleteBackup(backup.path)" icon="pi pi-times" severity="danger" rounded
+                                    aria-label="Cancel" size="small" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div v-else class="text-center text-gray-500 pt-5 text-xl">No backups available</div>
         </div>
     </div>
 </template>

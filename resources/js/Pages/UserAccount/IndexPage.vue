@@ -4,14 +4,6 @@
 
     <slot>
         <div class="px-5">
-            <div v-if="!user.is_setup_complete" class="mb-5">
-                <Message severity="info">
-                    <p class="text-sm">
-                        To become a producer, please complete your profile by providing a username, country, and city.
-                    </p>
-                </Message>
-            </div>
-
             <div class="space-y-10 divide-y divide-gray-900/10">
                 <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                     <div class="px-4 sm:px-0">
@@ -23,8 +15,7 @@
                         </p>
                     </div>
 
-                    <form @submit.prevent="submitProfileForm"
-                        class="container-border md:col-span-2">
+                    <form @submit.prevent="submitProfileForm" class="container-border md:col-span-2">
                         <div class="px-4 py-6 sm:p-8">
                             <div class="md:max-w-md w-full grid grid-cols-1 gap-3">
                                 <div>
@@ -38,7 +29,7 @@
                                     </FloatLabel>
                                 </div>
 
-                                <div class="pt-6">
+                                <div class="pt-4">
                                     <FloatLabel variant="on">
                                         <InputText id="email" v-model="profileForm.email" required type="email"
                                             :invalid="!!profileForm.errors.email" class="w-full" />
@@ -49,27 +40,26 @@
                                     </p>
                                 </div>
 
-                                <div class="pt-6">
+                                <div class="pt-4">
                                     <FloatLabel variant="on">
-                                        <InputText id="username" v-model="profileForm.username" required
-                                            :invalid="!!profileForm.errors.username" class="w-full"
-                                            v-tooltip.focus.top="'Choose your unique artist name. Impersonating others is not allowed and may result in account termination.'" />
-                                        <label for="username">Artist name</label>
+                                        <InputText id="location" v-model="profileForm.location" required
+                                            :invalid="!!profileForm.errors.location" class="w-full" />
+                                        <label for="location">Location</label>
                                     </FloatLabel>
-                                    <p v-if="profileForm.errors.username" class="text-xs mt-2 text-red-600">
-                                        {{ profileForm.errors.username }}
+                                    <p v-if="profileForm.errors.location" class="text-xs mt-2 text-red-600">
+                                        {{ profileForm.errors.location }}
                                     </p>
                                 </div>
 
-                                <div class="pt-6 grid grid-cols-2 gap-4">
+                                <div class="pt-4 grid grid-cols-2 gap-4">
                                     <div>
                                         <FloatLabel variant="on">
-                                            <InputText id="city" v-model="profileForm.city" required type="text"
-                                                :invalid="!!profileForm.errors.city" class="w-full" />
-                                            <label for="city">City</label>
+                                            <InputText id="region" v-model="profileForm.region" required type="text"
+                                                :invalid="!!profileForm.errors.region" class="w-full" />
+                                            <label for="city">Region</label>
                                         </FloatLabel>
-                                        <p v-if="profileForm.errors.city" class="text-xs mt-2 text-red-600">
-                                            {{ profileForm.errors.city }}
+                                        <p v-if="profileForm.errors.region" class="text-xs mt-2 text-red-600">
+                                            {{ profileForm.errors.region }}
                                         </p>
                                     </div>
                                     <div>
@@ -92,13 +82,12 @@
                         </div>
 
                         <div class="flex items-center justify-end gap-x-6 border-t border-gray-200 px-4 py-4 sm:px-8">
-                            <Button type="submit" :loading="profileForm.processing" label="Save changes" size="small"
-                                class="btn-primary" />
+                            <Button type="submit" :loading="profileForm.processing" label="Save changes" size="small" />
                         </div>
                     </form>
                 </div>
 
-                <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3" v-if="user.is_setup_complete">
+                <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
                     <div class="px-4 sm:px-0">
                         <h2 class="sub-heading">
                             Change Password
@@ -108,8 +97,7 @@
                         </p>
                     </div>
 
-                    <form @submit.prevent="submitPasswordForm"
-                        class="container-border md:col-span-2">
+                    <form @submit.prevent="submitPasswordForm" class="container-border md:col-span-2">
                         <div class="px-4 py-6 sm:p-8">
                             <div class="md:max-w-md w-full grid grid-cols-1 gap-3">
 
@@ -153,9 +141,8 @@
                         </div>
 
                         <div class="flex items-center justify-end gap-x-6 border-t border-gray-200 px-4 py-4 sm:px-8">
-                            <Button type="submit" :loading="passwordForm.processing" label="Save changes" size="small"
-                                class="font-mono bg-amber-800 hover:bg-amber-700 border-2 border-amber-950
-                    shadow-[2px_2px_0px_0px_rgba(120,53,15,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]" />
+                            <Button type="submit" :loading="passwordForm.processing" label="Save changes"
+                                size="small" />
                         </div>
                     </form>
                 </div>
@@ -194,8 +181,8 @@ defineOptions({
 const profileForm = useForm({
     name: props.user.name,
     email: props.user.email,
-    username: props.user.username,
-    city: props.user.city,
+    location: props.user.location,
+    region: props.user.region,
     country: props.user.country,
 });
 

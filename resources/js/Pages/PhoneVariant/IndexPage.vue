@@ -4,37 +4,36 @@
         <div class="bg-white rounded-lg p-6 shadow-sm">
             <div class="flex items-center gap-6">
                 <div class="w-24 h-24 bg-gray-50 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-mobile-alt text-3xl text-gray-400"></i>
+                    <i class="pi pi-mobile text-3xl text-gray-400"></i>
                 </div>
                 <div class="flex-1">
                     <h1 class="text-3xl font-bold text-gray-800">
                         {{ `${phone_variant?.phone_brand?.name} ${phone_variant?.name}` }}
                     </h1>
                     <div class="flex items-center gap-4 mt-3">
-                        <span class="text-2xl font-bold text-green-600">$259</span>
+                        <span class="text-2xl font-bold text-indigo-600">$259</span>
                         <span class="text-sm text-gray-500">Starting price</span>
                     </div>
                     <div class="flex mt-4 gap-8">
-                        <button class="text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2">
-                            <i class="fas fa-book"></i>
+                        <button class="text-sm font-medium text-gray-700 hover:text-indigo-600 flex items-center gap-2">
+                            <i class="pi pi-book"></i>
                             Buyer Guide
                         </button>
-                        <button class="text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2">
-                            <i class="fas fa-chart-line"></i>
-                            Price Trends
+                        <button class="text-sm font-medium text-gray-700 hover:text-indigo-600 flex items-center gap-2">
+                            <i class="pi pi-shield"></i>
+                            Safety Tips
                         </button>
-                        <button class="text-sm font-medium text-gray-700 hover:text-gray-900 flex items-center gap-2">
-                            <i class="fas fa-history"></i>
-                            Recent Sales
-                        </button>
-                        <button class="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-2">
-                            <i class="fas fa-bell"></i>
+                        <button class="text-sm font-medium hover:text-indigo-600 flex items-center gap-2">
+                            <i class="pi pi-bell"></i>
                             Subscribe
                         </button>
-                        <button class="text-sm font-medium text-green-600 hover:text-green-700 flex items-center gap-2">
-                            <i class="fas fa-tag"></i>
-                            Sell This
-                        </button>
+                        <Link
+                            :href="route('mobile-device.create')"
+                            class="text-sm font-medium text-green-600 hover:text-green-700 flex items-center gap-2"
+                        >
+                            <i class="pi pi-tag"></i>
+                            <span>Sell This</span>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -76,7 +75,7 @@
                 <!-- Add empty message template -->
                 <template #empty>
                     <div class="flex flex-col items-center justify-center py-4">
-                        <i class="fas fa-search text-gray-300 text-5xl"></i>
+                        <i class="pi pi-search text-gray-300 text-5xl"></i>
                         <p class="text-gray-500 text-lg">Sorry, no devices found.</p>
                     </div>
                 </template>

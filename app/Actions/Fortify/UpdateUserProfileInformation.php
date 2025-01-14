@@ -30,7 +30,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 Rule::unique('users')->ignore($user->id),
             ],
 
-              'username' => [
+            'username' => [
                 'nullable',
                 'string',
                 'min:3',
@@ -61,6 +61,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                     }
                 },
             ],
+        'location' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
         ])->validate();
 
         if (
@@ -72,12 +75,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $user->forceFill([
                 'name' => $input['name'],
                 'email' => $input['email'],
-                'username' => $input['username'],
-                'city' => $input['city'],
+                'location' => $input['location'],
+                'region' => $input['region'],
                 'country' => $input['country'],
             ])->save();
-
-            $user->profile->is_setup_complete = true;
             $user->profile->save();
 
             session()->flash('success', 'Your profile has been updated successfully.');

@@ -17,6 +17,10 @@ input:focus {
     @apply bg-white border border-gray-300 rounded shadow-sm;
 }
 
+.container-border-table {
+    @apply bg-white border border-gray-300 rounded shadow-sm p-0.5;
+}
+
 .main-heading {
     @apply text-center text-2xl font-bold font-heading leading-9 tracking-wide text-gray-800;
 }

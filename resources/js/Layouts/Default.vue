@@ -45,7 +45,7 @@
 
 
         <!-- Main content -->
-        <div class="pt-16">
+        <div class="bg-gray-50 pb-8 mt-16">
             <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2">
                 <div class="container mx-auto flex justify-center space-x-6">
                     <!-- iPhones Dropdown -->
@@ -176,7 +176,7 @@
                     </div>
                 </div>
             </div>
-            <main class="py-5 min-h-screen bg-gray-50">
+            <main class="min-h-screen mt-12">
                 <FlashMessage></FlashMessage>
                 <slot></slot>
             </main>
@@ -192,11 +192,6 @@
             'fixed left-0 top-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out',
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         ]" @close="closeSidebar"></NavSidebarDesktop>
-
-        <!-- Audio player -->
-        <div class="fixed bottom-0 left-0 right-0 z-50">
-            <GlobalAudioPlayer />
-        </div>
 
         <!-- Footer -->
         <footer class="relative bg-gradient-to-b from-indigo-900 to-indigo-950 text-gray-300 py-12 overflow-hidden">

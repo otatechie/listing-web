@@ -8,31 +8,39 @@
             paginator :rows="10" :rowsPerPageOptions="[10, 20, 30, 50]" sortMode="multiple" removableSort stripedRows
             tableStyle="min-width: 50rem">
             <template #header>
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
-                    <span class="text-xl font-heading"></span>
-                    <Link :href="route('home')">
-                    <Button icon="pi pi-plus" rounded title="Add User" />
-                    </Link>
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                    <h2 class="text-xl font-semibold">Manage Users</h2>
+                    <div class="flex gap-2">
+                        <Button size="small" icon="pi pi-external-link" severity="secondary"
+                            label="Export" @click="exportCSVc($event)" outlined />
+                        <Link :href="route('home')">
+                            <Button icon="pi pi-plus" label="Add User" severity="primary" size="small" />
+                        </Link>
+                    </div>
                 </div>
-                <div style="text-align: left">
-                    <Button size="small" icon="pi pi-external-link" severity="contrast" label="Export" @click="exportCSVc($event)" />
-                </div>
-                <div class="flex justify-end">
-                    <IconField>
+                <div class="flex justify-end mb-4">
+                    <IconField class="w-full max-w-xs">
                         <InputIcon>
                             <i class="pi pi-search" />
                         </InputIcon>
-                        <InputText size="small" v-model="filters['global'].value" placeholder="Search" />
+                        <InputText size="small" v-model="filters['global'].value"
+                            placeholder="Search users..." class="w-full" />
                     </IconField>
                 </div>
             </template>
+
             <Column selectionMode="multiple" headerStyle="width: 3rem"></Column>
-            <Column field="name" sortable header="Name"></Column>
-            <Column field="email" sortable header="Email"></Column>
-            <Column field="created_at" header="Joined"></Column>
-            <Column header="Actions" :exportable="false" style="min-width:8rem">
+            <Column field="name" sortable header="Name" style="min-width: 12rem"></Column>
+            <Column field="email" sortable header="Email" style="min-width: 16rem"></Column>
+            <Column field="created_at" header="Joined" style="min-width: 10rem">
                 <template #body="slotProps">
-                    <Button icon="pi pi-pencil" size="small" rounded severity="contrast" @click="editUser(slotProps.data)" />
+                    {{ formatDate(slotProps.data.created_at) }}
+                </template>
+            </Column>
+            <Column header="Actions" :exportable="false" style="min-width: 8rem">
+                <template #body="slotProps">
+                    <Button icon="pi pi-pencil" size="small" rounded severity="secondary"
+                        class="hover:bg-gray-100" @click="editUser(slotProps.data)" />
                 </template>
             </Column>
         </DataTable>

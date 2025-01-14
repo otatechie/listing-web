@@ -24,29 +24,20 @@
             class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <Link :href="route('user.index')" @click="closeMenu"
-                class="group px-4 py-1.5 text-sm text-gray-700 flex items-center underline hover:text-indigo-600" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">
-                <div class="flex items-center w-full">
-                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
-                    </svg>
-                    Your Account
-                </div>
-            </Link>
-            <Link :href="route('profile.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center underline hover:text-indigo-600 hover:underline" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">
-            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Your Profile
+                class="group px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
+                tabindex="-1" id="user-menu-item-0">
+            <div class="flex items-center w-full">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Your Account
+            </div>
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('user.two.factor')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600 hover:underline" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
+                tabindex="-1" id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -55,8 +46,8 @@
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('user.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600 hover:underline" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
+                tabindex="-1" id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
@@ -64,8 +55,8 @@
             Your Purchases
             </Link>
             <Link :href="route('mobile-device.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600 hover:underline" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
+                tabindex="-1" id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -74,8 +65,8 @@
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('mobile-device.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600 hover:underline" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
+                tabindex="-1" id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -84,8 +75,8 @@
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('admin.setting.index')" @click="closeMenu"
-                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600 hover:underline" role="menuitem" tabindex="-1"
-                id="user-menu-item-1">
+                class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
+                tabindex="-1" id="user-menu-item-1">
 
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -97,7 +88,7 @@
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
             <Link :href="route('logout')" method="post" as="button" @click="closeMenu"
-                class="w-full text-left font-medium px-4 py-1.5 text-sm text-red-400 flex items-center hover:text-red-600 hover:underline"
+                class="w-full text-left font-medium px-4 py-1.5 text-sm text-red-400 flex items-center hover:text-red-600"
                 role="menuitem" tabindex="-1" id="user-menu-item-2">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
