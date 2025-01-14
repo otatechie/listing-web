@@ -44,27 +44,27 @@
         </div>
 
         <div class="py-4 text-sm">
-            <span class="text-green-600 hover:text-green-700 transition-colors">Swappa</span>
+            <span class="text-gray-800 underline hover:text-indigo-600 hover:bg-indigo-100 hover:px-1">Swappa</span>
             <span class="text-gray-400 mx-2">/</span>
-            <span class="hover:text-green-600 transition-colors">Mobile</span>
+            <span class="text-gray-800 underline hover:text-indigo-600 hover:bg-indigo-100 hover:px-1">Mobile</span>
             <span class="text-gray-400 mx-2">/</span>
-            <span class="text-gray-600">Phones</span>
+            <span class="text-gray-800">Phones</span>
         </div>
 
         <div class="space-y-12">
             <div class="text-center py-12 bg-gradient-to-b from-white to-gray-50">
-                <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 inline-block text-transparent bg-clip-text">Phones For Sale</h1>
+                <h1 class="text-5xl font-bold mb-4 text-gray-800">Phones For Sale</h1>
                 <p class="text-gray-600 mb-8 text-lg">Best deals on cheap phones and used phones.</p>
                 <div class="flex justify-center gap-6">
                     <button class="flex items-center gap-2 px-8 py-4 border-2 rounded-xl hover:bg-gray-50 transition-all hover:scale-105 hover:shadow-md">
-                        <span class="text-green-600">🍎</span>
-                        <span class="font-medium">iPhones</span>
+                        <span class="text-indigo-600">🍎</span>
+                        <span class="font-medium text-gray-800">iPhones</span>
                     </button>
                     <button class="flex items-center gap-2 px-8 py-4 border-2 rounded-xl hover:bg-gray-50 transition-all hover:scale-105 hover:shadow-md">
-                        <span class="text-green-600">🤖</span>
-                        <span class="font-medium">Android</span>
+                        <span class="text-indigo-600">🤖</span>
+                        <span class="font-medium text-gray-800">Android</span>
                     </button>
-                    <button class="flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all hover:scale-105 hover:shadow-md">
+                    <button class="flex items-center gap-2 px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all hover:scale-105 hover:shadow-md">
                         <span>💰</span>
                         <span class="font-medium"><Link :href="route('mobile-device.create')">Sell Phone</Link></span>
                     </button>
@@ -74,14 +74,14 @@
             <div class="space-y-20">
                 <section>
                     <div class="text-center space-y-2 mb-8">
-                        <h2 class="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 inline-block text-transparent bg-clip-text">Cheap Phones</h2>
+                        <h2 class="text-3xl font-bold text-gray-800">Cheap Phones</h2>
                         <p class="text-gray-600">Swappa always has cheap cell phones on sale.</p>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                         <div class="bg-white rounded-2xl p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 group">
                             <div class="relative mb-6">
                                 <img src="/iphone13.png" alt="iPhone 13" class="mx-auto h-36 group-hover:scale-110 transition-transform duration-300">
-                                <span class="absolute top-0 right-0 bg-green-500 text-white text-xs px-2 py-1 rounded-full">-15%</span>
+                                <span class="absolute top-0 right-0 bg-indigo-500 text-white text-xs px-2 py-1 rounded-full">-15%</span>
                             </div>
                             <h3 class="font-semibold text-lg mb-2">Apple iPhone 13</h3>
                             <div class="flex justify-center items-center gap-1 my-2">
@@ -91,7 +91,7 @@
                                 <span class="text-sm text-gray-500">(243)</span>
                             </div>
                             <div class="space-y-1">
-                                <p class="text-green-600 font-bold text-2xl">$269</p>
+                                <p class="text-indigo-600 font-bold text-2xl">$269</p>
                                 <p class="text-gray-400 text-sm line-through">$319</p>
                             </div>
                             <img src="/apple-icon.png" alt="Apple" class="h-5 mx-auto mt-4 opacity-70">
@@ -100,17 +100,17 @@
                 </section>
 
                 <div class="flex justify-center gap-6 mt-4">
-                    <a href="#" class="px-4 py-2 rounded bg-gray-50 hover:bg-gray-100 text-gray-700 transition-colors">iPhone Guide</a>
-                    <a href="#" class="px-4 py-2 rounded bg-green-50 hover:bg-green-100 text-green-700 transition-colors">Unlocked</a>
-                    <a href="#" class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700 transition-colors">Shop iPhones →</a>
+                    <a href="#" class="px-4 py-2 rounded text-gray-800 underline hover:text-indigo-600 transition-colors">iPhone Guide</a>
+                    <a href="#" class="px-4 py-2 rounded text-gray-800 underline hover:text-indigo-600 transition-colors">Unlocked</a>
+                    <a href="#" class="px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">Shop iPhones →</a>
                 </div>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.iphone.title }}</h2>
+                    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ deviceConfig.iphone.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="(device, index) in iphoneDevices"
                              :key="device.id"
-                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center">
                             <img :src="getIphoneImage(device, index)"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.iphone.defaultImage"
@@ -119,7 +119,7 @@
                                 {{ device.phone_brand.name }}
                                 {{ device.name }}
                             </h3>
-                            <Link :href="route('phone.variant.index', device.slug)">
+                            <Link :href="route('phone.variant.index', device.slug)" >
                                 <Button size="small" class="mt-3 text-xs" outlined>
                                     View listings
                                 </Button>
@@ -127,18 +127,18 @@
                         </div>
                     </div>
                     <div class="flex justify-center gap-4 mt-4">
-                        <a href="#" class="text-blue-600 hover:underline">iPhone Guide</a>
-                        <a href="#" class="text-green-600 hover:underline">Unlocked</a>
-                        <a href="#" class="text-green-600 hover:underline">Shop iPhones →</a>
+                        <a href="#" class="text-gray-800 underline hover:text-indigo-600 hover:bg-indigo-100 hover:px-1">iPhone Guide</a>
+                        <a href="#" class="text-gray-800 underline hover:text-indigo-600 hover:bg-indigo-100 hover:px-1">Unlocked</a>
+                        <a href="#" class="text-gray-800 underline hover:text-indigo-600 hover:bg-indigo-100 hover:px-1">Shop iPhones →</a>
                     </div>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.samsung.title }}</h2>
+                    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ deviceConfig.samsung.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="device in samsungDevices"
                              :key="device.id"
-                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center">
                             <img :src="getDeviceImage(device, 'samsung')"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.samsung.defaultImage"
@@ -157,11 +157,11 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-bold text-center mb-6">{{ deviceConfig.pixel.title }}</h2>
+                    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">{{ deviceConfig.pixel.title }}</h2>
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div v-for="device in pixelDevices"
                              :key="device.id"
-                             class="bg-white border rounded p-4 text-center hover:shadow-sm transition-all duration-50 hover:-translate-y-1">
+                             class="bg-white border rounded p-4 text-center">
                             <img :src="getDeviceImage(device, 'pixel')"
                                  :alt="device.name"
                                  @error="(e) => e.target.src = deviceConfig.pixel.defaultImage"
@@ -181,7 +181,7 @@
             </div>
 
             <div class="text-center py-12">
-                <button class="bg-gradient-to-r from-green-600 to-green-500 text-white px-10 py-4 rounded-xl text-lg font-medium hover:shadow-lg hover:scale-105 transition-all">
+                <button class="bg-indigo-600 text-white px-10 py-4 rounded-xl text-lg font-medium hover:bg-indigo-700 hover:shadow-lg hover:scale-105 transition-all">
                     Shop All Phones →
                 </button>
             </div>
@@ -210,11 +210,6 @@ const deviceConfig = {
         brandIcon: '/images/brands/google-icon.png',
         title: 'Google Pixels'
     },
-    oneplus: {
-        defaultImage: '/images/phones/oneplus-8.png',
-        brandIcon: '/images/brands/oneplus-icon.png',
-        title: 'OnePlus Phones'
-    }
 };
 
 // Samsung phone image mapping

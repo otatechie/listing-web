@@ -24,3 +24,8 @@ input:focus {
 .sub-heading {
     @apply text-xl font-semibold font-heading leading-7 text-gray-800;
 }
+
+.link-hover {
+    @apply hover:text-indigo-600 hover:bg-indigo-100 -mx-1 px-0.5 py-0.5;
+}
+
