@@ -66,7 +66,7 @@
                     </tbody>
                 </table>
             </div>
-            <div v-else class="text-center text-gray-500 pt-5 text-xl">No backups available</div>
+            <div v-else class="text-center text-gray-500 pt-5 text-md">No backups available</div>
         </div>
     </div>
 </template>

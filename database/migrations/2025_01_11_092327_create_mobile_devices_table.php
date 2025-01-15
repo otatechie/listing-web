@@ -16,6 +16,7 @@ return new class extends Migration
             $table->ulid('id')->primary();
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(true);
+            $table->boolean('featured')->default(false);
 
             $table->foreignUlid('phone_brand_id')->nullable()->constrained('phone_brands')->onDelete('cascade');
             $table->foreignUlid('phone_model_id')->nullable()->constrained('phone_models')->onDelete('cascade');
@@ -24,18 +25,17 @@ return new class extends Migration
             $table->string('listing_title');
             $table->text('listing_description');
             $table->text('damage_wear_description')->nullable();
-            $table->boolean('exchange_possible')->default(false);
             $table->string('carrier')->nullable();
             $table->string('color')->nullable();
             $table->string('storage_capacity')->nullable();
             $table->string('ram')->nullable();
             $table->string('region')->nullable();
-            $table->string('town')->nullable();
             $table->string('listing_code')->nullable();
             $table->unsignedTinyInteger('battery_health')->nullable();
             $table->string('imei_number', 15)->nullable()->unique();
             $table->boolean('imei_verified')->default(false);
             $table->enum('condition', ['new', 'mint', 'good', 'fair'])->default('new');
+            $table->datetime('expiry_date')->nullable();
             $table->decimal('price', 10, 2);
             $table->foreignUlid('user_id')->constrained('users')->onDelete('cascade');
             $table->softDeletes();
@@ -43,7 +43,6 @@ return new class extends Migration
 
             $table->index('price');
             $table->index('condition');
-            $table->index('town');
             $table->index(['is_active', 'deleted_at']);
         });
     }

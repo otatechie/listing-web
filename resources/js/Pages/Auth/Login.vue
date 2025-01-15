@@ -41,7 +41,7 @@
                     </div>
 
                     <Link :href="route('password.request')"
-                        class="text-sm font-medium leading-6 text-gray-800 hover:text-gray-600 underline underline-offset-2">
+                        class="text-sm underline text-gray-800 font-medium link-hover">
                     Forgot password?
                     </Link>
                 </div>
@@ -54,7 +54,7 @@
         <p class="mt-10 text-center text-sm text-gray-800">
             Not a member?
             <Link :href="route('register')"
-                class="font-medium leading-6 text-gray-800 hover:text-gray-700 underline underline-offset-2">
+                class="text-sm underline text-gray-800 font-medium link-hover">
             Create an account
             </Link>
         </p>

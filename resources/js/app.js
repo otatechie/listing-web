@@ -4,7 +4,6 @@ import { createInertiaApp, Link, router } from "@inertiajs/vue3";
 import { ZiggyVue } from "ziggy-js";
 import NProgress from "nprogress";
 import Default from "./Layouts/Default.vue";
-import Nav from "./Layouts/Nav.vue";
 import BaseLayout from "./Layouts/BaseLayout.vue";
 import Auth from "./Layouts/Auth.vue";
 import PrimeVue from "primevue/config";
@@ -77,7 +76,6 @@ createInertiaApp({
         const globalComponents = {
             Link,
             Default,
-            Nav,
             BaseLayout,
             Auth,
             Toast,

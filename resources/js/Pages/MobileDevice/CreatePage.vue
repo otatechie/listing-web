@@ -456,11 +456,13 @@ const conditions = ref([
 ]);
 
 const ram = ref([
-    { label: '64GB', value: '64' },
-    { label: '128GB', value: '128' },
-    { label: '256GB', value: '256' },
-    { label: '512GB', value: '512' },
-    { label: '1TB', value: '1024' }
+    { label: '2GB', value: '2' },
+    { label: '4GB', value: '4' },
+    { label: '6GB', value: '6' },
+    { label: '8GB', value: '8' },
+    { label: '12GB', value: '12' },
+    { label: '16GB', value: '16' },
+    { label: '32GB', value: '32' },
 ]);
 
 const unsortedColors = [

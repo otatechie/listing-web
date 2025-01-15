@@ -75,7 +75,6 @@
                 <!-- Add empty message template -->
                 <template #empty>
                     <div class="flex flex-col items-center justify-center py-4">
-                        <i class="pi pi-search text-gray-300 text-5xl"></i>
                         <p class="text-gray-500 text-lg">Sorry, no devices found.</p>
                     </div>
                 </template>

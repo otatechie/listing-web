@@ -64,7 +64,7 @@
             Your Favorites
             </Link>
             <div class="border-t border-gray-200 w-10/12 mx-auto"></div>
-            <Link :href="route('mobile-device.index')" @click="closeMenu"
+            <Link :href="route('user.listing')" @click="closeMenu"
                 class="px-4 py-1.5 text-sm text-gray-700 flex items-center hover:text-indigo-600" role="menuitem"
                 tabindex="-1" id="user-menu-item-0">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

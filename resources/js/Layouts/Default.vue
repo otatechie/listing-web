@@ -11,7 +11,7 @@
                     <Link href="/" class="text-white text-xl font-bold">
                     Your Logo
                     </Link>
-                    <button type="button" class="text-white hover:text-gray-200" @click="toggleSidebar">
+                    <button type="button" class="text-white hover:text-gray-200" @click="toggleSidebar" data-menu-button>
                         <span class="sr-only">Open sidebar</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -37,7 +37,8 @@
                                 d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
                         </svg>
                     </button>
-                    <NavProfile :user="user"></NavProfile>
+
+                    <NavProfile v-if="user" :user="user"></NavProfile>
 
                 </div>
             </div>
@@ -188,10 +189,12 @@
         </div>
 
         <!-- Sidebar -->
-        <NavSidebarDesktop :class="[
-            'fixed left-0 top-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out',
-            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        ]" @close="closeSidebar"></NavSidebarDesktop>
+        <NavSidebarDesktop data-sidebar
+            :class="[
+                'fixed left-0 top-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out',
+                isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            ]"
+            @close="closeSidebar"></NavSidebarDesktop>
 
         <!-- Footer -->
         <footer class="relative bg-gradient-to-b from-indigo-900 to-indigo-950 text-gray-300 py-12 overflow-hidden">
@@ -356,16 +359,12 @@ import NavProfile from '../Shared/NavProfile.vue';
 import NavSidebarMobile from '../Shared/NavSidebarMobile.vue';
 import NavSearch from '../Shared/NavSearch.vue';
 import FlashMessage from '../Shared/FlashMessage.vue';
-import GlobalAudioPlayer from '@/Components/GlobalAudioPlayer.vue';
-import { useAudioStore } from '@/Stores/audioStore';
+
 
 const page = usePage();
-const user = computed(() => page.props.auth.user);
-const audioStore = useAudioStore();
+const user = computed(() => page.props.auth?.user);
 
 const isSidebarOpen = ref(false);
-
-const desktopSidebar = ref(null);
 
 const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
@@ -380,16 +379,16 @@ const closeSidebar = () => {
 };
 
 const handleClickAway = (event) => {
-    const sidebar = document.querySelector('.sidebar-selector');
-    const menuButton = document.querySelector('.menu-button');
-    if (sidebar &&
-        !sidebar.contains(event.target) &&
-        !menuButton.contains(event.target)) {
+    const sidebar = document.querySelector('[data-sidebar]');
+    const menuButton = document.querySelector('[data-menu-button]');
+
+    if (!sidebar || !menuButton) return;
+
+    if (!sidebar.contains(event.target) && !menuButton.contains(event.target)) {
         closeSidebar();
     }
 };
 
-// Cleanup event listener when component unmounts
 onUnmounted(() => {
     document.removeEventListener('click', handleClickAway);
 });

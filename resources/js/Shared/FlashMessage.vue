@@ -26,6 +26,9 @@ export default {
     watch: {
         '$page.props.flash': {
             handler(newVal) {
+                // Add safety check
+                if (!newVal) return;
+
                 // Custom message for two-factor-authentication-enabled
                 if (newVal['two-factor-authentication-enabled']) {
                     this.toast.add({

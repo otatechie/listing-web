@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Inertia\Inertia;
+use Illuminate\Support\Arr;
+use App\Models\MobileDevice;
+use Illuminate\Http\Request;
 
 class UserAccountController extends Controller
 {
@@ -42,5 +43,15 @@ class UserAccountController extends Controller
         ];
 
         return Inertia::render('UserAccount/IndexTwoFactorAuthenticationPage', $data);
+    }
+
+    public function userListing()
+    {
+        $user = auth()->user();
+        $userListings = MobileDevice::where('user_id', $user->id)->get();
+
+        return Inertia::render('UserAccount/IndexPageListing', [
+            'userListings' => $userListings,
+        ]);
     }
 }

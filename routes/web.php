@@ -9,13 +9,10 @@ use App\Http\Controllers\AdminRoleController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\BeatStatsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobileDeviceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneVariantController;
-use App\Http\Controllers\ProducerProfileController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserBeatFileController;
@@ -44,7 +41,7 @@ Route::controller(PageController::class)
     ->withoutMiddleware(HandleInertiaRequests::class)
     ->name('public.')
     ->group(function () {
-        Route::get('welcome', 'welcome')->name('welcome');
+        Route::get('help', 'help')->name('help');
     });
 
 // Authenticated Routes
@@ -58,16 +55,12 @@ Route::middleware(['web','auth'])->group(function () {
             ->name('index');
         Route::get('user/two-factor-authentication', [UserAccountController::class, 'twoFactorAuthentication'])
             ->name('two.factor');
+        Route::get('user/listing', [UserAccountController::class, 'userListing'])
+            ->name('listing');
     });
 
     Route::post('add-reaction', [ReactionController::class, 'addOrUpdateReaction'])->name('reaction.add');
 
-    // Profile Management Routes
-    Route::resource('profile', ProfileController::class);
-    Route::controller(ProfileController::class)->prefix('profile')->name('profile.')->group(function () {
-        Route::put('/update/{profile}', 'updateProfile')->name('updateProfile');
-        Route::put('/social-media/update/{profile}', 'updateSocialMedia')->name('updateSocialMedia');
-    });
 
     // Beat Management Routes
     Route::resource('upload-beat', UserBeatFileController::class)->except(['create']);

@@ -51,28 +51,28 @@ import { Link } from '@inertiajs/vue3';
 // Main navigation items
 const mainNavItems = [
     // User Actions Group
-    { name: 'Search', href: '/search', icon: 'pi pi-search' },
-    { name: 'Help', href: '/help', icon: 'pi pi-question-circle' },
+    { name: 'Search', href: route('mobile-device.index'), icon: 'pi pi-search' },
+    { name: 'Help', href: route('public.help'), icon: 'pi pi-question-circle' },
     { type: 'divider' },
 
     // Commerce Group
-    { name: 'Sell', href: '/sell', icon: 'pi pi-dollar' },
-    { name: 'Trade-In', href: '/trade-in', icon: 'pi pi-sync' },
+    { name: 'Sell', href: route('mobile-device.index'), icon: 'pi pi-dollar' },
+    { name: 'Trade-In', href: route('mobile-device.index'), icon: 'pi pi-sync' },
     { type: 'divider' },
 
     // Community Group
-    { name: 'Forums', href: '/forums', icon: 'pi pi-comments' },
+    { name: 'Forums', href: route('mobile-device.index'), icon: 'pi pi-comments' },
     { type: 'divider' },
 
     // Product Categories
-    { name: 'iPhones', href: '/iphones', icon: 'pi pi-apple' },
-    { name: 'Mobile Phones', href: '/phones', icon: 'pi pi-mobile' },
-    { name: 'Watches', href: '/watches', icon: 'pi pi-clock' },
-    { name: 'Audio', href: '/audio', icon: 'pi pi-volume-up' },
+    { name: 'iPhones', href: route('mobile-device.index'), icon: 'pi pi-apple' },
+    { name: 'Mobile Phones', href: route('mobile-device.index'), icon: 'pi pi-mobile' },
+    { name: 'Watches', href: route('mobile-device.index'), icon: 'pi pi-clock' },
+    { name: 'Audio', href: route('mobile-device.index'), icon: 'pi pi-volume-up' },
     { type: 'divider' },
 
     // Logout
-    { name: 'Logout', href: '/logout', icon: 'pi pi-sign-out' },
+    { name: 'Logout', href: route('logout'), icon: 'pi pi-sign-out' },
 ];
 
 </script>

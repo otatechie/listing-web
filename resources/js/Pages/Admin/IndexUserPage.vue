@@ -1,6 +1,6 @@
 <template>
 
-    <Head title="Audits" />
+    <Head title="Users" />
 
     <slot>
         <h2 class="text-xl font-heading font-semibold leading-7 text-gray-800 ml-5 mb-5">Users</h2>

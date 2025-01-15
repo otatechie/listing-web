@@ -69,7 +69,7 @@
         <p class="py-10 text-center text-sm text-gray-800">
             Already a member?
             <Link :href="route('login')"
-                class="font-medium leading-6 text-gray-800 hover:text-gray-700 underline underline-offset-2">
+                class="text-sm underline text-gray-800 font-medium link-hover">
             Login
             </Link>
         </p>
