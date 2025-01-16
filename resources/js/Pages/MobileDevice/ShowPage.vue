@@ -63,17 +63,7 @@
 
                 <!-- Buy Button with hover effect -->
                 <div class="flex gap-4 w-full">
-                    <template v-if="!$page.props.auth.user">
-                        <Link :href="route('login')" class="flex-1">
-                            <Button label="Login to chat" severity="primary" size="small" icon="pi pi-comments"
-                                class="w-full" />
-                        </Link>
-                        <Link :href="route('login')" class="flex-1">
-                            <Button label="Login to request contact" severity="secondary" size="small" icon="pi pi-user"
-                                class="w-full" />
-                        </Link>
-                    </template>
-                    <template v-else-if="mobileDevice.user_id !== $page.props.auth.user.id">
+                    <template v-if="mobileDevice.user_id !== $page.props.auth.user?.id">
                         <Button label="Chat with seller" size="small" icon="pi pi-comments" class="flex-1" />
                         <Button label="Request Contact" severity="secondary" size="small" icon="pi pi-user"
                             @click="visible = true" class="flex-1" />
@@ -266,7 +256,6 @@ import Dialog from 'primevue/dialog';
 import { useForm } from '@inertiajs/vue3';
 import InputText from 'primevue/inputtext';
 import { Head } from '@inertiajs/vue3';
-
 const props = defineProps({
     mobileDevice: {
         type: Object,

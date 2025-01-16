@@ -55,4 +55,5 @@ class UserAccountController extends Controller
             'userListings' => $userListings,
         ]);
     }
+
 }

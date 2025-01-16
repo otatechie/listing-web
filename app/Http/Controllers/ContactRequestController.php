@@ -14,7 +14,7 @@ class ContactRequestController extends Controller
      */
     public function index()
     {
-        $requests = ContactRequest::where(function ($query) {
+        $contactRequests = ContactRequest::where(function ($query) {
             $query->where('seller_id', auth()->id())
                   ->orWhere('buyer_id', auth()->id());
         })
@@ -22,8 +22,14 @@ class ContactRequestController extends Controller
             ->latest()
             ->paginate(10);
 
-        return inertia('ContactRequests/Index', [
-            'requests' => $requests
+        $contactRequests->through(function ($request) {
+            $request->created_at_formatted = $request->created_at->diffForHumans();
+            $request->created_at = $request->created_at->toJSON();
+            return $request;
+        });
+
+        return inertia('ContactRequest/IndexPage', [
+            'contactRequests' => $contactRequests
         ]);
     }
 
@@ -32,6 +38,11 @@ class ContactRequestController extends Controller
      */
     public function store(Request $request)
     {
+        if (!auth()->check()) {
+            session()->flash('error', 'Please login to request contact information');
+            return redirect()->route('login');
+        }
+
         $validated = $request->validate([
             'mobile_device_id' => 'required|exists:mobile_devices,id',
         ]);
