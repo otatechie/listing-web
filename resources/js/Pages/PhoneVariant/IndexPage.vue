@@ -90,17 +90,17 @@
                 <!-- Price (Most important info first) -->
                 <Column field="price" header="Price" sortable>
                     <template #body="{ data }">
-                        <span class="font-bold text-gray-900 hover:cursor-pointer">${{ data.price }}</span>
+                        <span class="font-bold text-gray-800 hover:cursor-pointer">${{ data.price }}</span>
                     </template>
                 </Column>
 
                 <!-- Condition (Important quality indicator) -->
                 <Column field="condition" header="Condition" sortable>
                     <template #body="{ data }">
-                        <span class="rounded-full text-sm font-medium capitalize" :class="{
-                            'bg-green-50 text-green-700': data.condition === 'Mint',
-                            'bg-blue-50 text-blue-700': data.condition === 'Good',
-                            'bg-yellow-50 text-yellow-700': data.condition === 'Fair'
+                        <span class="px-2 py-1 rounded-full text-sm font-medium capitalize inline-block" :class="{
+                            'bg-green-50 text-green-700': data.condition.toLowerCase() === 'mint',
+                            'bg-blue-50 text-blue-700': data.condition.toLowerCase() === 'good',
+                            'bg-yellow-50 text-yellow-700': data.condition.toLowerCase() === 'fair'
                         }">
                             {{ data.condition }}
                         </span>
@@ -110,7 +110,7 @@
                 <!-- Storage (Key spec) -->
                 <Column field="storage_capacity" header="Storage" sortable>
                     <template #body="{ data }">
-                        <span class="text-gray-700">
+                        <span class="text-gray-600">
                             {{ data.storage_capacity }}{{ data.storage_capacity >= 1000 ? 'TB' : 'GB' }}
                         </span>
                     </template>
@@ -130,14 +130,14 @@
                 <!-- Carrier (Network info) -->
                 <Column field="carrier" header="Carrier" sortable>
                     <template #body="{ data }">
-                        <span class="text-gray-700 font-medium">{{ data.carrier }}</span>
+                        <span class="text-gray-600 font-medium">{{ data.carrier }}</span>
                     </template>
                 </Column>
 
                 <!-- Model (Technical info) -->
                 <Column field="phone_model.model_number" header="Model" sortable>
                     <template #body="{ data }">
-                        <span class="text-gray-700 font-medium">{{ data.phone_model?.model_number || 'N/A' }}</span>
+                        <span class="text-gray-600 font-medium">{{ data.phone_model?.model_number || 'N/A' }}</span>
                     </template>
                 </Column>
 
@@ -145,7 +145,7 @@
                 <Column field="user.username" header="Seller" sortable>
                     <template #body="{ data }">
                         <div class="flex items-center hover:cursor-pointer">
-                            <span class="text-gray-700">{{ data.user?.name || 'Anonymous' }}</span>
+                            <span class="text-gray-600">{{ data.user?.name || 'Anonymous' }}</span>
                         </div>
                     </template>
                 </Column>
@@ -206,7 +206,6 @@ import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';
 import { FilterMatchMode } from '@primevue/core/api';
-
 
 const emit = defineEmits(['filter-changed']);
 

@@ -11,7 +11,6 @@ class PageController extends Controller
     public function help()
     {
         return Inertia::render('IndexHelpPage', [
-
         ]);
     }
 }

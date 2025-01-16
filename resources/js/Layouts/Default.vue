@@ -26,7 +26,6 @@
                     <NavSearch></NavSearch>
                 </div>
 
-
                 <!-- Right side icons -->
                 <div class="flex items-center gap-4">
                     <button type="button" class="text-white hover:text-gray-200">

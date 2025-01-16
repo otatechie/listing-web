@@ -12,7 +12,8 @@ export default {
     theme: {
         extend: {},
         fontFamily: {
-            heading: ["Inter", "sans-serif"],
+            heading: ["Alexandria", "sans-serif"],
+            sans: ["Anuphan", "sans-serif"],
         },
     },
     plugins: [forms],

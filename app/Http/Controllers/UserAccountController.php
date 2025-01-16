@@ -48,7 +48,8 @@ class UserAccountController extends Controller
     public function userListing()
     {
         $user = auth()->user();
-        $userListings = MobileDevice::where('user_id', $user->id)->get();
+        $userListings = MobileDevice::with('phoneBrand', 'phoneModel', 'phoneVariant')
+            ->where('user_id', $user->id)->get();
 
         return Inertia::render('UserAccount/IndexPageListing', [
             'userListings' => $userListings,

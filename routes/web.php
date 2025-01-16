@@ -17,6 +17,7 @@ use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserBeatFileController;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Controllers\ContactRequestController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -91,10 +92,6 @@ Route::middleware(['web','auth'])->group(function () {
 });
 
 
-
-
-
-
 Route::resource('admin/category', AdminCategoryController::class);
 
 Route::resource('mobile-device', MobileDeviceController::class);
@@ -102,3 +99,5 @@ Route::post('mobile-device/validate-step/{step}', [MobileDeviceController::class
     ->name('mobile-device.validate-step');
 Route::get('phone-variant/{slug}', [PhoneVariantController::class, 'index'])->name('phone.variant.index');
 
+Route::resource('contact-request', ContactRequestController::class)
+    ->except(['create', 'edit']);

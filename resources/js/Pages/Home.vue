@@ -9,14 +9,14 @@
             <div class="max-w-7xl mx-auto px-4">
                 <!-- Hero Section -->
                 <div class="text-center mb-16 py-16 bg-gradient-to-b from-indigo-50 to-white rounded-2xl">
-                    <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-8">
+                    <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-800 mb-8">
                         Buy + Sell + <span class="text-indigo-600 relative">
                             Save
                             <span class="absolute -bottom-2 left-0 w-full h-2 bg-indigo-200/60 -rotate-2"></span>
                         </span>
                     </h1>
                     <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
-                        Ghana's smartest way to trade phones, laptops, and more
+                        The smartest way to trade phones, laptops, and more
                     </p>
                     <p class="text-lg text-indigo-600 font-semibold mb-8">
                         With confidence
@@ -31,7 +31,7 @@
 
                 <!-- Trust Features -->
                 <div class="mb-20">
-                    <h2 class="text-3xl font-bold text-center mb-16">The Smart Way to Trade</h2>
+                    <h2 class="text-3xl font-semibold font-heading text-center mb-16">The Smart Way to Trade</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3">
                         <!-- Feature 1 -->
                         <div class="relative group overflow-hidden">
@@ -118,7 +118,7 @@
 
                 <!-- Popular Categories -->
                 <div class="mb-12">
-                    <h2 class="text-3xl font-bold text-center mb-12">Popular Categories</h2>
+                    <h2 class="text-3xl font-semibold font-heading text-center mb-12">Popular Categories</h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                         <Link :href="route('mobile-device.index')" class="block">
                             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
@@ -189,7 +189,7 @@
 
                 <!-- How It Works - Redesigned with modern flow -->
                 <div class="mb-20 py-16">
-                    <h2 class="text-3xl font-bold text-center mb-16">How It Works</h2>
+                    <h2 class="text-3xl font-semibold font-heading text-center mb-16">How It Works</h2>
                     <div class="relative">
                         <!-- Connecting Line -->
                         <div
@@ -275,7 +275,7 @@
                 <!-- MAcbooks Listings -->
                 <div class="mb-20">
                     <div class="flex justify-between items-center mb-10">
-                        <h2 class="text-3xl font-bold">Macbooks & Laptops</h2>
+                        <h2 class="text-3xl font-semibold font-heading">Macbooks & Laptops</h2>
                         <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium flex items-center">
                             View all
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -336,7 +336,7 @@
 
                 <div class="mb-16">
                     <div class="flex justify-between items-center mb-8">
-                        <h2 class="text-3xl font-bold">Phones & Iphones</h2>
+                        <h2 class="text-3xl font-semibold font-heading">Phones & Iphones</h2>
                         <a href="#" class="text-indigo-600 hover:text-indigo-700">View all →</a>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -388,7 +388,7 @@
                 <div class="bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-2xl p-12 mb-20 text-white">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div>
-                            <h2 class="text-3xl font-bold mb-4">Join Our Growing Community</h2>
+                            <h2 class="text-3xl font-semibold font-heading mb-4">Join Our Growing Community</h2>
                             <p class="mb-6">Connect with thousands of trusted buyers and sellers across Ghana.</p>
                             <ul class="space-y-4">
                                 <li class="flex items-center">
@@ -440,7 +440,7 @@
 
                 <!-- Safety Tips -->
                 <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-center mb-8">Stay Safe While Trading</h2>
+                    <h2 class="text-3xl font-semibold font-heading text-center mb-8">Stay Safe While Trading</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- Safe Meeting -->
                         <div class="bg-white p-6 rounded shadow-sm hover:shadow-md transition">
@@ -453,7 +453,7 @@
                                         d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-lg mb-2">Meet Safely</h3>
+                            <h3 class="font-semibold text-lg mb-2 text-gray-800">Meet Safely</h3>
                             <p class="text-gray-600">Choose public places like malls or coffee shops. Avoid private
                                 locations and meeting after dark.</p>
                         </div>
@@ -467,7 +467,7 @@
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-lg mb-2">Verify First</h3>
+                            <h3 class="font-semibold text-lg mb-2 text-gray-800">Verify First</h3>
                             <p class="text-gray-600">Check seller profiles, ratings, and reviews. Be wary of deals that
                                 seem too good to be true.</p>
                         </div>
@@ -481,7 +481,7 @@
                                         d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-lg mb-2">Secure Payments</h3>
+                            <h3 class="font-semibold text-lg mb-2 text-gray-800">Secure Payments</h3>
                             <p class="text-gray-600">Use secure payment methods. Test electronics and verify items
                                 before making payment.</p>
                         </div>
@@ -495,7 +495,7 @@
                                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-lg mb-2">Report Problems</h3>
+                            <h3 class="font-semibold text-lg mb-2 text-gray-800">Report Problems</h3>
                             <p class="text-gray-600">Report suspicious behavior immediately. Our support team is here to
                                 help 24/7.</p>
                         </div>

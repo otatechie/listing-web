@@ -2,41 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
+use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Role;
+
 
 class AdminRoleController extends Controller
 {
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string',  Rule::unique(Role::class)],
-        ]);
+        Role::create($request->validated());
 
-        Role::create($validatedData);
-
-        session()->flash('success', 'Role created successfully.');
+        return redirect()->back()->with('success', 'Role created successfully.');
     }
 
 
-    public function update(Request $request, Role $role)
+
+    public function update(UpdateRoleRequest $request, Role $role): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'name' => ['required', 'string',  Rule::unique('roles', 'name')->ignore($role->id)],
-        ]);
+        $role->update($request->validated());
 
-        $role->update($validatedData);
-
-        session()->flash('success', 'Role updated successfully.');
+        return redirect()->back()->with('success', 'Role updated successfully.');
     }
 
 
-    public function destroy(string $id)
+
+    public function destroy(Role $role): RedirectResponse
     {
-        $role = Role::findOrFail($id);
         $role->delete();
 
         return redirect()->back()->with('success', 'Role deleted successfully');
     }
 }
+

@@ -46,6 +46,7 @@ class MobileDevice extends Model implements HasMedia
         return $this->belongsTo(PhoneVariant::class);
     }
 
+
     public function registerMediaCollections(): void
     {
         $this

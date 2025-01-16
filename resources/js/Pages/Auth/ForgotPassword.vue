@@ -26,7 +26,7 @@
                     {{ form.errors.email }}
                 </p>
 
-                <Button @click="submit" :disabled="form.processing" label="Send reset email"
+                <Button @click="submit" :disabled="form.processing" :label="form.processing ? 'Please wait...' : 'Send reset email'"
                     class="w-full btn-primary" />
             </form>
         </div>
