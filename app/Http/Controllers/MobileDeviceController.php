@@ -180,7 +180,28 @@ class MobileDeviceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mobileDevice = MobileDevice::findOrFail($id);
+
+        $phoneBrands = PhoneBrand::select('id', 'name')
+            ->orderBy('name')
+            ->get();
+        $phoneModels = PhoneModel::select('id', 'model_number', 'phone_variant_id')
+            ->orderBy('model_number')
+            ->get();
+        $phoneVariants = PhoneVariant::select('id', 'name', 'phone_brand_id')
+            ->orderBy('name')
+            ->get();
+
+        return Inertia::render('MobileDevice/EditPage', [
+            'mobileDevice' => array_merge($mobileDevice->toArray(), [
+                'media' => [
+                    'images' => $mobileDevice->getMedia('images') ?: null,
+                ],
+            ]),
+            'phoneBrands' => $phoneBrands,
+            'phoneModels' => $phoneModels,
+            'phoneVariants' => $phoneVariants,
+        ]);
     }
 
     /**

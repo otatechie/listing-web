@@ -8,7 +8,7 @@
             <div class="mb-8">
                 <div ref="headerRef" class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
                     <div>
-                        <h1 class="text-3xl font-bold text-gray-900">
+                        <h1 class="text-3xl font-semibold text-gray-900">
                             {{ mobileDevice.phone_brand?.name }} {{ mobileDevice.phone_variant?.name }}
                         </h1>
                         <!-- Location tag -->
@@ -23,7 +23,7 @@
                             class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
                             <i class="pi pi-heart text-gray-400"></i>
                         </button>
-                        <div class="text-3xl font-bold text-indigo-600 flex items-center gap-2">
+                        <div class="text-3xl font-semibold text-indigo-600 flex items-center gap-2">
                             <span class="text-sm text-gray-500">Selling for</span>
                             ${{ mobileDevice.price }}
                         </div>
@@ -69,7 +69,10 @@
                             @click="visible = true" class="flex-1" />
                     </template>
                     <template v-else>
-                        <Button label="Respond to requests" size="small" icon="pi pi-envelope" class="flex-1" />
+                        <Button label="Respond to contact requests" size="small" icon="pi pi-envelope" class="flex-1" />
+                        <Link :href="route('mobile-device.edit', mobileDevice.id)" class="flex-1 w-full">
+                            <Button label="Edit Listing" severity="secondary" size="small" icon="pi pi-pencil" class="w-full" />
+                        </Link>
                     </template>
                 </div>
             </div>

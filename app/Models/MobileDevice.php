@@ -47,18 +47,26 @@ class MobileDevice extends Model implements HasMedia
     }
 
 
-    public function registerMediaCollections(): void
+    public function registerMediaConversions(Media $media = null): void
     {
-        $this
-            ->addMediaCollection('images')
-            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
-            ->registerMediaConversions(function (Media $media) {
-                $this
-                    ->addMediaConversion('thumb')
-                    ->nonQueued();
-            });
-    }
+        $this->addMediaConversion('thumb')
+            ->width(200)
+            ->height(200)
+            ->nonQueued();
 
+        $this->addMediaConversion('preview')
+            ->width(400)
+            ->height(400)
+            ->nonQueued();
+
+        $this->addMediaConversion('large')
+            ->width(800)
+            ->height(800)
+            ->keepOriginalImageFormat()
+            ->optimize()
+            ->quality(90)
+            ->nonQueued();
+    }
 
     protected static function boot()
     {
@@ -88,7 +96,6 @@ class MobileDevice extends Model implements HasMedia
             $numbers = str_pad(random_int(0, 9999999), 7, '0', STR_PAD_LEFT);
 
             $code = $prefix . $numbers;
-
         } while (static::where('listing_code', $code)->exists());
 
         return $code;

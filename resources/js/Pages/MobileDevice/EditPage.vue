@@ -1,6 +1,6 @@
 <template>
 
-    <Head title="Add Mobile Device" />
+    <Head title="Edit Mobile Device" />
 
     <slot>
         <div class="card flex justify-center">
@@ -33,101 +33,101 @@
                                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-6">
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.phone_brand_id"
+                                            <Select v-model="editMobileDeviceForm.phone_brand_id"
                                                 :options="phoneBrands" showClear class="w-full" optionLabel="name"
                                                 optionValue="id"
-                                                :invalid="!!createMobileDeviceForm.errors.phone_brand_id" />
+                                                :invalid="!!editMobileDeviceForm.errors.phone_brand_id" />
                                             <label for="phone_brand_id">Brand *</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.phone_brand_id"
+                                        <p v-if="editMobileDeviceForm.errors.phone_brand_id"
                                             class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.phone_brand_id }}
+                                            {{ editMobileDeviceForm.errors.phone_brand_id }}
                                         </p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.phone_variant_id"
+                                            <Select v-model="editMobileDeviceForm.phone_variant_id"
                                                 :options="filteredVariants" showClear class="w-full" optionLabel="name"
                                                 optionValue="id"
-                                                :invalid="!!createMobileDeviceForm.errors.phone_variant_id"
-                                                :disabled="!createMobileDeviceForm.phone_brand_id || filteredVariants.length === 0" />
+                                                :invalid="!!editMobileDeviceForm.errors.phone_variant_id"
+                                                :disabled="!editMobileDeviceForm.phone_brand_id || filteredVariants.length === 0" />
                                             <label for="phone_variant_id">Model Series *</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.phone_variant_id"
+                                        <p v-if="editMobileDeviceForm.errors.phone_variant_id"
                                             class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.phone_variant_id }}
+                                            {{ editMobileDeviceForm.errors.phone_variant_id }}
                                         </p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.phone_model_id"
+                                            <Select v-model="editMobileDeviceForm.phone_model_id"
                                                 :options="filteredModels" showClear class="w-full"
                                                 optionLabel="model_number" optionValue="id"
-                                                :invalid="!!createMobileDeviceForm.errors.phone_model_id"
-                                                :disabled="!createMobileDeviceForm.phone_variant_id || filteredModels.length === 0" />
+                                                :invalid="!!editMobileDeviceForm.errors.phone_model_id"
+                                                :disabled="!editMobileDeviceForm.phone_variant_id || filteredModels.length === 0" />
                                             <label for="phone_model_id">Model Number *</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.phone_model_id"
+                                        <p v-if="editMobileDeviceForm.errors.phone_model_id"
                                             class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.phone_model_id }}
+                                            {{ editMobileDeviceForm.errors.phone_model_id }}
                                         </p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.storage_capacity" :options="storage"
+                                            <Select v-model="editMobileDeviceForm.storage_capacity" :options="storage"
                                                 showClear class="w-full" optionLabel="label" optionValue="value"
-                                                :invalid="!!createMobileDeviceForm.errors.storage_capacity" />
+                                                :invalid="!!editMobileDeviceForm.errors.storage_capacity" />
                                             <label for="storage_capacity">Storage</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.storage_capacity"
+                                        <p v-if="editMobileDeviceForm.errors.storage_capacity"
                                             class="mt-2 text-xs text-red-600">{{
-                                                createMobileDeviceForm.errors.storage_capacity }}</p>
+                                                editMobileDeviceForm.errors.storage_capacity }}</p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.condition" :options="conditions"
+                                            <Select v-model="editMobileDeviceForm.condition" :options="conditions"
                                                 showClear class="w-full" optionLabel="label" optionValue="value"
-                                                :invalid="!!createMobileDeviceForm.errors.condition" />
+                                                :invalid="!!editMobileDeviceForm.errors.condition" />
                                             <label for="condition">Condition</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.condition"
+                                        <p v-if="editMobileDeviceForm.errors.condition"
                                             class="mt-2 text-xs text-red-600">{{
-                                                createMobileDeviceForm.errors.condition }}</p>
+                                                editMobileDeviceForm.errors.condition }}</p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.color" :options="colors" showClear
+                                            <Select v-model="editMobileDeviceForm.color" :options="colors" showClear
                                                 class="w-full" optionLabel="label" optionValue="value"
-                                                :invalid="!!createMobileDeviceForm.errors.color" />
+                                                :invalid="!!editMobileDeviceForm.errors.color" />
                                             <label for="color">Color</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.color" class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.color }}
+                                        <p v-if="editMobileDeviceForm.errors.color" class="mt-2 text-xs text-red-600">
+                                            {{ editMobileDeviceForm.errors.color }}
                                         </p>
                                     </div>
-                                    <div v-if="createMobileDeviceForm.phone_brand_id && !isAppleBrand">
+                                    <div v-if="editMobileDeviceForm.phone_brand_id && !isAppleBrand">
                                         <FloatLabel variant="on">
-                                            <Select v-model="createMobileDeviceForm.ram" :options="ram" showClear
+                                            <Select v-model="editMobileDeviceForm.ram" :options="ram" showClear
                                                 class="w-full" optionLabel="label" optionValue="value"
-                                                :invalid="!!createMobileDeviceForm.errors.ram" />
+                                                :invalid="!!editMobileDeviceForm.errors.ram" />
                                             <label for="ram">RAM</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.ram" class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.ram }}
+                                        <p v-if="editMobileDeviceForm.errors.ram" class="mt-2 text-xs text-red-600">
+                                            {{ editMobileDeviceForm.errors.ram }}
                                         </p>
                                     </div>
-                                    <div v-if="createMobileDeviceForm.phone_brand_id && isAppleBrand">
+                                    <div v-if="editMobileDeviceForm.phone_brand_id && isAppleBrand">
                                         <FloatLabel variant="on">
-                                            <InputNumber v-model="createMobileDeviceForm.battery_health" class="w-full"
+                                            <InputNumber v-model="editMobileDeviceForm.battery_health" class="w-full"
                                                 :min="0" :max="100" suffix="%"
-                                                :invalid="!!createMobileDeviceForm.errors.battery_health" />
+                                                :invalid="!!editMobileDeviceForm.errors.battery_health" />
                                             <label for="battery_health">Battery Health</label>
                                         </FloatLabel>
                                         <p class="text-xs text-gray-500 mt-1">Enter battery health %
                                             (0-100)</p>
-                                        <p v-if="createMobileDeviceForm.errors.battery_health"
+                                        <p v-if="editMobileDeviceForm.errors.battery_health"
                                             class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.battery_health }}
+                                            {{ editMobileDeviceForm.errors.battery_health }}
                                         </p>
                                     </div>
                                 </div>
@@ -149,8 +149,8 @@
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <FloatLabel variant="on">
-                                                <InputText v-model="createMobileDeviceForm.imei_number" class="w-full"
-                                                    :invalid="!!createMobileDeviceForm.errors.imei_number" />
+                                                <InputText v-model="editMobileDeviceForm.imei_number" class="w-full"
+                                                    :invalid="!!editMobileDeviceForm.errors.imei_number" />
                                                 <label>IMEI Number *</label>
                                             </FloatLabel>
                                             <div class="mt-2 flex items-start gap-3">
@@ -210,35 +210,35 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p v-if="createMobileDeviceForm.errors.imei_number"
+                                            <p v-if="editMobileDeviceForm.errors.imei_number"
                                                 class="mt-2 text-xs text-red-600">
-                                                {{ createMobileDeviceForm.errors.imei_number }}
+                                                {{ editMobileDeviceForm.errors.imei_number }}
                                             </p>
                                         </div>
                                         <div>
                                             <FloatLabel variant="on">
-                                                <InputText v-model="createMobileDeviceForm.carrier" class="w-full"
-                                                    :invalid="!!createMobileDeviceForm.errors.carrier" />
+                                                <InputText v-model="editMobileDeviceForm.carrier" class="w-full"
+                                                    :invalid="!!editMobileDeviceForm.errors.carrier" />
                                                 <label>Carrier</label>
                                             </FloatLabel>
                                             <p class="text-xs text-gray-500">Enter the carrier (e.g., Unlocked,
                                                 AT&T, Verizon)</p>
-                                            <p v-if="createMobileDeviceForm.errors.carrier"
+                                            <p v-if="editMobileDeviceForm.errors.carrier"
                                                 class="mt-2 text-xs text-red-600">
-                                                {{ createMobileDeviceForm.errors.carrier }}
+                                                {{ editMobileDeviceForm.errors.carrier }}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <FloatLabel variant="on">
-                                                <InputText v-model="createMobileDeviceForm.town" class="w-full"
-                                                    :invalid="!!createMobileDeviceForm.errors.town" />
+                                                <InputText v-model="editMobileDeviceForm.town" class="w-full"
+                                                    :invalid="!!editMobileDeviceForm.errors.town" />
                                                 <label>Location</label>
                                             </FloatLabel>
-                                            <p v-if="createMobileDeviceForm.errors.town"
+                                            <p v-if="editMobileDeviceForm.errors.town"
                                                 class="mt-2 text-xs text-red-600">
-                                                {{ createMobileDeviceForm.errors.town }}
+                                                {{ editMobileDeviceForm.errors.town }}
                                             </p>
                                         </div>
                                     </div>
@@ -262,8 +262,8 @@
                                 <div class="space-y-4">
                                     <div>
                                         <FloatLabel variant="on">
-                                            <InputText v-model="createMobileDeviceForm.listing_title" class="w-full"
-                                                :invalid="!!createMobileDeviceForm.errors.listing_title" />
+                                            <InputText v-model="editMobileDeviceForm.listing_title" class="w-full"
+                                                :invalid="!!editMobileDeviceForm.errors.listing_title" />
                                             <label>Listing Title *</label>
                                         </FloatLabel>
                                         <p class="text-xs text-gray-500">Create a clear, descriptive title (max 100
@@ -271,40 +271,40 @@
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Textarea v-model="createMobileDeviceForm.listing_description" rows="4"
+                                            <Textarea v-model="editMobileDeviceForm.listing_description" rows="4"
                                                 class="w-full"
-                                                :invalid="!!createMobileDeviceForm.errors.listing_description" />
+                                                :invalid="!!editMobileDeviceForm.errors.listing_description" />
                                             <label>Listing Description</label>
                                         </FloatLabel>
                                         <p class="text-xs text-gray-500">Describe in detail your listing and what is
                                             included for the buyer. (max 1000 characters)</p>
-                                        <p v-if="createMobileDeviceForm.errors.listing_description"
+                                        <p v-if="editMobileDeviceForm.errors.listing_description"
                                             class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.listing_description }}
+                                            {{ editMobileDeviceForm.errors.listing_description }}
                                         </p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Textarea v-model="createMobileDeviceForm.damage_wear_description" rows="4"
+                                            <Textarea v-model="editMobileDeviceForm.damage_wear_description" rows="4"
                                                 class="w-full"
-                                                :invalid="!!createMobileDeviceForm.errors.damage_wear_description" />
+                                                :invalid="!!editMobileDeviceForm.errors.damage_wear_description" />
                                             <label>Damage/Wear Description</label>
                                         </FloatLabel>
                                         <p class="text-xs text-gray-500">Describe any imperfections, damage the
                                             product has sustained, and/or repairs made. (max 1000 characters)</p>
-                                        <p v-if="createMobileDeviceForm.errors.damage_wear_description"
+                                        <p v-if="editMobileDeviceForm.errors.damage_wear_description"
                                             class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.damage_wear_description }}
+                                            {{ editMobileDeviceForm.errors.damage_wear_description }}
                                         </p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <InputNumber v-model="createMobileDeviceForm.price" :min="0" class="w-full"
-                                                :invalid="!!createMobileDeviceForm.errors.price" />
+                                            <InputNumber v-model="editMobileDeviceForm.price" :min="0" class="w-full"
+                                                :invalid="!!editMobileDeviceForm.errors.price" />
                                             <label>Price (₹) *</label>
                                         </FloatLabel>
-                                        <p v-if="createMobileDeviceForm.errors.price" class="mt-2 text-xs text-red-600">
-                                            {{ createMobileDeviceForm.errors.price }}
+                                        <p v-if="editMobileDeviceForm.errors.price" class="mt-2 text-xs text-red-600">
+                                            {{ editMobileDeviceForm.errors.price }}
                                         </p>
                                     </div>
                                 </div>
@@ -321,24 +321,31 @@
                     <!-- Upload Images Panel (now step 4) -->
                     <StepPanel v-slot="{ activateCallback }" value="4">
                         <div class="flex flex-col p-4">
-                            <div
-                                class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 p-6">
-                                <label for="cover_art" class="text-gray-500 font-medium text-sm">Cover
-                                    art</label>
+                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 p-6">
+                                <div class="mb-4">
+                                    <h2 class="text-xl sm:text-2xl font-semibold">Upload Images</h2>
+                                    <p class="text-sm text-gray-600 mt-1">Upload up to 5 high-quality images of your device</p>
+                                </div>
+
+                                <!-- Image Upload Section -->
+                                <label for="images" class="text-gray-500 font-medium text-sm">Device Images</label>
                                 <div class="mt-3">
-                                    <media-library-collection name="images"
-                                        :initial-value="createMobileDeviceForm.images" :validation-rules="{
+                                    <media-library-collection
+                                        name="images"
+                                        :initial-value="mobileDevice.media.images"
+                                        :validation-rules="{
                                             accept: ['image/jpeg', 'image/png', 'image/jpg'],
                                             maxSizeInKB: 5048
-                                        }" :max-items="5" multiple @change="handleImagesChange"
-                                        :validation-errors="validationErrorsImages" />
+                                        }"
+                                        :max-items="5"
+                                        multiple
+                                        @change="handleImagesChange"
+                                    />
                                 </div>
                             </div>
                             <div class="flex pt-6 justify-between">
-                                <Button label="Back" severity="secondary" icon="pi pi-arrow-left"
-                                    @click="activateCallback('3')" />
-                                <Button label="Submit" icon="pi pi-check" iconPos="right"
-                                    @click="submitMobileDeviceForm" />
+                                <Button label="Back" severity="secondary" icon="pi pi-arrow-left" @click="activateCallback('3')" />
+                                <Button label="Submit" icon="pi pi-check" iconPos="right" @click="submitMobileDeviceForm" />
                             </div>
                         </div>
                     </StepPanel>
@@ -377,29 +384,31 @@ const props = defineProps({
     phoneBrands: Array,
     phoneModels: Array,
     phoneVariants: Array,
+    mobileDevice: Object,
 });
 
 const page = usePage();
 
-const createMobileDeviceForm = useForm({
-    phone_brand_id: null,
-    phone_model_id: null,
-    phone_variant_id: null,
-    storage_capacity: null,
-    ram: null,
-    color: null,
-    condition: null,
-    price: null,
-    listing_title: null,
-    listing_description: null,
-    damage_wear_description: null,
-    images: [],
-    battery_health: null,
-    carrier: null,
-    city: null,
-    address: null,
-    imei_number: null,
-    is_active: true,
+const editMobileDeviceForm = useForm({
+    phone_brand_id: props.mobileDevice.phone_brand_id,
+    phone_model_id: props.mobileDevice.phone_model_id,
+    phone_variant_id: props.mobileDevice.phone_variant_id,
+    storage_capacity: props.mobileDevice.storage_capacity,
+    ram: props.mobileDevice.ram,
+    color: props.mobileDevice.color,
+    condition: props.mobileDevice.condition,
+    price: props.mobileDevice.price,
+    listing_title: props.mobileDevice.listing_title,
+    listing_description: props.mobileDevice.listing_description,
+    damage_wear_description: props.mobileDevice.damage_wear_description,
+    images:  [],
+    battery_health: props.mobileDevice.battery_health,
+    carrier: props.mobileDevice.carrier,
+    city: props.mobileDevice.city,
+    address: props.mobileDevice.address,
+    imei_number: props.mobileDevice.imei_number,
+    is_active: props.mobileDevice.is_active,
+    town: props.mobileDevice.town,
 });
 
 const validationErrorsImages = computed(() => ({
@@ -407,11 +416,11 @@ const validationErrorsImages = computed(() => ({
 }));
 
 const handleImagesChange = (media) => {
-    createMobileDeviceForm.images = media;
+    editMobileDeviceForm.images = media;
 };
 
 const submitMobileDeviceForm = () => {
-    createMobileDeviceForm.post(route("mobile-device.store"), {
+    editMobileDeviceForm.patch(route("mobile-device.update", props.mobileDevice.id), {
         preserveScroll: true,
         onSuccess: () => {
             // Add success notification/redirect logic here
@@ -486,57 +495,59 @@ const unsortedColors = [
 const colors = ref(unsortedColors.sort((a, b) => a.label.localeCompare(b.label)));
 
 const filteredVariants = computed(() => {
-    if (!createMobileDeviceForm.phone_brand_id) {
+    if (!editMobileDeviceForm.phone_brand_id) {
         return [];
     }
     return props.phoneVariants.filter(variant =>
-        variant.phone_brand_id === createMobileDeviceForm.phone_brand_id
+        variant.phone_brand_id === editMobileDeviceForm.phone_brand_id
     );
 });
 
 const filteredModels = computed(() => {
-    if (!createMobileDeviceForm.phone_variant_id) {
+    if (!editMobileDeviceForm.phone_variant_id) {
         return [];
     }
     return props.phoneModels.filter(model =>
-        model.phone_variant_id === createMobileDeviceForm.phone_variant_id
+        model.phone_variant_id === editMobileDeviceForm.phone_variant_id
     );
 });
 
 const isAppleBrand = computed(() => {
+    if (!props.phoneBrands) return false;
+
     const appleBrandId = props.phoneBrands.find(brand =>
         brand.name.toLowerCase() === 'apple'
     )?.id;
-    return createMobileDeviceForm.phone_brand_id === appleBrandId;
+    return editMobileDeviceForm.phone_brand_id === appleBrandId;
 });
 
 const validateAndProceed = async (activateCallback, fromStep) => {
     const stepValidationMap = {
         '1': {
-            storage_capacity: createMobileDeviceForm.storage_capacity,
-            condition: createMobileDeviceForm.condition,
-            phone_brand_id: createMobileDeviceForm.phone_brand_id,
-            phone_variant_id: createMobileDeviceForm.phone_variant_id,
-            phone_model_id: createMobileDeviceForm.phone_model_id,
-            color: createMobileDeviceForm.color,
+            storage_capacity: editMobileDeviceForm.storage_capacity,
+            condition: editMobileDeviceForm.condition,
+            phone_brand_id: editMobileDeviceForm.phone_brand_id,
+            phone_variant_id: editMobileDeviceForm.phone_variant_id,
+            phone_model_id: editMobileDeviceForm.phone_model_id,
+            color: editMobileDeviceForm.color,
             is_apple: isAppleBrand.value,
             ...(isAppleBrand.value
-                ? { battery_health: createMobileDeviceForm.battery_health }
-                : { ram: createMobileDeviceForm.ram }
+                ? { battery_health: editMobileDeviceForm.battery_health }
+                : { ram: editMobileDeviceForm.ram }
             )
         },
         '2': {
-            imei_number: createMobileDeviceForm.imei_number,
-            carrier: createMobileDeviceForm.carrier
+            imei_number: editMobileDeviceForm.imei_number,
+            carrier: editMobileDeviceForm.carrier
         },
         '3': {
-            listing_title: createMobileDeviceForm.listing_title,
-            listing_description: createMobileDeviceForm.listing_description,
-            damage_wear_description: createMobileDeviceForm.damage_wear_description,
-            price: createMobileDeviceForm.price
+            listing_title: editMobileDeviceForm.listing_title,
+            listing_description: editMobileDeviceForm.listing_description,
+            damage_wear_description: editMobileDeviceForm.damage_wear_description,
+            price: editMobileDeviceForm.price
         },
         '4': {
-            images: createMobileDeviceForm.images
+            images: editMobileDeviceForm.images
         }
     };
 
@@ -552,7 +563,7 @@ const validateAndProceed = async (activateCallback, fromStep) => {
 
         // If validation passes, clear errors for this step's fields
         Object.keys(stepValidationMap[fromStep]).forEach(field => {
-            createMobileDeviceForm.clearErrors(field);
+            editMobileDeviceForm.clearErrors(field);
         });
 
         // Proceed to next step
@@ -561,12 +572,12 @@ const validateAndProceed = async (activateCallback, fromStep) => {
     } catch (error) {
         if (error.response?.data?.errors) {
             // Clear previous errors first
-            createMobileDeviceForm.clearErrors();
+            editMobileDeviceForm.clearErrors();
 
             // Set new validation errors
             Object.entries(error.response.data.errors).forEach(([field, messages]) => {
                 const errorMessage = Array.isArray(messages) ? messages[0] : messages;
-                createMobileDeviceForm.setError(field, errorMessage);
+                editMobileDeviceForm.setError(field, errorMessage);
             });
         }
     }
