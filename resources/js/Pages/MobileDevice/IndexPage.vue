@@ -45,7 +45,7 @@
 
         <div class="space-y-16 mt-6">
             <div class="text-center py-16 bg-gradient-to-b from-white to-gray-50 rounded-xl shadow-sm">
-                <h1 class="text-5xl font-bold mb-4 text-gray-800 animate-fade-in">Phones For Sale</h1>
+                <h1 class="text-5xl font-semibold mb-4 text-gray-800 animate-fade-in">Phones For Sale</h1>
                 <p class="text-gray-600 mb-8 text-lg">Best deals on cheap phones and used phones.</p>
                 <div class="flex justify-center gap-6">
                     <Button severity="contrast" outlined>
@@ -67,7 +67,7 @@
 
             <div class="space-y-20">
                 <section class="phone-section" aria-labelledby="iphone-section">
-                    <h2 id="iphone-section" class="text-3xl font-bold text-center mb-8 text-gray-800">
+                    <h2 id="iphone-section" class="text-3xl font-semibold text-center mb-8 text-gray-800">
                         {{ deviceConfig.iphone.title }}
                     </h2>
                     <div v-if="iphoneDevices.length" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -94,7 +94,7 @@
                 </section>
 
                 <section class="phone-section" aria-labelledby="samsung-section">
-                    <h2 id="samsung-section" class="text-3xl font-bold text-center mb-8 text-gray-800">
+                    <h2 id="samsung-section" class="text-3xl font-semibold text-center mb-8 text-gray-800">
                         {{ deviceConfig.samsung.title }}
                     </h2>
                     <div v-if="samsungDevices.length" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -122,7 +122,7 @@
                 </section>
 
                 <section class="phone-section" aria-labelledby="pixel-section">
-                    <h2 id="pixel-section" class="text-2xl font-bold text-center mb-6 text-gray-800">
+                    <h2 id="pixel-section" class="text-2xl font-semibold text-center mb-6 text-gray-800">
                         {{ deviceConfig.pixel.title }}
                     </h2>
                     <div v-if="pixelDevices.length" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

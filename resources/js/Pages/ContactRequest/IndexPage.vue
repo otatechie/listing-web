@@ -12,8 +12,8 @@
                 <template #header>
                     <div class="flex justify-end">
                         <span class="p-input-icon-left">
-                            <i class="pi pi-search" />
-                            <InputText v-model="filters['global'].value" placeholder="Search..." class="p-inputtext-sm" />
+                            <InputText v-model="filters['global'].value" placeholder="Search..."
+                                class="p-inputtext-sm" />
                         </span>
                     </div>
                 </template>
@@ -25,10 +25,26 @@
                     </div>
                 </template>
 
-                <Column field="mobile_device.phone_model.model_number" header="Device" sortable>
+                <Column field="device.brand" header="Device" sortable>
                     <template #body="{ data }">
                         <span class="text-gray-600">
-                            {{ data.mobile_device?.phone_brand?.name }} {{ data.mobile_device?.phone_variant?.name }}
+                            {{ data.device?.brand }} {{ data.device?.variant }}
+                        </span>
+                    </template>
+                </Column>
+
+                <Column field="device.model" header="Model" sortable>
+                    <template #body="{ data }">
+                        <span class="text-gray-600">
+                            {{ data.device?.model }}
+                        </span>
+                    </template>
+                </Column>
+
+                <Column field="device.price" header="Price" sortable>
+                    <template #body="{ data }">
+                        <span class="text-gray-600">
+                            {{ data.device?.price }}
                         </span>
                     </template>
                 </Column>
@@ -51,12 +67,6 @@
                     </template>
                 </Column>
 
-                <Column field="seller.name" header="Seller" sortable>
-                    <template #body="{ data }">
-                        <span class="text-gray-600">{{ data.seller?.name }}</span>
-                    </template>
-                </Column>
-
                 <Column field="approved_at" header="Approved" sortable>
                     <template #body="{ data }">
                         <span class="text-gray-600">
@@ -73,15 +83,22 @@
                     </template>
                 </Column>
 
-                <Column field="created_at" header="Created" sortable>
+                <Column field="created_at" header="Requested" sortable>
                     <template #body="{ data }">
                         <span class="text-gray-600">{{ data.created_at_formatted }}</span>
                     </template>
                 </Column>
 
-                <template #footer>
-                    <span class="text-gray-500 text-xs">Total devices: {{ contactRequests.length }}</span>
-                </template>
+                <!-- Update Actions column -->
+                <Column header="Actions" :exportable="false" style="min-width:12rem">
+                    <template #body="{ data }">
+                        <div class="flex gap-2">
+                            <Button icon="pi pi-check" severity="success" size="small" rounded aria-label="Cancel" />
+
+                            <Button icon="pi pi-times" severity="danger" size="small" rounded aria-label="Cancel" />
+                        </div>
+                    </template>
+                </Column>
             </DataTable>
         </div>
     </div>
@@ -96,6 +113,7 @@ import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';
 import { FilterMatchMode } from '@primevue/core/api';
 import InputText from 'primevue/inputtext';
+import Button from 'primevue/button';
 
 const emit = defineEmits(['filter-changed']);
 
@@ -117,9 +135,21 @@ const filters = ref({
     'mobile_device.phone_model.model_number': { value: null, matchMode: FilterMatchMode.EQUALS },
 });
 
+
 const handleRowClick = (event) => {
     const requestId = event.data.id;
     window.location.href = `/contact-request/${requestId}`;
+};
+
+const handleReject = (requestId) => {
+    if (confirm('Are you sure you want to reject this contact request?')) {
+        router.post(`/contact-request/${requestId}/reject`, {}, {
+            preserveScroll: true,
+            onSuccess: () => {
+                // Optional: Add success notification here
+            },
+        });
+    }
 };
 </script>
 

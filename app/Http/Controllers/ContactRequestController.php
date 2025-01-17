@@ -25,6 +25,12 @@ class ContactRequestController extends Controller
         $contactRequests->through(function ($request) {
             $request->created_at_formatted = $request->created_at->diffForHumans();
             $request->created_at = $request->created_at->toJSON();
+            $request->device = [
+                'brand' => $request->mobileDevice->phoneBrand?->name,
+                'variant' => $request->mobileDevice->phoneVariant?->name,
+                'model' => $request->mobileDevice->phoneModel?->model_number,
+                'price' => $request->mobileDevice->price,
+            ];
             return $request;
         });
 

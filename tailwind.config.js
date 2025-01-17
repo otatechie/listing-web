@@ -12,8 +12,8 @@ export default {
     theme: {
         extend: {},
         fontFamily: {
-            heading: ["Alexandria", "sans-serif"],
-            sans: ["Anuphan", "sans-serif"],
+            heading: ["Outfit", "sans-serif"],
+            sans: ["Outfit", "sans-serif"],
         },
     },
     plugins: [forms],

@@ -76,24 +76,14 @@
 
     <slot></slot>
 
-    <Footer />
-
-    <div class="fixed bottom-0 left-0 right-0 z-50">
-        <GlobalAudioPlayer />
-    </div>
-
 </template>
 
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3'
 import { ref } from 'vue'
-import Footer from '../Shared/Public/Footer.vue'
 import Logo from '../Shared/Logo.vue'
-import GlobalAudioPlayer from '@/Components/GlobalAudioPlayer.vue';
-import { useAudioStore } from '@/Stores/audioStore';
 import FlashMessage from '../Shared/FlashMessage.vue';
 const page = usePage()
 const open = ref(false)
-const audioStore = useAudioStore()
 
 </script>

@@ -50,7 +50,7 @@
                 <div class="container mx-auto flex justify-center space-x-6">
                     <!-- iPhones Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>iPhones</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -67,7 +67,7 @@
 
                     <!-- Phones Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>Phones</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -84,7 +84,7 @@
 
                     <!-- Watches Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>Watches</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -101,7 +101,7 @@
 
                     <!-- Tablets Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>Tablets</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -118,7 +118,7 @@
 
                     <!-- Laptops Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>Laptops</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -135,7 +135,7 @@
 
                     <!-- Audio Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>Audio</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -152,7 +152,7 @@
 
                     <!-- Sell Dropdown -->
                     <div class="relative group">
-                        <button class="flex items-center space-x-1 text-sm font-semibold">
+                        <button class="flex items-center space-x-1 text-sm font-medium">
                             <span>Sell</span>
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -206,7 +206,7 @@
             <div class="container mx-auto px-4 max-w-7xl relative">
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-6 mb-8">
                     <div class="backdrop-blur-sm p-4 rounded-lg bg-indigo-800/30">
-                        <h3 class="mb-6 text-md font-semibold text-white tracking-wide flex items-center gap-2">
+                        <h3 class="mb-6 text-md font-medium text-white tracking-wide flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -227,7 +227,7 @@
                     </div>
 
                     <div class="backdrop-blur-sm p-4 rounded-lg bg-indigo-800/30">
-                        <h3 class="mb-6 text-md font-semibold text-white tracking-wide flex items-center gap-2">
+                        <h3 class="mb-6 text-md font-medium text-white tracking-wide flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -248,7 +248,7 @@
                     </div>
 
                     <div class="backdrop-blur-sm p-4 rounded-lg bg-indigo-800/30">
-                        <h3 class="mb-6 text-md font-semibold text-white tracking-wide flex items-center gap-2">
+                        <h3 class="mb-6 text-md font-medium text-white tracking-wide flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -269,7 +269,7 @@
                     </div>
 
                     <div class="backdrop-blur-sm p-4 rounded-lg bg-indigo-800/30">
-                        <h3 class="mb-6 text-md font-semibold text-white tracking-wide flex items-center gap-2">
+                        <h3 class="mb-6 text-md font-medium text-white tracking-wide flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -358,7 +358,6 @@ import NavProfile from '../Shared/NavProfile.vue';
 import NavSidebarMobile from '../Shared/NavSidebarMobile.vue';
 import NavSearch from '../Shared/NavSearch.vue';
 import FlashMessage from '../Shared/FlashMessage.vue';
-
 
 const page = usePage();
 const user = computed(() => page.props.auth?.user);
