@@ -209,7 +209,49 @@ class MobileDeviceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $baseRules = [
+            'listing_title' => ['required', 'string'],
+            'listing_description' => ['required', 'string'],
+            'damage_wear_description' => ['nullable', 'string'],
+            'ram' => [
+                'required_if:is_apple,false',
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($value && !$request->is_apple && !in_array($value, [64, 128, 256, 512, 1024])) {
+                        $fail('The RAM must be one of the following values: 64, 128, 256, 512, or 1024.');
+                    }
+                }
+            ],
+            'price' => ['required', 'numeric'],
+            'storage_capacity' => ['required', 'string', 'in:64,128,256,512,1024'],
+            'condition' => ['required', 'in:new,mint,good,fair'],
+            'images' => ['array'],
+            'phone_brand_id' => ['required', 'exists:phone_brands,id'],
+            'phone_variant_id' => ['nullable', 'exists:phone_variants,id'],
+            'phone_model_id' => ['nullable', 'exists:phone_models,id'],
+            'color' => ['required', 'in:black,white,gold,pacific_blue,deep_purple,sierra_blue,midnight,starlight,space_gray,silver,rose_gold,purple,pink,mint,lavender,green,gray,graphite,cream,coral,burgundy,blue,alpine_green,titanium,yellow'],
+            'carrier' => ['nullable', 'string'],
+            'location' => ['nullable', 'string', 'max:100'],
+            'is_active' => ['boolean'],
+            'battery_health' => [
+                'required_if:is_apple,true',
+                'nullable',
+                'numeric',
+                'min:0',
+                'max:100'
+            ],
+        ];
+
+        $validatedData = $request->validate($baseRules);
+
+        $mobileDevice = MobileDevice::findOrFail($id);
+        $mobileDevice->update($validatedData);
+
+        if ($request->has('images')) {
+            $mobileDevice->syncFromMediaLibraryRequest($request->images)
+                ->toMediaCollection('images');
+        }
+
+        session()->flash('success', 'Mobile device updated successfully');
     }
 
     /**
