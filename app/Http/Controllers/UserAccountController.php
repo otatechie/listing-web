@@ -70,8 +70,8 @@ class UserAccountController extends Controller
 
         return Inertia::render('UserAccount/IndexPageProfile', [
             'user' => array_merge($user->toArray(), [
-                'created_at_human' => $user->created_at->diffForHumans(),
-                'created_at_date' => $user->created_at->format('M d, Y')
+                'created_at_human' => $user->created_at ? $user->created_at->diffForHumans() : null,
+                'created_at_date' => $user->created_at ? $user->created_at->format('M d, Y') : null
             ]),
             'userListings' => $userListings
         ]);

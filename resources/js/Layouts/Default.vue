@@ -11,7 +11,8 @@
                     <Link href="/" class="text-white text-xl font-bold">
                     Your Logo
                     </Link>
-                    <button type="button" class="text-white hover:text-gray-200" @click="toggleSidebar" data-menu-button>
+                    <button type="button" class="text-white hover:text-gray-200" @click="toggleSidebar"
+                        data-menu-button>
                         <span class="sr-only">Open sidebar</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -28,7 +29,7 @@
 
                 <!-- Right side icons -->
                 <div class="flex items-center gap-4">
-                    <button type="button" class="text-white hover:text-gray-200">
+                    <button type="button" class="text-white hover:text-gray-200" title="Help">
                         <span class="sr-only">Help</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -37,7 +38,17 @@
                         </svg>
                     </button>
 
+                    <!-- Profile/Login section -->
                     <NavProfile v-if="user" :user="user"></NavProfile>
+                    <Link v-else href="/login" class="text-white hover:text-gray-200 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
+                         viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                    Login
+                    </Link>
 
                 </div>
             </div>
@@ -188,12 +199,10 @@
         </div>
 
         <!-- Sidebar -->
-        <NavSidebarDesktop data-sidebar
-            :class="[
-                'fixed left-0 top-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out',
-                isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-            ]"
-            @close="closeSidebar"></NavSidebarDesktop>
+        <NavSidebarDesktop data-sidebar :class="[
+            'fixed left-0 top-0 z-50 h-full w-64 transform bg-white transition-transform duration-300 ease-in-out',
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        ]" @close="closeSidebar"></NavSidebarDesktop>
 
         <!-- Footer -->
         <footer class="relative bg-gradient-to-b from-indigo-900 to-indigo-950 text-gray-300 py-12 overflow-hidden">
@@ -303,8 +312,7 @@
                 <div class="border-t border-indigo-700/50 pt-6">
                     <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                         <div class="flex items-center space-x-6">
-                            <a href="#"
-                                class="text-gray-400 hover:text-indigo-400">
+                            <a href="#" class="text-gray-400 hover:text-indigo-400">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" />
@@ -355,7 +363,6 @@ import { ref, computed, onUnmounted } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import NavSidebarDesktop from '../Shared/NavSidebarDesktop.vue';
 import NavProfile from '../Shared/NavProfile.vue';
-import NavSidebarMobile from '../Shared/NavSidebarMobile.vue';
 import NavSearch from '../Shared/NavSearch.vue';
 import FlashMessage from '../Shared/FlashMessage.vue';
 

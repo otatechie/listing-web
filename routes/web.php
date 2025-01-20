@@ -43,10 +43,21 @@ Route::controller(PageController::class)
         Route::get('help', 'help')->name('help');
     });
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('phone-variant/{slug}', [PhoneVariantController::class, 'index'])->name('phone.variant.index');
+Route::resource('contact-request', ContactRequestController::class)
+    ->except(['create', 'edit']);
+
+Route::get('user/profile/{user}', [UserAccountController::class, 'userProfile'])
+    ->name('user.profile');
+
+Route::get('mobile-device', [MobileDeviceController::class, 'index'])->name('mobile-device.index');
+Route::get('mobile-device/{mobile_device}', [MobileDeviceController::class, 'show'])->name('mobile-device.show');
+
 // Authenticated Routes
-Route::middleware(['web','auth'])->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
     // Home Route
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
     // User Account Routes
     Route::name('user.')->group(function () {
@@ -56,8 +67,6 @@ Route::middleware(['web','auth'])->group(function () {
             ->name('two.factor');
         Route::get('user/listing', [UserAccountController::class, 'userListing'])
             ->name('listing');
-        Route::get('user/profile/{user}', [UserAccountController::class, 'userProfile'])
-            ->name('profile');
     });
 
 
@@ -84,15 +93,10 @@ Route::middleware(['web','auth'])->group(function () {
     // Authentication Routes
     Route::post('logout', [LogoutController::class, 'destroy'])
         ->name('logout');
+
+    Route::resource('admin/category', AdminCategoryController::class);
+    Route::resource('mobile-device', MobileDeviceController::class)
+        ->except(['index', 'show']);
+    Route::post('mobile-device/validate-step/{step}', [MobileDeviceController::class, 'validateStep'])
+        ->name('mobile-device.validate-step');
 });
-
-
-Route::resource('admin/category', AdminCategoryController::class);
-
-Route::resource('mobile-device', MobileDeviceController::class);
-Route::post('mobile-device/validate-step/{step}', [MobileDeviceController::class, 'validateStep'])
-    ->name('mobile-device.validate-step');
-Route::get('phone-variant/{slug}', [PhoneVariantController::class, 'index'])->name('phone.variant.index');
-
-Route::resource('contact-request', ContactRequestController::class)
-    ->except(['create', 'edit']);

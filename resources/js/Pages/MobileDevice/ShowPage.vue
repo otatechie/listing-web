@@ -75,7 +75,9 @@
                             class="w-full" />
                         </Link>
                     </template>
+
                 </div>
+                <div class="border-t mt-6 border-gray-100"></div>
             </div>
 
             <!-- Product Images Grid with improved layout -->
@@ -154,8 +156,8 @@
                             <div class="text-sm text-gray-600">
                                 <p>• Member since: {{ mobileDevice.joined_at_human }}</p>
                                 <p>• Listings: {{ mobileDevice.count_listings }} total, 1 active</p>
-                                <p>• Location: <i class="pi pi-map-marker"></i> {{ mobileDevice.city }}, {{
-                                    mobileDevice.location }}</p>
+                                <p>• Location: <i class="pi pi-map-marker"></i> {{ mobileDevice.location }}, {{
+                                    mobileDevice.region }}</p>
                             </div>
                         </div>
                         <i class="pi pi-chevron-right text-gray-400"></i>
@@ -258,7 +260,7 @@
     </Dialog>
 
     <!-- Discussion Section -->
-    <div class="relative max-w-5xl bg-white rounded border pt-4 mx-auto mt-8 shadow-sm">
+    <div class="relative max-w-5xl bg-white rounded border pt-4 mx-auto my-8 shadow-sm">
         <!-- Header -->
         <div class="absolute px-4 py-1.5 top-0 left-0 bg-gray-100 rounded-br-lg">
             <div class="flex items-center gap-2">

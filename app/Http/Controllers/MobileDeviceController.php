@@ -117,7 +117,7 @@ class MobileDeviceController extends Controller
     public function show(string $id)
     {
         $mobileDevice = MobileDevice::with([
-            'user:id,name,email,created_at',
+            'user:id,name,email,location,region,created_at',
             'phoneBrand:id,name',
             'phoneModel:id,model_number',
             'phoneVariant:id,name',

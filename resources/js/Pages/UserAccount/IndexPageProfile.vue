@@ -89,31 +89,40 @@
                 </div>
 
                 <!-- Listing Items -->
-                <div v-for="listing in userListings" :key="listing.id"
-                    class="py-4 flex items-center">
-                    <img :src="listing.media.images[0]?.original_url || 'default-phone.jpg'"
-                        :alt="listing.phone_model.name" class="w-16 h-20 object-cover rounded-sm">
-                    <div class="flex-1 ml-4">
-                        <h3 class="font-medium text-gray-700">{{ listing.phone_brand.name }} {{
-                            listing.phone_variant.name }} {{ listing.phone_model.name }}</h3>
-                        <p class="text-gray-500 text-sm">
-                            {{ listing.condition.charAt(0).toUpperCase() + listing.condition.slice(1) }} •
-                            {{ listing.color.charAt(0).toUpperCase() + listing.color.slice(1) }} •
-                            {{ listing.storage_capacity >= 1024
-                                ? (listing.storage_capacity / 1024) + ' TB'
-                                : listing.storage_capacity + ' GB'
-                            }}
-                            {{ listing.phone_brand.name.toLowerCase() === 'apple'
-                                ? ` • ${listing.battery_health}% Battery`
-                                : ''
-                            }}
-                            {{ listing.ram ? ` • ${listing.ram}GB RAM` : '' }}
-                        </p>
+                <div v-if="userListings && userListings.length > 0">
+                    <div v-for="listing in userListings" :key="listing.id"
+                        class="py-4 flex items-center relative">
+                        <img :src="listing.media?.images?.[0]?.original_url || 'default-phone.jpg'"
+                            :alt="listing?.phone_model?.name"
+                            class="w-16 h-20 object-cover rounded-sm">
+                        <div class="flex-1 ml-4">
+                            <h3 class="font-medium text-gray-700">
+                                {{ listing?.phone_brand?.name }}
+                                {{ listing?.phone_variant?.name }}
+                                {{ listing?.phone_model?.name }}
+                            </h3>
+                            <p class="text-gray-500 text-sm">
+                                {{ listing.condition.charAt(0).toUpperCase() + listing.condition.slice(1) }} •
+                                {{ listing.color.charAt(0).toUpperCase() + listing.color.slice(1) }} •
+                                {{ listing.storage_capacity >= 1024
+                                    ? (listing.storage_capacity / 1024) + ' TB'
+                                    : listing.storage_capacity + ' GB'
+                                }}
+                                {{ listing.phone_brand.name.toLowerCase() === 'apple'
+                                    ? ` • ${listing.battery_health}% Battery`
+                                    : ''
+                                }}
+                                {{ listing.ram ? ` • ${listing.ram}GB RAM` : '' }}
+                            </p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-2xl font-semibold text-indigo-600">${{ listing.price }}</p>
+                        </div>
+                        <div class="border-b border-gray-200 w-full absolute bottom-0 left-0"></div>
                     </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-semibold text-indigo-600">${{ listing.price }}</p>
-                    </div>
-                    <div class="border-b border-gray-200 w-full absolute bottom-0 left-0"></div>
+                </div>
+                <div v-else class="text-center py-4 text-gray-500">
+                    No active listings found
                 </div>
             </div>
         </div>
@@ -126,24 +135,28 @@ import Button from 'primevue/button';
 import Breadcrumb from 'primevue/breadcrumb';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import Dialog from 'primevue/dialog';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 import InputText from 'primevue/inputtext';
 import { Head } from '@inertiajs/vue3';
 import Textarea from 'primevue/textarea';
-
 
 defineOptions({
     layout: Default,
 })
 
-defineProps({
+const props = defineProps({
     user: {
         type: Object,
-        required: true
+        required: true,
+        default: () => ({})
     },
     userListings: {
         type: Array,
-        required: true
+        required: true,
+        default: () => []
     }
-})
+});
+
+console.log('User:', props.user);
+console.log('UserListings:', props.userListings);
 </script>
