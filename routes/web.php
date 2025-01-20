@@ -58,6 +58,8 @@ Route::middleware(['web','auth'])->group(function () {
             ->name('two.factor');
         Route::get('user/listing', [UserAccountController::class, 'userListing'])
             ->name('listing');
+        Route::get('user/profile/{user}', [UserAccountController::class, 'userProfile'])
+            ->name('profile');
     });
 
     Route::post('add-reaction', [ReactionController::class, 'addOrUpdateReaction'])->name('reaction.add');

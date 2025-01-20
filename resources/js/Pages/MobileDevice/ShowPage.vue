@@ -136,6 +136,7 @@
                     </div>
 
                     <!-- Seller Information Section -->
+                    <Link :href="route('user.profile', mobileDevice.user_id)">
                     <div
                         class="flex items-center gap-4 mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-white transition-colors cursor-pointer">
                         <img src="/path/to/avatar.jpg" alt="Seller avatar"
@@ -158,6 +159,7 @@
                         </div>
                         <i class="pi pi-chevron-right text-gray-400"></i>
                     </div>
+                    </Link>
 
                     <!-- Dates Section with improved layout -->
                     <div class="grid grid-cols-3 gap-4 mb-8 bg-gray-50 p-4 rounded-lg">
@@ -266,25 +268,15 @@
 
         <!-- Comment Form -->
         <form class="mt-8">
-            <div class="w-full px-4 mb-3">
-                <textarea
-                    class="bg-gray-50 rounded-lg border border-gray-200 leading-normal w-full h-28 p-4 font-medium placeholder-gray-400 focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 focus:bg-white transition-all"
-                    name="body"
-                    placeholder="Share your thoughts or ask a question..."
-                    required="">
-                </textarea>
+            <div class="w-full px-6 mb-3">
+                <Textarea v-model="value" rows="5" cols="30" class="w-full" />
             </div>
             <div class="w-full flex justify-between px-4 pb-4">
                 <div class="text-sm text-gray-500">
                     <i class="pi pi-info-circle"></i>
-                    <span class="ml-1">Please be polite, your comment will be visible to all users</span>
+                    <span class="ml-1">Please be polite, your comment will be visible to everyone</span>
                 </div>
-                <Button
-                    type="submit"
-                    label="Post Comment"
-                    icon="pi pi-send"
-                    size="small"
-                />
+                <Button type="submit" label="Post Comment" icon="pi pi-send" size="small" />
             </div>
         </form>
     </div>
@@ -300,6 +292,8 @@ import Dialog from 'primevue/dialog';
 import { useForm } from '@inertiajs/vue3';
 import InputText from 'primevue/inputtext';
 import { Head } from '@inertiajs/vue3';
+import Textarea from 'primevue/textarea';
+
 const props = defineProps({
     mobileDevice: {
         type: Object,
