@@ -139,7 +139,8 @@
                     <Link :href="route('user.profile', mobileDevice.user_id)">
                     <div
                         class="flex items-center gap-4 mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-white transition-colors cursor-pointer">
-                        <img src="/path/to/avatar.jpg" alt="Seller avatar"
+                        <img :src="`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(mobileDevice.user.name)}&backgroundType=gradientLinear&scale=100&fontSize=50`" :alt="`${mobileDevice.user.name}'s profile`"
+
                             class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                         <div class="flex-grow">
                             <div class="flex items-center gap-2">

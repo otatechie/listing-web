@@ -9,8 +9,8 @@
                 class="max-w-4xl mx-auto bg-white rounded-md shadow-md hover:shadow-md transition-shadow duration-200 p-8 mt-6 border border-indigo-100">
                 <div class="flex items-center gap-8">
                     <!-- Profile Image -->
-                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-indigo-100 shadow-md">
-                        <img src="profile-image.jpg" alt="Jeremy's profile" class="w-full h-full object-cover">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-indigo-100 shadow-sm">
+                        <img :src="`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(user.name)}&backgroundType=gradientLinear&scale=100&fontSize=50`" :alt="`${user.name}'s profile`" class="w-full h-full object-cover">
                     </div>
 
                     <!-- Profile Info -->
