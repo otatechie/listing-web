@@ -13,9 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobileDeviceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneVariantController;
-use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\UserAccountController;
-use App\Http\Controllers\UserBeatFileController;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\ContactRequestController;
 use Illuminate\Support\Facades\Route;
@@ -62,11 +60,6 @@ Route::middleware(['web','auth'])->group(function () {
             ->name('profile');
     });
 
-    Route::post('add-reaction', [ReactionController::class, 'addOrUpdateReaction'])->name('reaction.add');
-
-
-    // Beat Management Routes
-    Route::resource('upload-beat', UserBeatFileController::class)->except(['create']);
 
     // Admin Routes
     Route::prefix('admin')->name('admin.')->group(function () {
