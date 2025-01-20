@@ -25,8 +25,7 @@ class UserAccountController extends Controller
         $profile = $user->profile;
 
         return Inertia::render('UserAccount/IndexPage', [
-            'user' => array_merge($user->only('name', 'email', 'username', 'city', 'country'), [
-                'is_setup_complete' => $profile->is_setup_complete ?? false
+            'user' => array_merge($user->only('name', 'email', 'username', 'region',), [
             ]),
             'countries' => Arr::sort(countries()),
             'profile' => $profile,

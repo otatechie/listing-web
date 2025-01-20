@@ -40,41 +40,30 @@
                                     </p>
                                 </div>
 
-                                <div class="pt-4">
-                                    <FloatLabel variant="on">
-                                        <InputText id="location" v-model="profileForm.location" required
-                                            :invalid="!!profileForm.errors.location" class="w-full" />
-                                        <label for="location">Location</label>
-                                    </FloatLabel>
-                                    <p v-if="profileForm.errors.location" class="text-xs mt-2 text-red-600">
-                                        {{ profileForm.errors.location }}
-                                    </p>
-                                </div>
-
                                 <div class="pt-4 grid grid-cols-2 gap-4">
                                     <div>
                                         <FloatLabel variant="on">
-                                            <InputText id="region" v-model="profileForm.region" required type="text"
-                                                :invalid="!!profileForm.errors.region" class="w-full" />
-                                            <label for="city">Region</label>
+                                            <InputText id="location" v-model="profileForm.location" required
+                                                :invalid="!!profileForm.errors.location" class="w-full" />
+                                            <label for="location">Location</label>
                                         </FloatLabel>
-                                        <p v-if="profileForm.errors.region" class="text-xs mt-2 text-red-600">
-                                            {{ profileForm.errors.region }}
+                                        <p v-if="profileForm.errors.location" class="text-xs mt-2 text-red-600">
+                                            {{ profileForm.errors.location }}
                                         </p>
                                     </div>
                                     <div>
                                         <FloatLabel variant="on">
-                                            <Select v-model="profileForm.country" :options="countryOptions"
-                                                optionLabel="label" :option-value="'value'" showClear class="w-full"
-                                                :invalid="!!profileForm.errors.country">
+                                            <Select v-model="profileForm.region" :options="regions" optionLabel="name"
+                                                :option-value="'value'" showClear class="w-full"
+                                                :invalid="!!profileForm.errors.region">
                                                 <template #option="slotProps">
-                                                    {{ slotProps.option.flag }} {{ slotProps.option.label }}
+                                                    {{ slotProps.option.name }}
                                                 </template>
                                             </Select>
-                                            <label for="country">Country</label>
+                                            <label for="region">Region</label>
                                         </FloatLabel>
-                                        <p v-if="profileForm.errors.country" class="mt-2 text-xs text-red-600">
-                                            {{ profileForm.errors.country }}
+                                        <p v-if="profileForm.errors.region" class="mt-2 text-xs text-red-600">
+                                            {{ profileForm.errors.region }}
                                         </p>
                                     </div>
                                 </div>
@@ -153,7 +142,7 @@
 
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import Default from '../../Layouts/Default.vue';
 import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
@@ -211,4 +200,23 @@ const countryOptions = computed(() => {
         flag: countryData.flag
     }));
 });
+
+const regions = ref([
+    { name: 'Greater Accra', value: 'Greater Accra' },
+    { name: 'Ashanti', value: 'Ashanti' },
+    { name: 'Eastern', value: 'Eastern' },
+    { name: 'Western', value: 'Western' },
+    { name: 'Central', value: 'Central' },
+    { name: 'Volta', value: 'Volta' },
+    { name: 'Northern', value: 'Northern' },
+    { name: 'Upper East', value: 'Upper East' },
+    { name: 'Upper West', value: 'Upper West' },
+    { name: 'Bono', value: 'Bono' },
+    { name: 'Bono East', value: 'Bono East' },
+    { name: 'Ahafo', value: 'Ahafo' },
+    { name: 'Western North', value: 'Western North' },
+    { name: 'Oti', value: 'Oti' },
+    { name: 'Savannah', value: 'Savannah' },
+    { name: 'North East', value: 'North East' }
+].sort((a, b) => a.name.localeCompare(b.name)));
 </script>

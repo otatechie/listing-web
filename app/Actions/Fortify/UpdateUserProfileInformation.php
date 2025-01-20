@@ -10,13 +10,6 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
-    protected $protectedNames = [
-        'admin',
-        'support',
-        'help',
-        'official',
-    ];
-
     public function update(User $user, array $input): void
     {
         Validator::make($input, [
@@ -29,41 +22,25 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
-
-            'username' => [
-                'nullable',
-                'string',
-                'min:3',
-                'max:30',
-                Rule::unique(User::class)->ignore($user->id),
-                'regex:/^[a-zA-Z0-9][a-zA-Z0-9\s.-]*[a-zA-Z0-9]$/',
-                'not_regex:/^\d+$/',
-                'not_regex:/\s{2,}/',
-                function ($attribute, $value, $fail) {
-                    // Protected names check
-                    if (in_array(strtolower($value), array_map('strtolower', $this->protectedNames))) {
-                        $fail('This artist name is protected. If you are the legitimate owner, please contact support for verification.');
-                    }
-                    // Similar names check
-                    $sanitizedValue = strtolower(preg_replace('/[._\-\s]/', '', $value));
-                    foreach ($this->protectedNames as $protected) {
-                        $sanitizedProtected = strtolower(preg_replace('/[._\-\s]/', '', $protected));
-                        if ($sanitizedValue === $sanitizedProtected) {
-                            $fail('This artist name is too similar to a protected name. Please choose another.');
-                        }
-                    }
-                    // Impersonation check
-                    $impersonationPatterns = ['real', 'official', 'verified', 'thereal', 'original'];
-                    foreach ($impersonationPatterns as $pattern) {
-                        if (stripos($value, $pattern) !== false) {
-                            $fail('Artist names containing terms like "real", "official", or "verified" are not allowed.');
-                        }
-                    }
-                },
-            ],
-        'location' => ['required', 'string', 'max:255'],
-            'region' => ['required', 'string', 'max:255'],
-            'country' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string',  Rule::in([
+                'Greater Accra',
+                'Ashanti',
+                'Eastern',
+                'Western',
+                'Central',
+                'Volta',
+                'Northern',
+                'Upper East',
+                'Upper West',
+                'Bono',
+                'Bono East',
+                'Ahafo',
+                'Western North',
+                'Oti',
+                'Savannah',
+                'North East'
+            ])],
         ])->validate();
 
         if (
@@ -77,7 +54,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
                 'location' => $input['location'],
                 'region' => $input['region'],
-                'country' => $input['country'],
             ])->save();
             $user->profile->save();
 
