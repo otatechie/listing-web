@@ -71,7 +71,8 @@
                     <template v-else>
                         <Button label="Respond to contact requests" size="small" icon="pi pi-envelope" class="flex-1" />
                         <Link :href="route('mobile-device.edit', mobileDevice.id)" class="flex-1 w-full">
-                            <Button label="Edit Listing" severity="secondary" size="small" icon="pi pi-pencil" class="w-full" />
+                        <Button label="Edit Listing" severity="secondary" size="small" icon="pi pi-pencil"
+                            class="w-full" />
                         </Link>
                     </template>
                 </div>
@@ -185,8 +186,16 @@
 
                     <!-- Action Buttons with improved styling -->
                     <div class="flex justify-end space-x-4 pt-6 border-t border-gray-100">
-                        <Button label="Mark unavailable" severity="secondary" variant="outlined" size="small" />
-                        <Button label="Report" severity="danger" variant="outlined" size="small" />
+                        <template v-if="mobileDevice.user_id !== $page.props.auth.user?.id">
+                            <Button label="Report" severity="danger" variant="outlined" size="small" />
+                        </template>
+                        <template v-else>
+                            <Button label="Mark as sold" severity="secondary" variant="outlined" size="small" />
+                            <Button label="Archive" severity="warn"
+                                title="Archiving will hide your listing from the public" variant="outlined"
+                                size="small" />
+                            <Button label="Delete" severity="danger" variant="outlined" size="small" />
+                        </template>
                     </div>
                 </div>
 
@@ -233,20 +242,52 @@
                 <!-- Safety tip -->
                 <div class="bg-orange-50 p-3 rounded-lg flex items-start gap-2">
                     <i class="pi pi-info-circle text-orange-500 mt-1"></i>
-                    <p class="text-sm text-orange-700">For your safety, always meet in a public place and never send payments before seeing the device.</p>
+                    <p class="text-sm text-orange-700">For your safety, always meet in a public place and never send
+                        payments before seeing the device.</p>
                 </div>
             </div>
 
             <div class="flex justify-end gap-2 mt-6">
                 <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-                <Button
-                    type="submit"
-                    label="Send Request"
-                    :loading="form.processing"
-                ></Button>
+                <Button type="submit" label="Send Request" :loading="form.processing"></Button>
             </div>
         </form>
     </Dialog>
+
+    <!-- Discussion Section -->
+    <div class="relative max-w-5xl bg-white rounded border pt-4 mx-auto mt-8 shadow-sm">
+        <!-- Header -->
+        <div class="absolute px-4 py-1.5 top-0 left-0 bg-gray-100 rounded-br-lg">
+            <div class="flex items-center gap-2">
+                <i class="pi pi-comments text-indigo-600"></i>
+                <h2 class="text-md font-semibold text-gray-800">Discussion</h2>
+            </div>
+        </div>
+
+        <!-- Comment Form -->
+        <form class="mt-8">
+            <div class="w-full px-4 mb-3">
+                <textarea
+                    class="bg-gray-50 rounded-lg border border-gray-200 leading-normal w-full h-28 p-4 font-medium placeholder-gray-400 focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 focus:bg-white transition-all"
+                    name="body"
+                    placeholder="Share your thoughts or ask a question..."
+                    required="">
+                </textarea>
+            </div>
+            <div class="w-full flex justify-between px-4 pb-4">
+                <div class="text-sm text-gray-500">
+                    <i class="pi pi-info-circle"></i>
+                    <span class="ml-1">Please be polite, your comment will be visible to all users</span>
+                </div>
+                <Button
+                    type="submit"
+                    label="Post Comment"
+                    icon="pi pi-send"
+                    size="small"
+                />
+            </div>
+        </form>
+    </div>
 
 </template>
 
