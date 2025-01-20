@@ -22,13 +22,9 @@ class UserAccountController extends Controller
     {
 
         $user = $this->getAuthUser();
-        $profile = $user->profile;
 
         return Inertia::render('UserAccount/IndexPage', [
-            'user' => array_merge($user->only('name', 'email', 'username', 'region',), [
-            ]),
-            'countries' => Arr::sort(countries()),
-            'profile' => $profile,
+            'user' => array_merge($user->only('name', 'email', 'location', 'region',), []),
         ]);
     }
 

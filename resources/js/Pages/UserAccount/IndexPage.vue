@@ -172,7 +172,6 @@ const profileForm = useForm({
     email: props.user.email,
     location: props.user.location,
     region: props.user.region,
-    country: props.user.country,
 });
 
 const submitProfileForm = () => {
@@ -192,14 +191,6 @@ const submitPasswordForm = () => {
         preserveScroll: true,
     });
 };
-
-const countryOptions = computed(() => {
-    return Object.entries(props.countries).map(([value, countryData]) => ({
-        value,
-        label: countryData.name,
-        flag: countryData.flag
-    }));
-});
 
 const regions = ref([
     { name: 'Greater Accra', value: 'Greater Accra' },
