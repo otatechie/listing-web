@@ -106,6 +106,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('favorites/{mobileDevice}', [FavoriteController::class, 'favorite'])
         ->name('favorite.store');
 
+    Route::get('user/favorites', [UserAccountController::class, 'userFavorites'])
+        ->name('user.favorites');
 
     Route::resource('admin/category', AdminCategoryController::class);
     Route::resource('mobile-device', MobileDeviceController::class)

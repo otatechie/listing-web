@@ -76,4 +76,21 @@ class UserAccountController extends Controller
             'userListings' => $userListings
         ]);
     }
+
+
+    public function userFavorites()
+    {
+        $user = $this->getAuthUser();
+
+        $favorites = $user->favorites()
+            ->with(['mobileDevice.phoneBrand', 'mobileDevice.phoneModel', 'mobileDevice.phoneVariant'])
+            ->get()
+            ->map(function ($favorite) {
+                return $favorite->mobileDevice;
+            });
+
+        return Inertia::render('UserAccount/IndexPageFavorites', [
+            'favorites' => $favorites
+        ]);
+    }
 }
