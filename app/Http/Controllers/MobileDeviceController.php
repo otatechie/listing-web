@@ -121,7 +121,9 @@ class MobileDeviceController extends Controller
             'phoneBrand:id,name',
             'phoneModel:id,model_number',
             'phoneVariant:id,name',
-            'media'
+            'media',
+            'discussions:id,message,user_id,mobile_device_id,created_at',
+            'discussions.user:id,name'
         ])
             ->select([
                 'id',
@@ -165,6 +167,11 @@ class MobileDeviceController extends Controller
                 'count_listings' => $count_listings,
                 'active_listings' => $active_listings,
                 'images' => $images,
+                'discussions' => $mobileDevice->discussions->map(function ($discussion) {
+                    return array_merge($discussion->toArray(), [
+                        'created_at_human' => $discussion->created_at->diffForHumans()
+                    ]);
+                }),
                 'full_name' => implode(' ', array_filter([
                     $mobileDevice->phoneBrand?->name,
                     $mobileDevice->phoneVariant?->name,

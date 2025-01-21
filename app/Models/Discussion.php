@@ -20,8 +20,8 @@ class Discussion extends Model
         return $this->belongsTo(MobileDevice::class);
     }
 
-    public function discussions()
+    public function user()
     {
-        return $this->hasMany(Discussion::class);
+        return $this->belongsTo(User::class);
     }
 }

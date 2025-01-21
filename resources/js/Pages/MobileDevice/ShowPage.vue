@@ -4,18 +4,17 @@
 
     <div class="max-w-5xl mx-auto">
         <div class="container-border p-6 relative">
-            <!-- Product Header with improved spacing -->
             <div class="mb-8">
                 <div ref="headerRef" class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
                     <div>
                         <h1 class="text-3xl font-semibold text-gray-900">
                             {{ mobileDevice.phone_brand?.name }} {{ mobileDevice.phone_variant?.name }}
                         </h1>
-                        <!-- Location tag -->
                         <div
-                            class="mt-3 inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full">
+                            class="text-sm mt-3 inline-flex items-center gap-2 bg-indigo-50 text-indigo-500 px-4 py-2 rounded-full">
                             <i class="pi pi-map-marker"></i>
-                            <span class="font-medium">{{ mobileDevice.location }}</span>
+                            <span class="font-medium">{{ mobileDevice.user.location }}, {{ mobileDevice.user.region
+                                }}</span>
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
@@ -30,7 +29,6 @@
                     </div>
                 </div>
 
-                <!-- Combined specifications and badges in one row -->
                 <div class="flex flex-wrap items-center gap-2 mb-6">
                     <span v-if="mobileDevice.condition"
                         class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700 capitalize">{{
@@ -50,7 +48,6 @@
                     <span v-if="mobileDevice.phone_model?.model_number"
                         class="px-2 py-1 bg-gray-100 rounded-full text-xs text-gray-700">{{
                             mobileDevice.phone_model?.model_number }}</span>
-                    <!-- Featured and Approved badges -->
                     <span class="flex items-center px-2 py-1 bg-orange-100 text-orange-600 rounded-full text-xs">
                         <i class="pi pi-star-fill mr-1 text-[10px]"></i>
                         Featured
@@ -61,7 +58,6 @@
                     </span>
                 </div>
 
-                <!-- Buy Button with hover effect -->
                 <div class="flex gap-4 w-full">
                     <template v-if="mobileDevice.user_id !== $page.props.auth.user?.id">
                         <Button label="Chat with seller" size="small" icon="pi pi-comments" class="flex-1" />
@@ -80,7 +76,6 @@
                 <div class="border-t mt-6 border-gray-100"></div>
             </div>
 
-            <!-- Product Images Grid with improved layout -->
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 <div v-for="(image, index) in mobileDevice.images" :key="index"
                     class="aspect-square rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer">
@@ -89,9 +84,7 @@
                 </div>
             </div>
 
-            <!-- Device Details with improved cards -->
             <div class="space-y-8">
-                <!-- Condition Details Card -->
                 <div class="border rounded-lg p-6 bg-gray-50 hover:bg-white transition-colors duration-200">
                     <div class="mb-4">
                         <div class="flex items-center gap-3">
@@ -116,14 +109,11 @@
                     </ul>
                 </div>
 
-                <!-- Design Details -->
                 <div class="border rounded-lg p-6 shadow-sm bg-white">
-                    <!-- Title with subtle underline -->
                     <h1 class="text-2xl font-semibold mb-6 pb-2 border-b border-gray-100">
                         {{ mobileDevice.listing_title }}
                     </h1>
 
-                    <!-- Condition Line with improved visual -->
                     <div class="flex items-center mb-8 bg-gray-50 p-4 rounded-lg">
                         <div class="w-1 h-8 bg-green-500 rounded-full mr-4"></div>
                         <p class="text-gray-700 font-medium">
@@ -131,22 +121,20 @@
                         </p>
                     </div>
 
-                    <!-- Need More Info Section with improved styling -->
                     <div class="flex items-center justify-between mb-8 border-y border-gray-100 py-6">
                         <span class="text-lg font-semibold text-gray-700">Need more information?</span>
                         <Button label="Message seller" severity="primary" variant="outlined" size="small" />
                     </div>
 
-                    <!-- Seller Information Section -->
                     <Link :href="route('user.profile', mobileDevice.user_id)">
                     <div
                         class="flex items-center gap-4 mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-white transition-colors cursor-pointer">
-                        <img :src="`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(mobileDevice.user.name)}&backgroundType=gradientLinear&scale=100&fontSize=50`" :alt="`${mobileDevice.user.name}'s profile`"
-
+                        <img :src="`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(mobileDevice.user.name)}&backgroundType=gradientLinear&scale=100&fontSize=50`"
+                            :alt="`${mobileDevice.user.name}'s profile`"
                             class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
                         <div class="flex-grow">
                             <div class="flex items-center gap-2">
-                                <h3 class="text-lg font-medium">{{ mobileDevice.user.name }}</h3>
+                                <h3 class="text-lg font-medium mb-1">{{ mobileDevice.user.name }}</h3>
                                 <i class="pi pi-verified text-blue-500"></i>
                                 <div class="flex text-green-500">
                                     <i v-for="n in 5" :key="n" class="pi pi-star-fill"></i>
@@ -156,15 +144,14 @@
                             <div class="text-sm text-gray-600">
                                 <p>• Member since: {{ mobileDevice.joined_at_human }}</p>
                                 <p>• Listings: {{ mobileDevice.count_listings }} total, 1 active</p>
-                                <p>• Location: <i class="pi pi-map-marker"></i> {{ mobileDevice.location }}, {{
-                                    mobileDevice.region }}</p>
+                                <p>• Location: {{ mobileDevice.user.location }}, {{ mobileDevice.user.region
+                                    }}</p>
                             </div>
                         </div>
                         <i class="pi pi-chevron-right text-gray-400"></i>
                     </div>
                     </Link>
 
-                    <!-- Dates Section with improved layout -->
                     <div class="grid grid-cols-3 gap-4 mb-8 bg-gray-50 p-4 rounded-lg">
                         <div class="flex items-center">
                             <i class="pi pi-calendar mr-2 text-indigo-600"></i>
@@ -189,7 +176,6 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons with improved styling -->
                     <div class="flex justify-end space-x-4 pt-6 border-t border-gray-100">
                         <template v-if="mobileDevice.user_id !== $page.props.auth.user?.id">
                             <Button label="Report" severity="danger" variant="outlined" size="small" />
@@ -208,7 +194,89 @@
         </div>
     </div>
 
-    <!-- Improved Mobile Bottom Bar -->
+    <div class="relative max-w-5xl bg-white rounded-lg border pt-4 mx-auto my-10 shadow-sm">
+        <div class="absolute px-4 py-2 top-0 left-0 bg-indigo-50 rounded-br-lg rounded-tl-lg">
+            <div class="flex items-center gap-2">
+                <i class="pi pi-comments text-gray-700"></i>
+                <h2 class="text-md font-semibold text-gray-800">Discussion</h2>
+                <span class="text-gray-600 ml-1">({{ mobileDevice.discussions?.length || 0 }})</span>
+            </div>
+        </div>
+
+        <div class="px-6 mt-10 mb-6">
+            <div v-if="mobileDevice.discussions?.length">
+                <div v-for="discussion in mobileDevice.discussions" :key="discussion.id"
+                    class="flex gap-4 pt-2 hover:bg-gray-50 p-2 rounded-lg transition-colors">
+                    <img :src="`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(discussion.user.name)}`"
+                        class="w-10 h-10 rounded-full flex-shrink-0 border-2 border-white shadow-sm"
+                        :alt="`${discussion.user.name}'s avatar`" />
+                    <div class="flex-1 min-w-0">
+                        <div class="flex flex-wrap items-center gap-2 mb-1">
+                            <span class="font-medium text-gray-800 break-all text-sm">{{ discussion.user.name }}</span>
+                            <span v-if="discussion.user.id === mobileDevice.user_id"
+                                class="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-xs rounded-full font-medium whitespace-nowrap">
+                                Owner
+                            </span>
+                            <span class="text-xs text-gray-500 whitespace-nowrap">• {{ discussion.created_at_human }}</span>
+                        </div>
+                        <div v-if="editingDiscussion === discussion.id">
+                            <Textarea v-model="editDiscussionForm.message" rows="3"
+                                class="w-full !bg-white mb-2 text-sm sm:text-base"
+                                :class="{ '!border-red-300': editDiscussionForm.errors.message }" />
+                            <div class="flex gap-2">
+                                <Button type="button" label="Cancel" severity="secondary" size="small"
+                                    @click="cancelEdit" />
+                                <Button type="button" label="Save" size="small" :loading="editDiscussionForm.processing"
+                                    @click="updateDiscussion(discussion.id)" />
+                            </div>
+                        </div>
+                        <p v-else class="text-gray-500 whitespace-pre-wrap leading-relaxed text-sm break-words">
+                            {{ discussion.message }}
+                        </p>
+                        <div class="flex gap-2 mt-2">
+                            <button v-if="canEditDiscussion(discussion) && !isEditTimeExpired(discussion)"
+                                class="text-xs text-gray-400 link-hover flex items-center gap-1 underline"
+                                @click="startEdit(discussion)">
+                                Edit
+                            </button>
+                        </div>
+                        <div class="border-b border-gray-200 py-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="text-center py-12 bg-gray-50 rounded-lg">
+                <i class="pi pi-comments text-4xl mb-3 text-gray-400"></i>
+                <p class="text-gray-600 font-medium">No comments yet</p>
+                <p class="text-sm text-gray-500">Be the first to start the discussion!</p>
+            </div>
+        </div>
+
+        <div class="border-t bg-gray-50 rounded-b-lg">
+            <div class="w-full px-6 pt-6">
+                <div class="mb-2 flex items-center">
+                    <span class="text-lg font-medium text-gray-700">
+                        {{ $page.props.auth.user ? 'Post a comment' : 'Sign in to comment' }}
+                    </span>
+                </div>
+                <Textarea v-model="createDiscussionForm.message" rows="4" placeholder="" class="w-full !bg-white"
+                    :class="{ '!border-red-300': createDiscussionForm.errors.message }"
+                    :disabled="!$page.props.auth.user" />
+                <p v-if="createDiscussionForm.errors.message" class="mt-2 text-xs text-red-600">
+                    {{ createDiscussionForm.errors.message }}
+                </p>
+            </div>
+
+            <div class="w-full flex justify-between p-4 items-center">
+                <div class="text-sm text-gray-500 flex items-center">
+                    <i class="pi pi-info-circle text-gray-400"></i>
+                    <span class="ml-2 text-xs">Be respectful and constructive</span>
+                </div>
+                <Button type="submit" @click="submitDiscussionForm" label="Post Comment" icon="pi pi-send" size="small"
+                    :disabled="!$page.props.auth.user" :loading="createDiscussionForm.processing" class="px-4" />
+            </div>
+        </div>
+    </div>
+
     <div class="fixed bottom-0 left-0 right-0 h-[80px] md:hidden bg-white border-t shadow-lg z-50 backdrop-blur-lg bg-white/90"
         v-show="showMobileBar">
         <div class="max-w-7xl mx-auto px-4 h-full">
@@ -229,11 +297,9 @@
         </div>
     </div>
 
-    <!-- Move Dialog component outside of other elements -->
     <Dialog v-model:visible="visible" modal header="Request Contact" :style="{ width: '30rem' }">
-        <form @submit.prevent="handleSubmit">
+        <form @submit.prevent="handleContactRequest">
             <div class="flex flex-col gap-4">
-                <!-- Info message -->
                 <div class="flex items-start gap-4">
                     <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0">
                         <i class="pi pi-phone text-xl text-indigo-600"></i>
@@ -244,7 +310,6 @@
                     </div>
                 </div>
 
-                <!-- Safety tip -->
                 <div class="bg-orange-50 p-3 rounded-lg flex items-start gap-2">
                     <i class="pi pi-info-circle text-orange-500 mt-1"></i>
                     <p class="text-sm text-orange-700">For your safety, always meet in a public place and never send
@@ -254,46 +319,19 @@
 
             <div class="flex justify-end gap-2 mt-6">
                 <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-                <Button type="submit" label="Send Request" :loading="form.processing"></Button>
+                <Button type="submit" label="Send Request" :loading="contactRequestForm.processing"></Button>
             </div>
         </form>
     </Dialog>
-
-    <!-- Discussion Section -->
-    <div class="relative max-w-5xl bg-white rounded border pt-4 mx-auto my-8 shadow-sm">
-        <!-- Header -->
-        <div class="absolute px-4 py-1.5 top-0 left-0 bg-gray-100 rounded-br-lg">
-            <div class="flex items-center gap-2">
-                <i class="pi pi-comments text-indigo-600"></i>
-                <h2 class="text-md font-semibold text-gray-800">Discussion</h2>
-            </div>
-        </div>
-
-        <!-- Comment Form -->
-        <form class="mt-8">
-            <div class="w-full px-6 mb-3">
-                <Textarea v-model="value" rows="5" cols="30" class="w-full" />
-            </div>
-            <div class="w-full flex justify-between px-4 pb-4">
-                <div class="text-sm text-gray-500">
-                    <i class="pi pi-info-circle"></i>
-                    <span class="ml-1">Please be polite, your comment will be visible to everyone</span>
-                </div>
-                <Button type="submit" label="Post Comment" icon="pi pi-send" size="small" />
-            </div>
-        </form>
-    </div>
 
 </template>
 
 <script setup>
 import Default from '../../Layouts/Default.vue';
 import Button from 'primevue/button';
-import Breadcrumb from 'primevue/breadcrumb';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import Dialog from 'primevue/dialog';
-import { useForm } from '@inertiajs/vue3';
-import InputText from 'primevue/inputtext';
+import { useForm, usePage } from '@inertiajs/vue3';
 import { Head } from '@inertiajs/vue3';
 import Textarea from 'primevue/textarea';
 
@@ -308,20 +346,68 @@ defineOptions({
     layout: Default,
 })
 
+const page = usePage();
 const visible = ref(false);
 const headerRef = ref(null);
 const showMobileBar = ref(false);
+const editingDiscussion = ref(null);
+const EDIT_TIME_LIMIT_MINUTES = 10;
+
+const createDiscussionForm = useForm({
+    message: null,
+    mobile_device_id: props.mobileDevice.id,
+});
+
+const editDiscussionForm = useForm({
+    message: '',
+});
+
+const submitDiscussionForm = () => {
+    createDiscussionForm.post(route('discussion.store'), {
+        preserveScroll: true,
+        onSuccess: () => {
+            createDiscussionForm.reset('message');
+        },
+        onError: (errors) => {
+            console.error('Form submission failed:', errors);
+        }
+    });
+};
+
+const updateDiscussion = (discussionId) => {
+    editDiscussionForm.put(route('discussion.update', discussionId), {
+        preserveScroll: true,
+        onSuccess: () => {
+            editingDiscussion.value = null;
+            editDiscussionForm.reset();
+        },
+        onError: (errors) => {
+            console.error('Failed to update discussion:', errors);
+        }
+    });
+};
+
+const contactRequestForm = useForm({
+    mobile_device_id: props.mobileDevice.id,
+});
+
+const handleContactRequest = () => {
+    contactRequestForm.post(route('contact-request.store'), {
+        onSuccess: () => {
+            visible.value = false;
+            contactRequestForm.reset();
+        },
+    });
+};
 
 const checkScroll = () => {
-    if (!headerRef.value) return;
-
-    const headerPosition = headerRef.value.getBoundingClientRect().bottom;
-    showMobileBar.value = headerPosition < 0;
+    if (headerRef.value) {
+        showMobileBar.value = headerRef.value.getBoundingClientRect().bottom < 0;
+    }
 };
 
 onMounted(() => {
     window.addEventListener('scroll', checkScroll);
-    // Initial check
     checkScroll();
 });
 
@@ -331,28 +417,31 @@ onUnmounted(() => {
 
 const formattedStorage = computed(() => {
     if (!props.mobileDevice.storage_capacity) return null;
-
     const storage = Number(props.mobileDevice.storage_capacity);
-    if (storage >= 1024) {
-        return `${storage / 1024}TB`;
-    }
-    return `${storage}GB`;
+    return storage >= 1024 ? `${storage / 1024}TB` : `${storage}GB`;
 });
-
-const form = useForm({
-    mobile_device_id: props.mobileDevice.id,
-});
-
-const handleSubmit = () => {
-    form.post(route('contact-request.store'), {
-        onSuccess: () => {
-            visible.value = false;
-            form.reset();
-        },
-    });
-};
 
 const isAppleDevice = computed(() => {
     return props.mobileDevice.phone_brand?.name?.toLowerCase() === 'apple';
 });
+
+const startEdit = (discussion) => {
+    editingDiscussion.value = discussion.id;
+    editDiscussionForm.message = discussion.message;
+};
+
+const cancelEdit = () => {
+    editingDiscussion.value = null;
+    editDiscussionForm.reset();
+};
+
+const canEditDiscussion = (discussion) => {
+    return page.props.auth.user && discussion.user_id === page.props.auth.user.id;
+};
+
+const isEditTimeExpired = (discussion) => {
+    const createdAt = new Date(discussion.created_at);
+    const now = new Date();
+    return (now - createdAt) / (1000 * 60) > EDIT_TIME_LIMIT_MINUTES;
+};
 </script>

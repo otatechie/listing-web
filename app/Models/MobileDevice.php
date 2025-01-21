@@ -46,6 +46,11 @@ class MobileDevice extends Model implements HasMedia
         return $this->belongsTo(PhoneVariant::class);
     }
 
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class);
+    }
+
 
     public function registerMediaConversions(Media $media = null): void
     {

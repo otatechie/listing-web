@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Discussion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -54,6 +56,10 @@ class HandleInertiaRequests extends Middleware
                     'success' => fn() => $request->session()->get('success'),
                     'error' => fn() => $request->session()->get('error'),
                     'status' => fn() => $request->session()->get('status'),
+                ],
+
+                'permissions' => [
+                    'canEditDiscussion' => fn() => Auth::user()?->can('update', Discussion::class),
                 ],
             ],
         );

@@ -1,22 +1,23 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminRoleController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminAuditController;
+use App\Http\Controllers\DiscussionController;
+use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\AdminBackupController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\MobileDeviceController;
+use App\Http\Controllers\PhoneVariantController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\AdminPermissionRoleController;
-use App\Http\Controllers\AdminRoleController;
-use App\Http\Controllers\AdminSettingController;
-use App\Http\Controllers\AdminUserController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MobileDeviceController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PhoneVariantController;
-use App\Http\Controllers\UserAccountController;
-use App\Http\Middleware\HandleInertiaRequests;
-use App\Http\Controllers\ContactRequestController;
-use Illuminate\Support\Facades\Route;
 
 
 
@@ -68,6 +69,11 @@ Route::middleware(['web', 'auth'])->group(function () {
         Route::get('user/listing', [UserAccountController::class, 'userListing'])
             ->name('listing');
     });
+
+    Route::post('discussion', [DiscussionController::class, 'store'])
+        ->name('discussion.store');
+    Route::put('discussion/{discussion}', [DiscussionController::class, 'update'])
+        ->name('discussion.update');
 
 
     // Admin Routes

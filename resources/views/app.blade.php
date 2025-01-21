@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
-    <link href="https://api.fontshare.com/v2/css?f[]=outfit@400,500,600,700&display=swap" rel="stylesheet">    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-u5aUqGF5.css') }}">
-    <script type="module" src="{{ asset('build/assets/app-D8-IfpPU.js') }}"></script> --}}
-
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=manrope:400,500,600,700,800" rel="stylesheet" />
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     @inertiaHead
     <script>

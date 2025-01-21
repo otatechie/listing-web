@@ -368,7 +368,6 @@ import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
 import axios from 'axios';
 
-
 defineOptions({
     layout: Default,
 })
@@ -414,21 +413,14 @@ const submitMobileDeviceForm = () => {
     createMobileDeviceForm.post(route("mobile-device.store"), {
         preserveScroll: true,
         onSuccess: () => {
-            // Add success notification/redirect logic here
+            createMobileDeviceForm.reset();
         },
         onError: (errors) => {
             console.error('Form submission failed:', errors);
-            // Add error notification logic here
         }
     });
 };
 
-const home = ref({
-    icon: 'pi pi-home'
-});
-const items = ref([
-    { label: 'Categories' }
-]);
 
 const storage = ref([
     { label: '64GB', value: '64' },

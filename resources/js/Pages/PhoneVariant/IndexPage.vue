@@ -90,7 +90,7 @@
                 <!-- Price (Most important info first) -->
                 <Column field="price" header="Price" sortable>
                     <template #body="{ data }">
-                        <span class="font-bold text-gray-800 hover:cursor-pointer">${{ data.price }}</span>
+                        <span class="font-medium text-gray-600 hover:cursor-pointer">${{ data.price }}</span>
                     </template>
                 </Column>
 
