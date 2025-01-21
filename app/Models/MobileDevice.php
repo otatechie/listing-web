@@ -20,35 +20,61 @@ class MobileDevice extends Model implements HasMedia
 
     protected $guarded = ['id'];
 
+    protected $appends = ['is_favorited'];
+
+
+    public function getIsFavoritedAttribute()
+    {
+        if (!auth()->check()) return false;
+        return $this->favoritedBy()->where('user_id', auth()->id())->exists();
+    }
+
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 
     public function phoneBrand()
     {
         return $this->belongsTo(PhoneBrand::class);
     }
 
+
     public function phoneModel()
     {
         return $this->belongsTo(PhoneModel::class);
     }
+
 
     public function phoneVariant()
     {
         return $this->belongsTo(PhoneVariant::class);
     }
 
+
     public function discussions()
     {
         return $this->hasMany(Discussion::class);
+    }
+
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
     }
 
 
@@ -72,6 +98,7 @@ class MobileDevice extends Model implements HasMedia
             ->quality(90)
             ->nonQueued();
     }
+
 
     protected static function boot()
     {

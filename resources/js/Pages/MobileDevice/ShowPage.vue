@@ -18,9 +18,12 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-4">
-                        <button
+                        <button @click="toggleFavorite"
                             class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-                            <i class="pi pi-heart text-gray-400"></i>
+                            <i :class="[
+                                'pi',
+                                mobileDevice.is_favorited ? 'pi-heart-fill text-red-500' : 'pi-heart text-gray-400'
+                            ]"></i>
                         </button>
                         <div class="text-3xl font-semibold text-indigo-600 flex items-center gap-2">
                             <span class="text-sm text-gray-500">Selling for</span>
@@ -217,7 +220,8 @@
                                 class="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-xs rounded-full font-medium whitespace-nowrap">
                                 Owner
                             </span>
-                            <span class="text-xs text-gray-500 whitespace-nowrap">• {{ discussion.created_at_human }}</span>
+                            <span class="text-xs text-gray-500 whitespace-nowrap">• {{ discussion.created_at_human
+                                }}</span>
                         </div>
                         <div v-if="editingDiscussion === discussion.id">
                             <Textarea v-model="editDiscussionForm.message" rows="3"
@@ -281,9 +285,12 @@
         v-show="showMobileBar">
         <div class="max-w-7xl mx-auto px-4 h-full">
             <div class="flex items-center justify-between gap-3 h-full">
-                <button
+                <button @click="toggleFavorite"
                     class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 transition-colors">
-                    <i class="pi pi-heart text-xl"></i>
+                    <i :class="[
+                        'pi text-xl',
+                        mobileDevice.is_favorited ? 'pi-heart-fill text-red-500' : 'pi-heart'
+                    ]"></i>
                 </button>
                 <template v-if="mobileDevice.user_id !== $page.props.auth.user?.id">
                     <Button label="Chat" icon="pi pi-comments" class="p-button-primary flex-1" />
@@ -331,7 +338,7 @@ import Default from '../../Layouts/Default.vue';
 import Button from 'primevue/button';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import Dialog from 'primevue/dialog';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { useForm, usePage, router } from '@inertiajs/vue3';
 import { Head } from '@inertiajs/vue3';
 import Textarea from 'primevue/textarea';
 
@@ -352,6 +359,7 @@ const headerRef = ref(null);
 const showMobileBar = ref(false);
 const editingDiscussion = ref(null);
 const EDIT_TIME_LIMIT_MINUTES = 10;
+const favoriteForm = useForm({});
 
 const createDiscussionForm = useForm({
     message: null,
@@ -365,12 +373,6 @@ const editDiscussionForm = useForm({
 const submitDiscussionForm = () => {
     createDiscussionForm.post(route('discussion.store'), {
         preserveScroll: true,
-        onSuccess: () => {
-            createDiscussionForm.reset('message');
-        },
-        onError: (errors) => {
-            console.error('Form submission failed:', errors);
-        }
     });
 };
 
@@ -380,9 +382,6 @@ const updateDiscussion = (discussionId) => {
         onSuccess: () => {
             editingDiscussion.value = null;
             editDiscussionForm.reset();
-        },
-        onError: (errors) => {
-            console.error('Failed to update discussion:', errors);
         }
     });
 };
@@ -443,5 +442,12 @@ const isEditTimeExpired = (discussion) => {
     const createdAt = new Date(discussion.created_at);
     const now = new Date();
     return (now - createdAt) / (1000 * 60) > EDIT_TIME_LIMIT_MINUTES;
+};
+
+const toggleFavorite = () => {
+    props.mobileDevice.is_favorited = !props.mobileDevice.is_favorited;
+    favoriteForm.post(route('favorite.store', props.mobileDevice.id), {
+        preserveScroll: true
+    });
 };
 </script>

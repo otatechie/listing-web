@@ -38,6 +38,16 @@ class User extends Authenticatable implements Auditable
         return $this->hasMany(MobileDevice::class);
     }
 
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function favoriteMobileDevices()
+    {
+        return $this->belongsToMany(MobileDevice::class, 'favorites');
+    }
+
     protected static function boot()
     {
         parent::boot();

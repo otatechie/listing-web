@@ -1,23 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\AdminRoleController;
-use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminAuditController;
-use App\Http\Controllers\DiscussionController;
-use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\AdminBackupController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\UserAccountController;
-use App\Http\Controllers\AdminSettingController;
-use App\Http\Controllers\MobileDeviceController;
-use App\Http\Controllers\PhoneVariantController;
 use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\AdminPermissionController;
 use App\Http\Controllers\AdminPermissionRoleController;
+use App\Http\Controllers\AdminRoleController;
+use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\ContactRequestController;
+use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MobileDeviceController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PhoneVariantController;
+use App\Http\Controllers\UserAccountController;
+use App\Http\Middleware\HandleInertiaRequests;
+use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -99,6 +101,11 @@ Route::middleware(['web', 'auth'])->group(function () {
     // Authentication Routes
     Route::post('logout', [LogoutController::class, 'destroy'])
         ->name('logout');
+
+
+    Route::post('favorites/{mobileDevice}', [FavoriteController::class, 'favorite'])
+        ->name('favorite.store');
+
 
     Route::resource('admin/category', AdminCategoryController::class);
     Route::resource('mobile-device', MobileDeviceController::class)
