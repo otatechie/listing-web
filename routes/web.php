@@ -14,11 +14,14 @@ use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobileDeviceController;
+use App\Http\Controllers\MobileDeviceSearchController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhoneVariantController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -45,6 +48,9 @@ Route::controller(PageController::class)
     ->group(function () {
         Route::get('help', 'help')->name('help');
     });
+
+    Route::get('/search/live', [SearchController::class, 'search'])->name('search.live');
+    Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('phone-variant/{slug}', [PhoneVariantController::class, 'index'])->name('phone.variant.index');
@@ -114,4 +120,6 @@ Route::middleware(['web', 'auth'])->group(function () {
         ->except(['index', 'show']);
     Route::post('mobile-device/validate-step/{step}', [MobileDeviceController::class, 'validateStep'])
         ->name('mobile-device.validate-step');
+
+
 });

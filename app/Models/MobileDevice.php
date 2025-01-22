@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
+use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class MobileDevice extends Model implements HasMedia
@@ -17,6 +18,8 @@ class MobileDevice extends Model implements HasMedia
     use HasUlids;
 
     use InteractsWithMedia;
+
+    use Searchable;
 
     protected $guarded = ['id'];
 
@@ -131,5 +134,22 @@ class MobileDevice extends Model implements HasMedia
         } while (static::where('listing_code', $code)->exists());
 
         return $code;
+    }
+
+
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'device_type' => $this->device_type,
+            'brand' => $this->phoneBrand?->name,
+            'model' => $this->phoneModel?->name,
+            'price' => $this->price,
+            'condition' => $this->condition,
+            'storage' => $this->storage_capacity,
+            'ram' => $this->ram,
+            'color' => $this->color,
+            'location' => $this->user?->location
+        ];
     }
 }
