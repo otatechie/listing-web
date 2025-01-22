@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800" rel="stylesheet" />
     @vite(['resources/js/app.js', 'resources/css/app.css'])
+
     @inertiaHead
     <script>
         window.logoUrl = "{{ asset('images/afropulse-logo.svg') }}";
@@ -25,7 +26,6 @@
 <body>
     @routes
     @inertia
-    <script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 
 </html>
